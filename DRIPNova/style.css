@@ -1,0 +1,64 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #111;
+}
+
+header h1 {
+  color: #00ffff;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #000, #111);
+}
+
+.btn {
+  background: #00ffff;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.products {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+}
