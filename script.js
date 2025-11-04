@@ -1,15 +1,9 @@
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
   const productInfo = document.getElementById("productInfo");
-
-  // Show product details
   productInfo.textContent = `🛍️ ${productName} — PKR ${price}`;
-
-  // Reset form and show it
-  document.getElementById("checkoutForm").reset();
-  document.getElementById("checkoutForm").style.display = "block";
-  document.getElementById("paymentInfo").style.display = "none";
-
+  modal.dataset.product = productName;
+  modal.dataset.price = price;
   modal.style.display = "flex";
 }
 
@@ -17,21 +11,48 @@ function closeModal() {
   document.getElementById("checkoutModal").style.display = "none";
 }
 
-// When form submitted -> show payment info
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("checkoutForm");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    form.style.display = "none";
-    document.getElementById("paymentInfo").style.display = "block";
-  });
-});
+// Form submission
+async function confirmOrder() {
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const city = document.getElementById("city").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const modal = document.getElementById("checkoutModal");
 
-// Close modal if clicked outside
+  if (!name || !phone || !city || !address) {
+    alert("⚠️ Please fill in all fields before confirming your order.");
+    return;
+  }
+
+  const product = modal.dataset.product;
+  const price = modal.dataset.price;
+
+  const orderData = { name, phone, city, address, product, price };
+
+  // 🔗 Paste your Google Apps Script URL here
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxn5uAVBcD_ygs7S9z4AFhEz90fOnd2AMhLa4xc8pitv_ka2u6d24M1-jNJM4qj2Oyo/exec";
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(orderData),
+    });
+
+    if (response.ok) {
+      alert("✅ Your order has been placed successfully!");
+      closeModal();
+    } else {
+      alert("❌ Something went wrong. Please try again later.");
+    }
+  } catch (error) {
+    alert("⚠️ Error sending order. Check your internet connection.");
+  }
+}
+
+// Close modal when clicking outside
 window.onclick = function (event) {
   const modal = document.getElementById("checkoutModal");
-  if (event.target === modal) {
+  if (event.target == modal) {
     modal.style.display = "none";
   }
 };
-
