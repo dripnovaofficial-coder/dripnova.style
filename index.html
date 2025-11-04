@@ -72,38 +72,46 @@
  <!-- Checkout Modal -->
 <div id="checkoutModal" class="modal">
   <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
     <h2>Complete Your Purchase</h2>
-    
+    <p id="productInfo" style="color:#00ffff; font-weight:bold;"></p>
+
+    <!-- Customer Form -->
     <form id="checkoutForm">
-      <input type="text" id="name" placeholder="Full Name" required />
-      <input type="tel" id="phone" placeholder="Phone Number" required />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <input type="text" id="address" placeholder="Shipping Address" required />
-      <input type="text" id="city" placeholder="City" required />
-      <input type="text" id="postal" placeholder="Postal Code" required />
+      <label>Name:</label>
+      <input type="text" required placeholder="Full Name">
+
+      <label>Phone Number:</label>
+      <input type="text" required placeholder="03XXXXXXXXX">
+
+      <label>City:</label>
+      <input type="text" required placeholder="Your City">
+
+      <label>Delivery Address:</label>
+      <textarea required placeholder="Complete address for delivery"></textarea>
+
       <button type="submit" class="btn">Confirm Order</button>
-      <p id="productInfo" style="color:#00ffff; font-weight:bold; margin-bottom:10px;"></p>
     </form>
 
+    <!-- Payment Details (hidden at first) -->
     <div id="paymentInfo" style="display:none;">
-      <h3>Payment Methods</h3>
-      <ul>
-        <li>Easypaisa: 03302936798 (Muhammad Asim Khan)</li>
-        <li>JazzCash / NayaPay: 03302936798 (Muhammad Khuzaima Raza)</li>
-      </ul>
-      <p>
-        After payment, send a screenshot and your delivery details to:<br>
-        📧 <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a><br>
-        📸 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
-      </p>
-      <button onclick="closeModal()" class="btn">Close</button>
+      <h3>💳 Payment Methods</h3>
+      <p>Easypaisa: <strong>03302936798 (Muhammad Asim Khan)</strong></p>
+      <p>JazzCash / NayaPay: <strong>03302936798 (Muhammad Khuzaima Raza)</strong></p>
+      <p>After payment, send a screenshot & your order details to:</p>
+      <p>📩 <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a></p>
+      <p>📱 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
+      <button class="btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
 
 
+
 </body>
 </html>
+
 
 
 
