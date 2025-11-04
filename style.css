@@ -306,7 +306,7 @@ footer {
 .modal {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 999;
   left: 0;
   top: 0;
   width: 100%;
@@ -314,16 +314,15 @@ footer {
   background-color: rgba(0, 0, 0, 0.85);
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-  background: #0b0b0b;
+  background: #111;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 10px;
   width: 90%;
-  max-width: 420px;
-  color: #fff;
+  max-width: 400px;
+  color: white;
   text-align: center;
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
   animation: slideUp 0.4s ease;
@@ -334,7 +333,8 @@ footer {
   margin-bottom: 15px;
 }
 
-.modal-content form input {
+.modal-content form input,
+.modal-content form textarea {
   width: 100%;
   margin: 8px 0;
   padding: 10px;
@@ -345,7 +345,8 @@ footer {
   font-family: "Poppins", sans-serif;
 }
 
-.modal-content form input::placeholder {
+.modal-content form input::placeholder,
+.modal-content form textarea::placeholder {
   color: #aaa;
 }
 
@@ -365,15 +366,28 @@ footer {
   background: #00cccc;
 }
 
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  color: #00ffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: white;
+}
+
 /* Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-
-
