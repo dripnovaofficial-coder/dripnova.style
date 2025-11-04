@@ -32,9 +32,9 @@ header {
 }
 
 .logo {
-  height: 45px;
-  width: auto;
-  border-radius: 8px;
+  height: auto;
+  width: 50px;
+  border-radius: 6px;
 }
 
 header h1 {
@@ -199,7 +199,7 @@ footer {
 .modal {
   display: none;
   position: fixed;
-  z-index: 200;
+  z-index: 9999; /* stays on top of everything */
   left: 0;
   top: 0;
   width: 100%;
@@ -301,4 +301,5 @@ footer {
     transform: scale(1);
   }
 }
+
 
