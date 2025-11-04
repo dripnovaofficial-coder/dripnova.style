@@ -1,5 +1,5 @@
 // === Google Sheet URL ===
-const scriptURL = "https://script.google.com/macros/s/AKfycbxn5uAVBcD_ygs7S9z4AFhEz90fOnd2AMhLa4xc8pitv_ka2u6d24M1-jNJM4qj2Oyo/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzTeg5Mb0KSAW9R3vR_Sesyv4MXNd7GAr0pgBvk-6rsGu0Hq0xW6NU57eMKz42FSCU7/exec";
 
 // Open checkout modal
 function buyNow(productName, price) {
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
 
 
 
