@@ -22,6 +22,12 @@ header {
   width: 60px;
   height: auto;
 }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 
 header h1 {
   font-size: 1.8rem;
@@ -78,4 +84,5 @@ footer {
   padding: 20px;
   background: #111;
 }
+
 
