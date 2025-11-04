@@ -70,29 +70,24 @@
   </footer>
 
  <!-- Checkout Modal -->
+<!-- Checkout Modal -->
 <div id="checkoutModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-
     <h2>Complete Your Purchase</h2>
-    <p id="productInfo" style="color:#00ffff; font-weight:bold;"></p>
+    <p id="productInfo"></p>
 
-    <!-- Customer Form -->
-    <form id="checkoutForm">
-      <label>Name:</label>
-      <input type="text" required placeholder="Full Name">
-
-      <label>Phone Number:</label>
-      <input type="text" required placeholder="03XXXXXXXXX">
-
-      <label>City:</label>
-      <input type="text" required placeholder="Your City">
-
-      <label>Delivery Address:</label>
-      <textarea required placeholder="Complete address for delivery"></textarea>
-
-    <button type="button" onclick="confirmOrder()">Confirm Order</button>
+    <form id="orderForm">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="tel" name="phone" placeholder="03XXXXXXXXX" required pattern="[0-9]{11}">
+      <input type="text" name="city" placeholder="City" required>
+      <textarea name="address" placeholder="Complete delivery address" required></textarea>
+      <input type="hidden" name="product" id="productField">
+      <input type="hidden" name="price" id="priceField">
+      <button type="submit">Confirm Order</button>
     </form>
+  </div>
+</div>
 
     <!-- Payment Details (hidden at first) -->
     <div id="paymentInfo" style="display:none;">
@@ -111,6 +106,7 @@
 
 </body>
 </html>
+
 
 
 
