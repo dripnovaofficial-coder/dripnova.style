@@ -69,30 +69,41 @@
     <p>© 2025 DripNova | All Rights Reserved</p>
   </footer>
 
-  <script src="script.js"></script>
-  <!-- Checkout Modal -->
+ <!-- Checkout Modal -->
 <div id="checkoutModal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img src="dripnova-logo.png" alt="DripNova Logo" class="modal-logo" />
     <h2>Complete Your Purchase</h2>
-    <p id="productInfo"></p>
-    <h3>💳 Payment Methods</h3>
-    <ul>
-      <li>Easypaisa: <strong>03302936798</strong> (Muhammad Asim Khan)</li>
-      <li>JazzCash / NayaPay: <strong>03302936798</strong> (Muhammad Khuzaima Raza)</li>
-    </ul>
-    <p class="checkout-note">
-      After payment, send a screenshot and your delivery details to:<br>
-      <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a><br>
-      or Instagram <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
-    </p>
-    <button class="close-btn" onclick="closeModal()">Close</button>
+    
+    <form id="checkoutForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="text" id="address" placeholder="Shipping Address" required />
+      <input type="text" id="city" placeholder="City" required />
+      <input type="text" id="postal" placeholder="Postal Code" required />
+      <button type="submit" class="btn">Confirm Order</button>
+    </form>
+
+    <div id="paymentInfo" style="display:none;">
+      <h3>Payment Methods</h3>
+      <ul>
+        <li>Easypaisa: 03302936798 (Muhammad Asim Khan)</li>
+        <li>JazzCash / NayaPay: 03302936798 (Muhammad Khuzaima Raza)</li>
+      </ul>
+      <p>
+        After payment, send a screenshot and your delivery details to:<br>
+        📧 <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a><br>
+        📸 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
+      </p>
+      <button onclick="closeModal()" class="btn">Close</button>
+    </div>
   </div>
 </div>
 
+
 </body>
 </html>
+
 
 
 
