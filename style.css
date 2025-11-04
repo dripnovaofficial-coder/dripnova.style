@@ -1,17 +1,30 @@
+/* ==============================
+   DripNova Official Style Sheet
+   ============================== */
+
+/* --- General Styles --- */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   background-color: #000;
   color: #fff;
+  line-height: 1.6;
 }
 
+/* --- Header Section --- */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px 40px;
   background: #111;
+  border-bottom: 1px solid #00ffff33;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
+/* --- Logo --- */
 .logo-container {
   display: flex;
   align-items: center;
@@ -19,50 +32,72 @@ header {
 }
 
 .logo {
-  width: 60px;
-  height: auto;
+  height: 45px;
+  width: auto;
+  border-radius: 8px;
 }
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
 
 header h1 {
   font-size: 1.8rem;
   color: #00ffff;
   margin: 0;
+  font-weight: 700;
 }
 
-header h1 {
-  color: #00ffff;
-}
-
+/* --- Navigation Menu --- */
 nav a {
   color: white;
-  margin: 0 10px;
+  margin: 0 15px;
   text-decoration: none;
+  font-weight: 500;
 }
 
+nav a:hover {
+  color: #00ffff;
+  transition: color 0.3s ease;
+}
+
+/* --- Hero Section --- */
 .hero {
   text-align: center;
   padding: 100px 20px;
   background: linear-gradient(180deg, #000, #111);
 }
 
+.hero h2 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.hero p {
+  color: #ccc;
+  margin: 10px 0 20px;
+}
+
 .btn {
   background: #00ffff;
   color: #000;
-  padding: 10px 20px;
+  padding: 10px 25px;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
+.btn:hover {
+  background: #00cccc;
+}
+
+/* --- Product Section --- */
 .products {
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
+}
+
+.products h2 {
+  color: #00ffff;
+  margin-bottom: 40px;
 }
 
 .product-list {
@@ -77,13 +112,83 @@ nav a {
   padding: 20px;
   border-radius: 10px;
   width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px #00ffff44;
+}
+
+.product h3 {
+  color: #fff;
+  margin: 10px 0 5px;
+}
+
+.product p {
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background: #00ffff;
+  border: none;
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background: #00cccc;
+}
+
+/* --- About Section --- */
+.about {
+  text-align: center;
+  padding: 60px 20px;
+  background: #111;
+}
+
+.about h2 {
+  color: #00ffff;
+}
+
+.about p {
+  max-width: 600px;
+  margin: 10px auto;
+  color: #ccc;
+}
+
+/* --- Contact Section --- */
+.contact {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact h2 {
+  color: #00ffff;
+}
+
+.contact a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* --- Footer --- */
 footer {
   text-align: center;
   padding: 20px;
   background: #111;
+  color: #888;
+  border-top: 1px solid #00ffff33;
 }
-
-
-
