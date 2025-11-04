@@ -165,24 +165,24 @@ nav a:hover {
   color: #ccc;
 }
 
-/* --- Contact Section --- */
-.contact {
-  text-align: center;
-  padding: 60px 20px;
+/* --- Contact Section Styling --- */
+.contact-info {
+  margin: 20px auto;
+  text-align: left;
+  display: inline-block;
 }
 
-.contact h2 {
+.contact-info p {
+  margin: 8px 0;
+  color: #ddd;
+}
+
+.note {
   color: #00ffff;
+  font-size: 0.9rem;
+  margin-top: 20px;
 }
 
-.contact a {
-  color: #00ffff;
-  text-decoration: none;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-}
 
 /* --- Footer --- */
 footer {
@@ -192,3 +192,4 @@ footer {
   color: #888;
   border-top: 1px solid #00ffff33;
 }
+
