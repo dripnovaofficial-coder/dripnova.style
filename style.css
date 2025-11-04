@@ -195,11 +195,11 @@ footer {
 
 /* =======================
    Checkout Modal Styling
-   ======================= */
+
 .modal {
   display: none;
   position: fixed;
-  z-index: 9999; /* stays on top of everything */
+  z-index: 999;
   left: 0;
   top: 0;
   width: 100%;
@@ -210,96 +210,52 @@ footer {
 }
 
 .modal-content {
-  background-color: #111;
+  background: #111;
   padding: 30px;
   border-radius: 15px;
   width: 90%;
   max-width: 400px;
-  text-align: center;
-  box-shadow: 0 0 20px #00ffff44;
-  position: relative;
   color: #fff;
-  animation: fadeIn 0.3s ease;
-}
-
-.modal-logo {
-  width: 60px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  animation: slideUp 0.4s ease;
 }
 
 .modal-content h2 {
   color: #00ffff;
-  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
-.modal-content ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  margin: 15px 0;
+.modal-content form input,
+.modal-content form textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #00ffff;
+  background: #111;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  resize: none;
 }
 
-.modal-content li {
-  color: #ccc;
-  margin-bottom: 8px;
+.modal-content textarea {
+  height: 80px;
 }
 
-.checkout-note {
-  font-size: 0.9rem;
-  color: #bbb;
+.modal-content button {
   margin-top: 15px;
-}
-
-.checkout-note a {
-  color: #00ffff;
-  text-decoration: none;
-}
-
-.checkout-note a:hover {
-  text-decoration: underline;
-}
-
-/* Close button (X) */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: #00ffff;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #fff;
-}
-
-/* Close Button (Bottom) */
-.close-btn {
   background: #00ffff;
   color: #000;
   border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 10px 25px;
   border-radius: 20px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
-.close-btn:hover {
+.modal-content button:hover {
   background: #00cccc;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* ===== Checkout Popup ===== */
@@ -398,4 +354,5 @@ footer {
     opacity: 1;
   }
 }
+
 
