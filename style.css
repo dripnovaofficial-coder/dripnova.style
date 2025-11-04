@@ -12,6 +12,22 @@ header {
   padding: 20px;
   background: #111;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #00ffff;
+  margin: 0;
+}
 
 header h1 {
   color: #00ffff;
@@ -62,3 +78,4 @@ footer {
   padding: 20px;
   background: #111;
 }
+
