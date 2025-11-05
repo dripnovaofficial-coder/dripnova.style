@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DripNova Clothing</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -22,7 +21,7 @@
   </nav>
 </header>
 
-
+<main>
   <section id="home" class="hero">
     <h2>Wear the Future of Fashion</h2>
     <p>Trendy, affordable, and made for you. Shop DripNova now.</p>
@@ -31,102 +30,95 @@
 
   <section id="shop" class="products">
     <h2>Our Collection</h2>
-       <div class="product-list">
+    <div class="product-list">
+
       <div class="product">
-        <img src="https://via.placeholder.com/200" alt="T-shirt">
+        <img src="https://via.placeholder.com/600x400?text=DripNova+T-Shirt" alt="DripNova T-Shirt">
         <h3>DripNova T-Shirt</h3>
         <p>PKR 1,999</p>
         <button onclick="buyNow('DripNova T-Shirt', 1999)">Buy Now</button>
       </div>
-       <div class="product">
-        <img src="https://via.placeholder.com/200" alt="Hoodie">
+
+      <div class="product">
+        <img src="https://via.placeholder.com/600x400?text=Signature+Hoodie" alt="Signature Hoodie">
         <h3>Signature Hoodie</h3>
         <p>PKR 3,499</p>
         <button onclick="buyNow('Signature Hoodie', 3499)">Buy Now</button>
       </div>
-    <div class="product">
-  <img src="moving-forward-hoodie.png" alt="DripNova Moving Forward Hoodie">
-  <h3>DripNova “Moving Forward” Hoodie</h3>
-  <p>PKR 2,000</p>
-  <button onclick="buyNow('DripNova Moving Forward Hoodie', 2000)">Buy Now</button>
-</div>
-  </div>
+
+      <!-- Moving Forward Hoodie (new product) -->
+      <div class="product">
+        <img src="moving-forward-hoodie.png" alt="DripNova Moving Forward Hoodie">
+        <h3>DripNova “Moving Forward” Hoodie</h3>
+        <p>PKR 2,000</p>
+        <button onclick="buyNow('DripNova Moving Forward Hoodie', 2000)">Buy Now</button>
+      </div>
+
+    </div>
   </section>
-  
 
   <section id="about" class="about">
     <h2>About DripNova</h2>
     <p>DripNova is Pakistan’s next-generation clothing brand bringing streetwear and comfort together.</p>
   </section>
 
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <p>Need help? Reach us through the following official channels:</p>
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Need help? Reach us through the following official channels:</p>
 
-  <div class="contact-info">
-    <p>📞 <strong>Phone:</strong> 0316-1232951 | 0330-8349021</p>
-    <p>📩 <strong>Email:</strong> <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a></p>
-    <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
-  </div>
+    <div class="contact-info">
+      <p>📞 <strong>Phone:</strong> 0316-1232951 | 0330-8349021</p>
+      <p>📩 <strong>Email:</strong> <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a></p>
+      <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
+    </div>
 
-  <p class="note">* Secure payment options (Easypaisa, JazzCash, NayaPay, and bank transfer) will be shown at checkout.</p>
-</section>
+    <p class="note">* Secure payment options (Easypaisa, JazzCash, NayaPay, and bank transfer) will be shown at checkout.</p>
+  </section>
+</main>
 
-  <footer>
-    <p>© 2025 DripNova | All Rights Reserved</p>
-  </footer>
+<footer>
+  <p>© 2025 DripNova | All Rights Reserved</p>
+</footer>
 
- <!-- Checkout Modal -->
 <!-- Checkout Modal -->
-<div id="checkoutModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+<div id="checkoutModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-content" role="document">
+    <button class="close" aria-label="Close" onclick="closeModal()">&times;</button>
     <h2>Complete Your Purchase</h2>
-    <p id="productInfo"></p>
+    <p id="productInfo" class="product-info-text"></p>
 
-   <form id="orderForm">
-  <input type="text" name="name" placeholder="Full Name" required>
-  <input type="tel" name="phone" placeholder="03XXXXXXXXX" required>
-  <input type="text" name="city" placeholder="City" required>
-  <textarea name="address" placeholder="Complete delivery address" required></textarea>
+    <!-- Order form -->
+    <form id="orderForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="tel" name="phone" placeholder="03XXXXXXXXX" required pattern="[0-9]{10,13}" />
+      <input type="text" name="city" placeholder="City" required />
+      <textarea name="address" placeholder="Complete delivery address" required></textarea>
 
-  <input type="hidden" name="product" id="productField">
-  <input type="hidden" name="price" id="priceField">
+      <input type="hidden" name="product" id="productField" />
+      <input type="hidden" name="price" id="priceField" />
 
-  <button type="submit">Confirm Order</button>
-</form>
-  </div>
-</div>
+      <button type="submit" class="btn">Confirm Order</button>
+    </form>
 
-    <!-- Payment Details (hidden at first) -->
-    <div id="paymentInfo" style="display:none;">
+    <!-- Payment info (hidden until form submit) -->
+    <div id="paymentInfo" style="display:none; margin-top:12px; text-align:left;">
       <h3>💳 Payment Methods</h3>
       <p>Easypaisa: <strong>03302936798 (Muhammad Asim Khan)</strong></p>
       <p>JazzCash / NayaPay: <strong>03302936798 (Muhammad Khuzaima Raza)</strong></p>
-      <p>After payment, send a screenshot & your order details to:</p>
-      <p>📩 <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a></p>
-      <p>📱 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
+      <p>Bank transfer details will appear on the order voucher (contact us if you need immediate details).</p>
+
+      <p style="margin-top:12px;">
+        After payment, send a screenshot & your order details to:<br>
+        📩 <a href="mailto:dripnova.official@gmail.com">dripnova.official@gmail.com</a><br>
+        📱 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
+      </p>
+
       <button class="btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
 
-
-
+<script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
