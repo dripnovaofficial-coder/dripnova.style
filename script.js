@@ -1,4 +1,5 @@
-// client-side script"https://script.google.com/macros/s/AKfycbyN0VVeXMYxGJPRnLIkmhgCKSYzQwxKCsVRTG-AsfvQSW8nAmssBuLwGtTpsqi3UxaEOg/exec";
+// client-side script"const scriptURL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgeZRr1of6Vg3jupyppU1pwgxVxpV-lH9kGuyVflc6p_zroFuu0lmVmQ2NMF_1HvI_4OGp_87TPgRjivNhTvINobAgn5-8oj2Q4C4zyw1NNd5wzIuStQMPg-PGXbnkJJCdzJWZenWPxa38rGNo7oqr90CVm8arMOWeKdRMgUBumIJWZcBGCKdlGpDOXmJlQ2jvPtzvE1c_cBsMhusOMzJXTX2DbhiWczolKthC6FI41eCiG26aUqhnlslujqX4igy7DyetuMforIbmBmKRpvSJLx_Se0Rjs559Kqsg2&lib=MEo2oDUQsSmasM29KsGKUFb6MA3OIdUPT";
+";
 
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
@@ -63,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
 
 
 
