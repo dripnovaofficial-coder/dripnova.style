@@ -265,6 +265,18 @@ footer {
   cursor: pointer;
   transition: all 0.3s;
 }
+.modal-content form textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #00ffff;
+  background: #111;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+  height: 80px;
+}
 
 .modal-content button:hover {
   background: #00cccc;
@@ -366,6 +378,7 @@ footer {
     opacity: 1;
   }
 }
+
 
 
 
