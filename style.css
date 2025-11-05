@@ -147,6 +147,18 @@ nav a:hover {
 .product button:hover {
   background: #00cccc;
 }
+.product img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.product img:hover {
+  transform: scale(1.05);
+}
+
 
 /* --- About Section --- */
 .about {
@@ -354,5 +366,6 @@ footer {
     opacity: 1;
   }
 }
+
 
 
