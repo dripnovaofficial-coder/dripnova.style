@@ -1,5 +1,4 @@
-// client-side script.js
-const scriptURL = "https://script.google.com/macros/s/AKfycbwFP5nWfaH0m9BPPEjr0gzL-ZSxJLVM1G0GpFvoj93jMJw_PakUqgkTskvKoQxl_ogw/exec";
+// client-side script"https://script.google.com/macros/s/AKfycbwFP5nWfaH0m9BPPEjr0gzL-ZSxJLVM1G0GpFvoj93jMJw_PakUqgkTskvKoQxl_ogw/exec";
 
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
@@ -64,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
 
 
 
