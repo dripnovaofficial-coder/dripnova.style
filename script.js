@@ -1,5 +1,5 @@
 // client-side script.js
-const scriptURL = "https://script.google.com/macros/s/AKfycbyEyjE1AAop8lefJIDeO1wRW7AAnsL0a1AkQb0l8WZLeEDvk8ES1dVLK6Rtj-fycLqX/exec"
+const scriptURL = "https://script.google.com/macros/s/AKfycbyEyjE1AAop8lefJIDeO1wRW7AAnsL0a1AkQb0l8WZLeEDvk8ES1dVLK6Rtj-fycLqX/exec";
 
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
@@ -11,6 +11,7 @@ function buyNow(productName, price) {
 
 function closeModal() {
   document.getElementById("checkoutModal").style.display = "none";
+  document.getElementById("orderForm").reset();
 }
 
 window.onclick = function (event) {
@@ -24,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // show a loading state (optional)
     const submitBtn = form.querySelector('button[type="submit"]');
     const origText = submitBtn.textContent;
     submitBtn.textContent = "Placing order...";
@@ -33,19 +33,18 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(scriptURL, { method: "POST", body: new FormData(form) })
       .then(response => response.json())
       .then(data => {
-        if (data && data.result === "success") {
-          alert("✅ Order placed successfully! We'll contact you shortly.");
-          form.reset();
-          closeModal();
+        if (data.result === "success") {
+          // ✅ Order recorded successfully
+          alert("✅ Order placed successfully! We'll contact you soon.");
+          form.style.display = "none";
+          document.getElementById("paymentInfo").style.display = "block";
         } else {
-          const msg = (data && data.message) ? data.message : "Unknown server error";
-          alert("❌ Server error: " + msg);
-          console.error("Server response:", data);
+          alert("⚠️ There was an issue saving your order. Please message us on Instagram @dripn_ovaofficial.");
         }
       })
       .catch(err => {
         console.error("Fetch error:", err);
-        alert("⚠️ Network error — check your internet and try again.");
+        alert("⚠️ Something went wrong — please try again or contact support.");
       })
       .finally(() => {
         submitBtn.textContent = origText;
@@ -53,10 +52,3 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
-
-
-
-
-
-
-
