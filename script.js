@@ -6,17 +6,26 @@ function buyNow(productName, price) {
   document.getElementById("productInfo").textContent = `🛍️ ${productName} — PKR ${price}`;
   document.getElementById("productField").value = productName;
   document.getElementById("priceField").value = price;
+  // show form, hide payment info
+  document.getElementById("orderForm").style.display = "block";
+  document.getElementById("paymentInfo").style.display = "none";
   modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
 }
 
 function closeModal() {
-  document.getElementById("checkoutModal").style.display = "none";
+  const modal = document.getElementById("checkoutModal");
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+  // reset form for next use
   document.getElementById("orderForm").reset();
+  document.getElementById("orderForm").style.display = "block";
+  document.getElementById("paymentInfo").style.display = "none";
 }
 
 window.onclick = function (event) {
   const modal = document.getElementById("checkoutModal");
-  if (event.target === modal) modal.style.display = "none";
+  if (event.target === modal) closeModal();
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -31,20 +40,23 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.disabled = true;
 
     fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === "success") {
-          // ✅ Order recorded successfully
-          alert("✅ Order placed successfully! We'll contact you soon.");
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.result === "success") {
+          // show payment details inside modal (not an alert)
           form.style.display = "none";
           document.getElementById("paymentInfo").style.display = "block";
+          // option: you can scroll to payment info
+          document.getElementById("paymentInfo").scrollIntoView({ behavior: "smooth" });
         } else {
-          alert("⚠️ There was an issue saving your order. Please message us on Instagram @dripn_ovaofficial.");
+          const msg = data && data.message ? data.message : "Unknown server error";
+          alert("❌ Server error: " + msg + "\nPlease contact us on Instagram.");
+          console.error("Server response:", data);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Fetch error:", err);
-        alert("⚠️ Something went wrong — please try again or contact support.");
+        alert("⚠️ Network error — please try again or contact us on Instagram.");
       })
       .finally(() => {
         submitBtn.textContent = origText;
