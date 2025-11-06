@@ -3,61 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DripNova | Collection</title>
+  <title>DripNova | Streetwear Collection</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="logo-container">
       <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
       <h1>DripNova</h1>
     </div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="#shop">Shop</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <h2>Be Your Own Hero Collection</h2>
-    <p>Streetwear that defines your confidence.</p>
+    <h2>Where Street Meets Style</h2>
+    <p>Premium streetwear built for confidence.</p>
+    <button class="btn" onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">
+      Shop Now
+    </button>
   </section>
 
-  <section class="products">
-    <h2>Our Featured Hoodie</h2>
-    <div class="product-list">
-      <div class="product" onclick="openProduct('Be Your Own Hero Hoodie', 1450)">
-        <img src="images/maroon front.png" alt="Be Your Own Hero Hoodie" />
-        <h3>Be Your Own Hero Hoodie</h3>
-        <p>PKR 1450</p>
-      </div>
-    </div>
+  <!-- Shop Section -->
+  <section id="shop" class="products">
+    <h2>Featured Collection</h2>
+    <div class="product-list" id="productList"></div>
   </section>
 
+  <!-- About -->
   <section id="about" class="about">
     <h2>About DripNova</h2>
-    <p>DripNova is a Pakistani streetwear brand focused on confidence, creativity, and individuality. Our goal is to inspire people to be their own heroes through unique, bold designs.</p>
+    <p>DripNova is your destination for statement streetwear — bold, premium, and built for real confidence.</p>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <div class="contact-info">
-      <p>📍 Karachi, Pakistan</p>
-      <p>📞 0330-2936798</p>
-      <p>📧 info@dripnova.com</p>
-      <p>📸 <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
+     Adress: <p>📍 Karachi, Pakistan</p>
+    contact no:  <p>📞 +92 330 2936798</p>
+     email: <p>📩 dripnova@gmail.com</p>
+     instagram: <p>📸 <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 DripNova | All Rights Reserved</p>
   </footer>
-
-  <script>
-    function openProduct(name, price) {
-      window.location.href = `product.html?name=${encodeURIComponent(name)}&price=${price}`;
-    }
-  </script>
 </body>
 </html>
