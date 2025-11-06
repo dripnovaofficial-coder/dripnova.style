@@ -85,3 +85,14 @@ document.addEventListener("submit", (e) => {
       });
   }
 });
+
+function buyNow(productName, price) {
+  const modal = document.getElementById("checkoutModal");
+  const size = document.getElementById("sizeSelect").value;
+  document.getElementById("productInfo").textContent = `🛍️ ${productName} (${size}) — PKR ${price}`;
+  document.getElementById("productField").value = productName;
+  document.getElementById("priceField").value = price;
+  document.getElementById("sizeField").value = size;
+  modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
+}
