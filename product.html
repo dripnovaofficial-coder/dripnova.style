@@ -1,96 +1,105 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxx6hIOm5UJc9EqTXSsJIaHmFWriF_IPo2fKGD0NGs96hXUGpiw5xd8rRBpvF8hOf0j/exec";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle">DripNova Product</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="dripnova-logo.png" alt="DripNova" class="logo">
+      <h1>DripNova</h1>
+    </div>
+    <nav>
+      <a href="index.html">Back to Collection</a>
+    </nav>
+  </header>
 
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
-  const price = params.get("price");
+  <main class="container">
+    <section class="product-detail">
+      <div class="product-gallery">
+        <div class="preview">
+          <img id="productImage" src="" alt="Product image">
+        </div>
+      </div>
 
-  const productName = document.getElementById("productName");
-  const productPrice = document.getElementById("productPrice");
-  const productImage = document.getElementById("productImage");
+      <div class="product-info">
+        <h2 id="productName"></h2>
+        <p id="productPrice" class="product-price"></p>
 
-  if (name && price) {
-    productName.textContent = decodeURIComponent(name);
-    productPrice.textContent = `PKR ${price}`;
-    document.title = `${decodeURIComponent(name)} - DripNova`;
-    productImage.src = "images/maroon front.png";
-    productImage.setAttribute("data-front", "images/maroon front.png");
-    productImage.setAttribute("data-back", "images/maroon back.png");
+        <label>Color</label>
+        <div id="colorOptions" class="color-options"></div>
 
-    document.getElementById("buyButton").onclick = () => buyNow(name, price);
-  }
+        <label>Size</label>
+        <div class="size-select">
+          <div class="size-option" data-size="S">S</div>
+          <div class="size-option active" data-size="M">M</div>
+          <div class="size-option" data-size="L">L</div>
+          <div class="size-option" data-size="XL">XL</div>
+          <span class="size-chart-link" id="openSizeChart">Size chart</span>
+        </div>
 
-  // Hover effect (front ↔ back)
-  if (productImage) {
-    productImage.addEventListener("mouseenter", () => {
-      const back = productImage.getAttribute("data-back");
-      if (back) productImage.src = back;
-    });
-    productImage.addEventListener("mouseleave", () => {
-      const front = productImage.getAttribute("data-front");
-      if (front) productImage.src = front;
-    });
-  }
+        <div style="margin-top:12px">
+          <button id="buyButton" class="btn">Buy Now</button>
+          <button class="btn secondary" onclick="location.href='index.html'">← Back</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  // Color switching
-  const colorSwatches = document.querySelectorAll(".color-swatch");
-  colorSwatches.forEach((swatch) => {
-    swatch.addEventListener("click", () => {
-      const front = swatch.getAttribute("data-front");
-      const back = swatch.getAttribute("data-back");
-      productImage.src = front;
-      productImage.setAttribute("data-front", front);
-      productImage.setAttribute("data-back", back);
-    });
-  });
-});
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">×</button>
+      <h3>Checkout</h3>
+      <p id="productInfo"></p>
 
-// Open Checkout Modal
-function buyNow(productName, price) {
-  const modal = document.getElementById("checkoutModal");
-  const size = document.getElementById("sizeSelect").value;
+      <form id="orderForm">
+        <input type="hidden" name="product" id="productField">
+        <input type="hidden" name="price" id="priceField">
+        <input type="hidden" name="color" id="colorField">
+        <input type="hidden" name="size" id="sizeField">
 
-  document.getElementById("productInfo").textContent = `🛍️ ${decodeURIComponent(productName)} — PKR ${price} (Size: ${size})`;
-  document.getElementById("productField").value = decodeURIComponent(productName);
-  document.getElementById("priceField").value = price;
-  document.getElementById("sizeField").value = size;
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="tel" name="phone" placeholder="03XXXXXXXXX" required>
+        <input type="text" name="city" placeholder="City" required>
+        <textarea name="address" placeholder="Complete address" required></textarea>
 
-  modal.style.display = "flex";
-  modal.setAttribute("aria-hidden", "false");
-}
+        <button type="submit" class="btn">Confirm Order</button>
+      </form>
 
-// Close Modal
-function closeModal() {
-  const modal = document.getElementById("checkoutModal");
-  modal.style.display = "none";
-  modal.setAttribute("aria-hidden", "true");
-  document.getElementById("orderForm").reset();
-}
+      <div id="paymentInfo" style="display:none; margin-top:10px;">
+        <h4>Payment Instructions</h4>
+        <p>Easypaisa: <b>03302936798 (Muhammad Asim Khan)</b></p>
+        <p>JazzCash / NayaPay: <b>03302936798 (Muhammad Khuzaima Raza)</b></p>
+        <p>After payment, DM proof to Instagram <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>.</p>
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
 
-// Submit Order Form
-document.addEventListener("submit", (e) => {
-  const form = e.target;
-  if (form.id === "orderForm") {
-    e.preventDefault();
+  <!-- Size chart modal -->
+  <div id="sizeChartModal" class="size-chart" style="display:none;">
+    <div class="card">
+      <button style="float:right" onclick="closeSizeChart()">Close</button>
+      <h3>Size Chart (cm)</h3>
+      <table class="size-table">
+        <thead><tr><th>Size</th><th>Chest</th><th>Length</th></tr></thead>
+        <tbody>
+          <tr><td>S</td><td>96</td><td>68</td></tr>
+          <tr><td>M</td><td>100</td><td>70</td></tr>
+          <tr><td>L</td><td>104</td><td>72</td></tr>
+          <tr><td>XL</td><td>110</td><td>74</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    const btn = form.querySelector("button");
-    btn.textContent = "Placing order...";
-    btn.disabled = true;
-
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then(res => res.json())
-      .then(data => {
-        if (data.result === "success") {
-          form.style.display = "none";
-          document.getElementById("paymentInfo").style.display = "block";
-        } else {
-          alert("❌ Error: " + data.message);
-        }
-      })
-      .catch(() => alert("⚠️ Network error — please try again."))
-      .finally(() => {
-        btn.textContent = "Confirm Order";
-        btn.disabled = false;
-      });
-  }
-});
+  <footer>
+    <p>© 2025 DripNova | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
