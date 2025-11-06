@@ -236,4 +236,12 @@ select { padding:8px; border-radius:6px; margin-bottom:12px; background:#111; co
   color:#000;
 }
 
+.product img {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.product:hover img {
+  transform: scale(1.05);
+}
+
 
