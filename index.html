@@ -52,6 +52,59 @@
         <p>PKR 2,000</p>
         <button onclick="buyNow('DripNova Moving Forward Hoodie', 2000)">Buy Now</button>
       </div>
+      <section id="product" class="product-section">
+  <div class="product-container">
+    <div class="product-images">
+      <img id="productImage" src="images/maroon front.png" alt="Be Your Own Hero Sweatshirt" />
+    </div>
+
+    <div class="product-details">
+      <h2 class="product-title">Be Your Own Hero Sweatshirt</h2>
+      <p class="product-price">PKR 1450</p>
+
+      <div class="color-options">
+        <p>Select Color:</p>
+        <div class="color-buttons">
+          <button class="color-btn" style="background-color:#800000" onclick="changeColor('maroon')"></button>
+          <button class="color-btn" style="background-color:#000000" onclick="changeColor('black')"></button>
+          <button class="color-btn" style="background-color:#ffffff; border:1px solid #ccc" onclick="changeColor('white')"></button>
+        </div>
+      </div>
+
+      <div class="view-toggle">
+        <p>View:</p>
+        <button onclick="changeView('front')">Front</button>
+        <button onclick="changeView('back')">Back</button>
+      </div>
+
+      <button class="buy-btn" onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<script>
+let currentColor = "maroon";
+let currentView = "front";
+
+function changeColor(color) {
+  currentColor = color;
+  updateImage();
+}
+
+function changeView(view) {
+  currentView = view;
+  updateImage();
+}
+
+function updateImage() {
+  document.getElementById("productImage").src = `images/${currentColor} ${currentView}.png`;
+}
+
+function buyNow() {
+  alert("Redirecting to checkout...");
+  // Add Google Sheets order link here later
+}
+</script>
 
     </div>
   </section>
@@ -116,3 +169,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
