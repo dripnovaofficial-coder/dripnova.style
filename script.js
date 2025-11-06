@@ -1,7 +1,7 @@
 /******************
  * CONFIG: Replace with your Apps Script Web App URL (after you deploy)
  ******************/
-const scriptURL = "REPLACE_WITH_YOUR_WEBAPP_URL";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwcozbATSIRmopDBLtzWBoH9gCJ7uQkE0Ed1ndHn9SEdoFIrLxRkgpkEaV0a_sCOJUcPQ/exec";
 
 /******************
  * PRODUCTS ARRAY
@@ -256,3 +256,4 @@ document.addEventListener("submit", (e) => {
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+
