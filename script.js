@@ -1,98 +1,50 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxx6hIOm5UJc9EqTXSsJIaHmFWriF_IPo2fKGD0NGs96hXUGpiw5xd8rRBpvF8hOf0j/exec";
+// Product data (easy to expand)
+const products = [
+  {
+    name: "Be Your Own Hero Hoodie",
+    price: 1450,
+    front: "images/maroon front.png",
+    back: "images/maroon back.png",
+  },
+  {
+    name: "Signature Black Hoodie",
+    price: 1800,
+    front: "images/black front.png",
+    back: "images/black back.png",
+  },
+  {
+    name: "Classic White Hoodie",
+    price: 1650,
+    front: "images/white front.png",
+    back: "images/white back.png",
+  }
+];
 
+// Dynamically render products
 document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
-  const price = params.get("price");
+  const container = document.getElementById("productList");
+  if (!container) return;
 
-  const productName = document.getElementById("productName");
-  const productPrice = document.getElementById("productPrice");
-  const productImage = document.getElementById("productImage");
-
-  if (name && price && productName && productPrice) {
-    productName.textContent = name;
-    productPrice.textContent = `PKR ${price}`;
-    document.title = `${name} - DripNova`;
-    productImage.src = "images/maroon front.png"; // default
-    document.getElementById("buyButton").onclick = () => buyNow(name, price);
-  }
-
-  // Hover effect for back view
-  if (productImage) {
-    productImage.addEventListener("mouseenter", () => {
-      const back = productImage.getAttribute("data-back");
-      if (back) productImage.src = back;
+  products.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <img src="${p.front}" data-front="${p.front}" data-back="${p.back}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>PKR ${p.price}</p>
+      <button onclick="viewProduct('${encodeURIComponent(p.name)}', ${p.price})">View Product</button>
+    `;
+    div.querySelector("img").addEventListener("mouseenter", (e)=>{
+      e.target.src = p.back;
     });
-    productImage.addEventListener("mouseleave", () => {
-      const front = productImage.getAttribute("data-front");
-      if (front) productImage.src = front;
+    div.querySelector("img").addEventListener("mouseleave", (e)=>{
+      e.target.src = p.front;
     });
-  }
-
-  // Color switching
-  const colorSwatches = document.querySelectorAll(".color-swatch");
-  colorSwatches.forEach((swatch) => {
-    swatch.addEventListener("click", () => {
-      const front = swatch.getAttribute("data-front");
-      const back = swatch.getAttribute("data-back");
-      productImage.src = front;
-      productImage.setAttribute("data-front", front);
-      productImage.setAttribute("data-back", back);
-    });
+    container.appendChild(div);
   });
 });
 
-// Checkout modal logic
-function buyNow(productName, price) {
-  const modal = document.getElementById("checkoutModal");
-  document.getElementById("productInfo").textContent = `🛍️ ${productName} — PKR ${price}`;
-  document.getElementById("productField").value = productName;
-  document.getElementById("priceField").value = price;
-  modal.style.display = "flex";
-  modal.setAttribute("aria-hidden", "false");
-}
-
-function closeModal() {
-  const modal = document.getElementById("checkoutModal");
-  modal.style.display = "none";
-  modal.setAttribute("aria-hidden", "true");
-  document.getElementById("orderForm").reset();
-}
-
-// Form submission
-document.addEventListener("submit", (e) => {
-  const form = e.target;
-  if (form.id === "orderForm") {
-    e.preventDefault();
-    const btn = form.querySelector("button");
-    btn.textContent = "Placing order...";
-    btn.disabled = true;
-
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then(res => res.json())
-      .then(data => {
-        if (data.result === "success") {
-          form.style.display = "none";
-          document.getElementById("paymentInfo").style.display = "block";
-        } else {
-          alert("❌ Error: " + data.message);
-        }
-      })
-      .catch(() => alert("⚠️ Network error — please try again."))
-      .finally(() => {
-        btn.textContent = "Confirm Order";
-        btn.disabled = false;
-      });
-  }
-});
-
-function buyNow(productName, price) {
-  const modal = document.getElementById("checkoutModal");
-  const size = document.getElementById("sizeSelect").value;
-  document.getElementById("productInfo").textContent = `🛍️ ${productName} (${size}) — PKR ${price}`;
-  document.getElementById("productField").value = productName;
-  document.getElementById("priceField").value = price;
-  document.getElementById("sizeField").value = size;
-  modal.style.display = "flex";
-  modal.setAttribute("aria-hidden", "false");
+// Redirect to product details page
+function viewProduct(name, price) {
+  window.location.href = `product.html?name=${name}&price=${price}`;
 }
