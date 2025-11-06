@@ -1,12 +1,14 @@
-// client-side script"const scriptURL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgeZRr1of6Vg3jupyppU1pwgxVxpV-lH9kGuyVflc6p_zroFuu0lmVmQ2NMF_1HvI_4OGp_87TPgRjivNhTvINobAgn5-8oj2Q4C4zyw1NNd5wzIuStQMPg-PGXbnkJJCdzJWZenWPxa38rGNo7oqr90CVm8arMOWeKdRMgUBumIJWZcBGCKdlGpDOXmJlQ2jvPtzvE1c_cBsMhusOMzJXTX2DbhiWczolKthC6FI41eCiG26aUqhnlslujqX4igy7DyetuMforIbmBmKRpvSJLx_Se0Rjs559Kqsg2&lib=MEo2oDUQsSmasM29KsGKUFb6MA3OIdUPT";
-";
+// ✅ Replace this with your Apps Script deployed Web App URL
+const scriptURL =
+  "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgeZRr1of6Vg3jupyppU1pwgxVxpV-lH9kGuyVflc6p_zroFuu0lmVmQ2NMF_1HvI_4OGp_87TPgRjivNhTvINobAgn5-8oj2Q4C4zyw1NNd5wzIuStQMPg-PGXbnkJJCdzJWZenWPxa38rGNo7oqr90CVm8arMOWeKdRMgUBumIJWZcBGCKdlGpDOXmJlQ2jvPtzvE1c_cBsMhusOMzJXTX2DbhiWczolKthC6FI41eCiG26aUqhnlslujqX4igy7DyetuMforIbmBmKRpvSJLx_Se0Rjs559Kqsg2&lib=MEo2oDUQsSmasM29KsGKUFb6MA3OIdUPT";
 
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
-  document.getElementById("productInfo").textContent = `🛍️ ${productName} — PKR ${price}`;
+  document.getElementById(
+    "productInfo"
+  ).textContent = `🛍️ ${productName} — PKR ${price}`;
   document.getElementById("productField").value = productName;
   document.getElementById("priceField").value = price;
-  // show form, hide payment info
   document.getElementById("orderForm").style.display = "block";
   document.getElementById("paymentInfo").style.display = "none";
   modal.style.display = "flex";
@@ -17,9 +19,9 @@ function closeModal() {
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
-  // reset form for next use
-  document.getElementById("orderForm").reset();
-  document.getElementById("orderForm").style.display = "block";
+  const form = document.getElementById("orderForm");
+  form.reset();
+  form.style.display = "block";
   document.getElementById("paymentInfo").style.display = "none";
 }
 
@@ -39,24 +41,29 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.textContent = "Placing order...";
     submitBtn.disabled = true;
 
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then((response) => response.json())
+    fetch(scriptURL, {
+      method: "POST",
+      mode: "cors",
+      body: new FormData(form),
+    })
+      .then((res) => res.json())
       .then((data) => {
-        if (data && data.result === "success") {
-          // show payment details inside modal (not an alert)
+        console.log("Server response:", data);
+
+        if (data.result === "success" || data.result === "ok") {
           form.style.display = "none";
-          document.getElementById("paymentInfo").style.display = "block";
-          // option: you can scroll to payment info
-          document.getElementById("paymentInfo").scrollIntoView({ behavior: "smooth" });
+          const paymentInfo = document.getElementById("paymentInfo");
+          paymentInfo.style.display = "block";
+          paymentInfo.scrollIntoView({ behavior: "smooth" });
         } else {
-          const msg = data && data.message ? data.message : "Unknown server error";
-          alert("❌ Server error: " + msg + "\nPlease contact us on Instagram.");
-          console.error("Server response:", data);
+          alert("❌ Server error: " + (data.message || "Unknown error"));
         }
       })
       .catch((err) => {
-        console.error("Fetch error:", err);
-        alert("⚠️ Network error — please try again or contact us on Instagram.");
+        console.error("Network Error:", err);
+        alert(
+          "⚠️ Network error — please try again or contact us on Instagram."
+        );
       })
       .finally(() => {
         submitBtn.textContent = origText;
@@ -64,14 +71,3 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
