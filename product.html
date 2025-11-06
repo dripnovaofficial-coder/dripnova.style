@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">DripNova Product</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
+      <h1>DripNova</h1>
+    </div>
+    <nav>
+      <a href="index.html">Back to Collection</a>
+    </nav>
+  </header>
+
+  <section class="product-detail">
+    <div class="product-gallery">
+      <img id="productImage" src="" alt="Product Image" />
+    </div>
+
+    <div class="product-info">
+      <h2 id="productName"></h2>
+      <p id="productPrice" class="price"></p>
+
+      <label>Color:</label>
+      <div class="color-options">
+        <div class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background-color:#800000"></div>
+        <div class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background-color:#000"></div>
+        <div class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background-color:#fff; border:1px solid #ccc"></div>
+      </div>
+
+      <label>Size:</label>
+      <select id="sizeSelect">
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+      </select>
+
+      <button class="btn" id="buyButton">Buy Now</button>
+      <button class="btn secondary" onclick="window.location.href='index.html'">← Back to Collection</button>
+    </div>
+  </section>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">×</button>
+      <h3>Checkout</h3>
+      <p id="productInfo"></p>
+      <form id="orderForm">
+        <input type="hidden" name="product" id="productField">
+        <input type="hidden" name="price" id="priceField">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <input type="text" name="city" placeholder="City" required>
+        <textarea name="address" placeholder="Full Address" required></textarea>
+        <button type="submit" class="btn">Confirm Order</button>
+      </form>
+      <div id="paymentInfo" style="display:none;">
+        <h4>Payment Instructions</h4>
+        <p>Send your total to Easypaisa/JazzCash: 0330-2936798</p>
+        <p>Then DM us your payment proof on Instagram <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 DripNova | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
