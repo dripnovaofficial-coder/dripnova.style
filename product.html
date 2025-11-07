@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="pageTitle">DripNova Product</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <div class="logo-container">
-      <img src="dripnova-logo.png" alt="DripNova" class="logo">
+      <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
       <h1>DripNova</h1>
     </div>
     <nav>
-      <a href="index.html">Back to Collection</a>
+      <a href="index.html">Back to Shop</a>
     </nav>
   </header>
 
-  <main class="container">
-    <section class="product-detail">
-      <div class="product-gallery">
-        <div class="preview">
-          <img id="productImage" src="" alt="Product image">
-        </div>
-      </div>
-
-      <div class="product-info">
-        <h2 id="productName"></h2>
-        <p id="productPrice" class="product-price"></p>
-        <section class="products">
-  <div class="product-list">
-
- 
-    <div class="product">
-      <img src="moving-forward-hoodie.png" alt="moving forward hoodie">
-      <h3>mooving forward hoodie/h3>
-      <p>PKR 1450</p>
-      <button onclick="openProduct('Be Your Own Hero Hoodie', 1450)">View Product</button>
+  <section class="product-detail">
+    <div class="product-gallery">
+      <img id="productImage" src="" alt="Product Image" />
     </div>
 
+    <div class="product-info">
+      <h2 id="productName"></h2>
+      <p id="productPrice" class="price"></p>
+
+      <label>Color:</label>
+      <div class="color-options">
+        <div class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background-color:#000"></div>
+        <div class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background-color:#800000"></div>
+        <div class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background-color:#fff; border:1px solid #ccc"></div>
+      </div>
+
+      <label>Size:</label>
+      <select id="sizeSelect">
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+      </select>
+
+      <button class="btn" id="buyButton">Buy Now</button>
+      <button class="btn secondary" onclick="window.location.href='index.html'">← Back to Collection</button>
+    </div>
+  </section>
 
   <!-- Checkout Modal -->
   <div id="checkoutModal" class="modal" aria-hidden="true">
@@ -47,45 +53,21 @@
       <button class="close" onclick="closeModal()">×</button>
       <h3>Checkout</h3>
       <p id="productInfo"></p>
-
       <form id="orderForm">
         <input type="hidden" name="product" id="productField">
         <input type="hidden" name="price" id="priceField">
-        <input type="hidden" name="color" id="colorField">
         <input type="hidden" name="size" id="sizeField">
-
-        <input type="text" name="name" placeholder="Full name" required>
-        <input type="tel" name="phone" placeholder="03XXXXXXXXX" required>
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
         <input type="text" name="city" placeholder="City" required>
-        <textarea name="address" placeholder="Complete address" required></textarea>
-
+        <textarea name="address" placeholder="Full Address" required></textarea>
         <button type="submit" class="btn">Confirm Order</button>
       </form>
-
-      <div id="paymentInfo" style="display:none; margin-top:10px;">
+      <div id="paymentInfo" style="display:none;">
         <h4>Payment Instructions</h4>
-        <p>Easypaisa: <b>03302936798 (Muhammad Asim Khan)</b></p>
-        <p>JazzCash / NayaPay: <b>03302936798 (Muhammad Khuzaima Raza)</b></p>
-        <p>After payment, DM proof to Instagram <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>.</p>
-        <button class="btn" onclick="closeModal()">Close</button>
+        <p>Send payment to Easypaisa/JazzCash: <b>0330-2936798</b></p>
+        <p>Then DM us your payment proof on Instagram <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>.</p>
       </div>
-    </div>
-  </div>
-
-  <!-- Size chart modal -->
-  <div id="sizeChartModal" class="size-chart" style="display:none;">
-    <div class="card">
-      <button style="float:right" onclick="closeSizeChart()">Close</button>
-      <h3>Size Chart (cm)</h3>
-      <table class="size-table">
-        <thead><tr><th>Size</th><th>Chest</th><th>Length</th></tr></thead>
-        <tbody>
-          <tr><td>S</td><td>96</td><td>68</td></tr>
-          <tr><td>M</td><td>100</td><td>70</td></tr>
-          <tr><td>L</td><td>104</td><td>72</td></tr>
-          <tr><td>XL</td><td>110</td><td>74</td></tr>
-        </tbody>
-      </table>
     </div>
   </div>
 
