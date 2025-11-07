@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbx4cW4aNtmLKC2PZS2aGGuSXXCCIuWeMnejWd3JvRLXNWLn5okpJgX6y6shtVtuxluLiw/exec"; // replace with new one
+const scriptURL = "https://script.google.com/macros/s/AKfycbzHbW0o_N175GAO23AC2eLFMqbb0_cKaqdS9xzoM1_WRMYa0ROB15pmbqjO5nHgOlgbsA/exec"; // replace with new one
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
@@ -92,3 +92,4 @@ document.addEventListener("submit", (e) => {
       });
   }
 });
+
