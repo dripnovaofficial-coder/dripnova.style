@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title id="pageTitle">DripNova Product</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
@@ -18,68 +18,76 @@
     </nav>
   </header>
 
-  <section class="product-detail">
-    <div class="product-gallery">
-      <img id="productImage" src="" alt="Product Image" />
-    </div>
-
-    <div class="product-info">
-      <h2 id="productName"></h2>
-      <p id="productPrice" class="price"></p>
-
-      <label>Color:</label>
-      <div class="color-options">
-        <div class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background-color:#000"></div>
-        <div class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background-color:#800000"></div>
-        <div class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background-color:#fff; border:1px solid #ccc"></div>
+  <main>
+    <section class="product-detail">
+      <div class="product-gallery">
+        <img id="productImage" src="" alt="Product Image" data-front="" data-back="">
       </div>
 
-      <label>Size:</label>
-      <select id="sizeSelect">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-      </select>
+      <div class="product-info">
+        <h2 id="productName">Product</h2>
+        <p id="productPrice" class="price">PKR</p>
 
-      <button class="btn" id="buyButton">Buy Now</button>
-      <button class="btn secondary" onclick="window.location.href='index.html'">← Back to Collection</button>
-    </div>
-  </section>
+        <label>Color</label>
+        <div class="color-options">
+          <div class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background:#000"></div>
+          <div class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background:#800000"></div>
+          <div class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background:#fff;border:1px solid #ccc"></div>
+        </div>
 
-  <!-- Checkout Modal -->
-  <!-- Checkout Modal -->
-<div id="checkoutModal" class="modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close" onclick="closeModal()">×</button>
-    <h3>Checkout</h3>
-    <p id="productInfo"></p>
+        <label>Size</label>
+        <select id="sizeSelect">
+          <option>S</option>
+          <option selected>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
 
-    <form id="orderForm">
-      <input type="hidden" name="product" id="productField">
-      <input type="hidden" name="price" id="priceField">
-      <input type="hidden" name="size" id="sizeField">
+        <div style="margin-top:14px">
+          <button class="btn" id="buyButton">Buy Now</button>
+          <button class="btn secondary" onclick="location.href='index.html'">← Back</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      <label>Name</label>
-      <input type="text" name="name" required>
+  <!-- Checkout modal (hidden until buy) -->
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">×</button>
+      <h3>Checkout</h3>
+      <p id="productInfo" class="product-info-text"></p>
 
-      <label>Email</label>
-      <input type="email" name="email" required>
+      <form id="orderForm">
+        <input type="hidden" name="product" id="productField">
+        <input type="hidden" name="price" id="priceField">
+        <input type="hidden" name="size" id="sizeField">
 
-      <label>Phone</label>
-      <input type="text" name="phone" required>
+        <label>Name</label>
+        <input type="text" name="name" required>
 
-      <label>Address</label>
-      <textarea name="address" required></textarea>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-      <button type="submit">Confirm Order</button>
-    </form>
+        <label>Phone</label>
+        <input type="text" name="phone" required>
 
-    <div id="paymentInfo" style="display:none; margin-top:15px;">
-      ✅ Order received! Please check your phone or email for confirmation.
+        <label>City</label>
+        <input type="text" name="city" required>
+
+        <label>Address</label>
+        <textarea name="address" required></textarea>
+
+        <button type="submit" class="btn">Confirm Order</button>
+      </form>
+
+      <div id="paymentInfo" style="display:none; margin-top:12px; text-align:left;">
+        <h4>Payment Instructions</h4>
+        <p>We recorded your order — now pay using one of the options on the next page.</p>
+        <button class="btn" id="gotoPaymentBtn">Proceed to Payment</button>
+      </div>
     </div>
   </div>
-</div>
 
   <footer>
     <p>© 2025 DripNova | All Rights Reserved</p>
