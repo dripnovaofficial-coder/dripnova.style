@@ -1,9 +1,10 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxx6hIOm5UJc9EqTXSsJIaHmFWriF_IPo2fKGD0NGs96hXUGpiw5xd8rRBpvF8hOf0j/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbx4cW4aNtmLKC2PZS2aGGuSXXCCIuWeMnejWd3JvRLXNWLn5okpJgX6y6shtVtuxluLiw/exec"; // replace with new one
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const name = params.get("name");
   const price = params.get("price");
+
   const productName = document.getElementById("productName");
   const productPrice = document.getElementById("productPrice");
   const productImage = document.getElementById("productImage");
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("buyButton").onclick = () => buyNow(name, price);
   }
 
-  // Hover to flip
+  // Hover for front/back switch
   productImage.addEventListener("mouseenter", () => {
     const back = productImage.getAttribute("data-back");
     if (back) productImage.src = back;
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (front) productImage.src = front;
   });
 
-  // Change color
+  // Color selection
   document.querySelectorAll(".color-swatch").forEach((swatch) => {
     swatch.addEventListener("click", () => {
       const front = swatch.getAttribute("data-front");
@@ -75,16 +76,16 @@ document.addEventListener("submit", (e) => {
     btn.disabled = true;
 
     fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.result === "success") {
           form.style.display = "none";
           document.getElementById("paymentInfo").style.display = "block";
         } else {
-          alert("❌ Error: " + data.message);
+          alert("❌ Error saving to sheet.");
         }
       })
-      .catch(() => alert("⚠️ Network error — please try again."))
+      .catch(() => alert("⚠️ Network error — please check your connection or script URL."))
       .finally(() => {
         btn.textContent = "Confirm Order";
         btn.disabled = false;
