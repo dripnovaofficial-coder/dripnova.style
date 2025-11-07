@@ -1,5 +1,5 @@
 // put your deployed web app URL here (your Apps Script /exec)
-const scriptURL = "https://script.google.com/macros/s/AKfycbx4cW4aNtmLKC2PZS2aGGuSXXCCIuWeMnejWd3JvRLXNWLn5okpJgX6y6shtVtuxluLiw/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxc-KlgIrJOLGWpKCYV4WeJi9MXkVkkcpTJSC8-9NUD5BwYfOWmTb8W2wwJkgixhsXfog/exec";
 
 /* ---------- Common helpers ---------- */
 function openProduct(name, price) {
@@ -227,3 +227,4 @@ function escapeHtml(s) {
     .replaceAll('"',"&quot;")
     .replaceAll("'", "&#39;");
 }
+
