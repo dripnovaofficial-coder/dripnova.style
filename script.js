@@ -203,6 +203,9 @@ document.addEventListener("submit", (e) => {
         alert("❌ " + msg);
         console.error("Server error:", data);
       }
+      document.getElementById("iPaidBtn").addEventListener("click", () => {
+  window.location.href = "thankyou.html";
+});
     })
     .catch((err) => {
       console.error("Fetch error:", err);
@@ -219,3 +222,4 @@ function escapeHtml(s){
   if (!s) return "";
   return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
 }
+
