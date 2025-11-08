@@ -21,21 +21,22 @@
   <main>
     <section class="product-detail">
       <div class="product-gallery">
-        <img id="productImage" src="" alt="Product Image" data-front="" data-back="">
+        <img id="productImage" src="" alt="Product image" data-front="" data-back="">
       </div>
 
       <div class="product-info">
-        <h2 id="productName">Product</h2>
-        <p id="productPrice" class="price">PKR</p>
+        <h2 id="productName">Product Name</h2>
+        <p id="productPrice" class="price">PKR 0</p>
 
-        <label>Color</label>
+        <label class="label">Color</label>
         <div class="color-options">
-          <div class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background:#000"></div>
-          <div class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background:#800000"></div>
-          <div class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background:#fff;border:1px solid #ccc"></div>
+          <!-- order in images folder: black, maroon, white -->
+          <button class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background:#000" aria-label="Black"></button>
+          <button class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background:#800000" aria-label="Maroon"></button>
+          <button class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background:#fff;border:1px solid #ccc" aria-label="White"></button>
         </div>
 
-        <label>Size</label>
+        <label class="label">Size</label>
         <select id="sizeSelect">
           <option>S</option>
           <option selected>M</option>
@@ -43,18 +44,18 @@
           <option>XL</option>
         </select>
 
-        <div style="margin-top:14px">
-          <button class="btn" id="buyButton">Buy Now</button>
+        <div class="actions">
+          <button id="buyButton" class="btn">Buy Now</button>
           <button class="btn secondary" onclick="location.href='index.html'">← Back</button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Checkout modal (hidden until buy) -->
+  <!-- Checkout modal -->
   <div id="checkoutModal" class="modal" aria-hidden="true">
     <div class="modal-content">
-      <button class="close" onclick="closeModal()">×</button>
+      <button class="close" onclick="closeModal()" aria-label="Close">×</button>
       <h3>Checkout</h3>
       <p id="productInfo" class="product-info-text"></p>
 
@@ -82,15 +83,15 @@
       </form>
 
       <div id="paymentInfo" style="display:none; margin-top:12px; text-align:left;">
-        <h4>Payment Instructions</h4>
-        <p>We recorded your order — now pay using one of the options on the next page.</p>
+        <h4>Order recorded</h4>
+        <p>We saved your order. Click proceed to see payment details and confirm payment.</p>
         <button class="btn" id="gotoPaymentBtn">Proceed to Payment</button>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 DripNova | All Rights Reserved</p>
+    <p>© 2025 DripNova</p>
   </footer>
 </body>
 </html>
