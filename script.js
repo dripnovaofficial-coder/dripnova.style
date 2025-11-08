@@ -1,5 +1,5 @@
 // ========== configure your Google Apps Script web app URL here ==========
-const scriptURL = "https://script.google.com/macros/s/AKfycbxc-KlgIrJOLGWpKCYV4WeJi9MXkVkkcpTJSC8-9NUD5BwYfOWmTb8W2wwJkgixhsXfog/exec"
+const scriptURL = "https://script.google.com/macros/s/AKfycbzwM7qWgIORf882qSXouzazkffMb3oN3uR5gr-zAoxfb1LcibX_iGNw70oDSadGDNeGyA/exec"
 
 /* ---------- Helpers ---------- */
 function openProduct(name, price) {
@@ -222,5 +222,6 @@ function escapeHtml(s){
   if (!s) return "";
   return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
 }
+
 
 
