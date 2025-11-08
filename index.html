@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DripNova | Home</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
-
 <body>
-  <!-- Header -->
   <header>
     <div class="logo-container">
       <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
@@ -19,76 +18,61 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-toggle" aria-label="menu">☰</button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Unleash Your Inner Style</h2>
-    <p>Premium streetwear that speaks confidence and individuality.</p>
-    <button class="btn" onclick="scrollToShop()">Shop Now</button>
-  </section>
-
-  <!-- Shop Section -->
-  <section id="shop" class="products">
-    <h2>Our Collection</h2>
-    <div class="product-list">
-
-      <!-- Product 1 -->
-      <div class="product">
-        <img src="images/black front.png" alt="Be Your Own Hero Hoodie" />
-        <h3>Be Your Own Hero Hoodie</h3>
-        <p>PKR 1450</p>
-        <button onclick="openProduct('Be Your Own Hero Hoodie', 1450)">View Product</button>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h2>Be your own hero</h2>
+        <p>Streetwear — bold, minimal, and futuristic. Wear the future.</p>
+        <button class="btn" onclick="scrollToShop()">Shop Now</button>
       </div>
+    </section>
 
-      <!-- Product 2 -->
-      <div class="product">
-        <img src="moving-forward-hoodie.png" alt="Just Keep Moving Forward Hoodie" />
-        <h3>Just Keep Moving Forward Hoodie</h3>
-        <p>PKR 1600</p>
-        <button onclick="openProduct('Just Keep Moving Forward Hoodie', 1600)">View Product</button>
+    <section id="shop" class="products">
+      <h2>Our Collection</h2>
+
+      <div class="product-list">
+        <article class="product" onclick="openProduct('Be Your Own Hero Hoodie',1450)">
+          <div class="thumb">
+            <img src="images/maroon front.png" alt="Be Your Own Hero Hoodie — maroon front">
+          </div>
+          <h3>Be Your Own Hero Hoodie</h3>
+          <p class="price">PKR 1450</p>
+          <button class="small" onclick="openProduct('Be Your Own Hero Hoodie',1450); event.stopPropagation()">View</button>
+        </article>
+
+        <article class="product" onclick="openProduct('Just Keep Moving Forward Hoodie',1600)">
+          <div class="thumb">
+            <img src="moving-forward-hoodie.png" alt="Just Keep Moving Forward Hoodie">
+          </div>
+          <h3>Just Keep Moving Forward Hoodie</h3>
+          <p class="price">PKR 1600</p>
+          <button class="small" onclick="openProduct('Just Keep Moving Forward Hoodie',1600); event.stopPropagation()">View</button>
+        </article>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section id="about" class="about">
+      <h2>About DripNova</h2>
+      <p>DripNova blends streetwear and comfort with bold minimal design. Our garments are crafted to help you stand out while staying practical.</p>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About DripNova</h2>
-    <p>
-      At <strong>DripNova</strong>, we’re more than a brand — we’re a movement.
-      Every hoodie is designed to inspire confidence, ambition, and authenticity.
-      We’re here to make premium streetwear accessible to those who want to make a statement.
-    </p>
-  </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div>📍 Karachi, Pakistan</div>
+        <div>📞 0330-2936798</div>
+        <div>📧 dripnova.official@gmail.com</div>
+        <div>📸 <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-info">
-      <p>📍 Karachi, Pakistan</p>
-      <p>📞 <strong>0330-2936798</strong></p>
-      <p>📧 <a href="mailto:support@dripnova.com">support@dripnova.com</a></p>
-      <p>📸 Instagram:
-        <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 DripNova | All Rights Reserved</p>
   </footer>
-
-  <script>
-    function scrollToShop() {
-      document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function openProduct(name, price) {
-      const query = new URLSearchParams({ name, price });
-      window.location.href = `product.html?${query}`;
-    }
-  </script>
 </body>
 </html>
+
