@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DripNova — Payment</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
@@ -22,9 +22,11 @@
   <main>
     <section class="payment-page">
       <h2>Payment Details</h2>
-      <p class="muted">Complete payment using one of the methods below and then confirm your payment.</p>
+      <p class="muted">Complete your payment using one of the methods below and confirm once done.</p>
 
-      <div id="orderSummary" class="card"></div>
+      <div id="orderSummary" class="card">
+        <!-- This will be filled dynamically from script.js -->
+      </div>
 
       <div class="payment-methods card">
         <h3>Pay with Easypaisa</h3>
@@ -33,21 +35,25 @@
         <h3>Pay with JazzCash / NayaPay</h3>
         <p><strong>0330-2936798</strong> (Muhammad Khuzaima Raza)</p>
 
-        <p style="margin-top:12px">After payment, send payment screenshot or proof to:</p>
+        <p style="margin-top: 12px;">
+          After payment, please send your payment proof or screenshot to:
+        </p>
         <ul>
           <li>📩 <strong>dripnova.official@gmail.com</strong></li>
-          <li>📱 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></li>
+          <li>📱 Instagram:
+            <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
+          </li>
         </ul>
 
-        <div style="margin-top:16px">
-          <button class="btn" id="iPaidBtn">I have paid — confirm</button>
+        <div style="margin-top: 16px;">
+          <button class="btn" id="iPaidBtn">I have paid — Confirm</button>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 DripNova</p>
+    <p>© 2025 DripNova | All Rights Reserved</p>
   </footer>
 </body>
 </html>
