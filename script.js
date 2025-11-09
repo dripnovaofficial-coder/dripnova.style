@@ -1,5 +1,6 @@
 // ========== configure your Google Apps Script web app URL here ==========
-const scriptURL = "https://script.google.com/macros/s/AKfycbyJuQgjrB1tghrhYZOqap3X2cZe5t8yjEPA9HnbnS2GLDtFMU-z6cMLmjcRyfJ3es98_w/exec";
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbyJuQgjrB1tghrhYZOqap3X2cZe5t8yjEPA9HnbnS2GLDtFMU-z6cMLmjcRyfJ3es98_w/exec";
 
 /* ---------- Helpers ---------- */
 function openProduct(name, price) {
@@ -119,14 +120,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (s) {
       const o = JSON.parse(s);
       thankSummary.innerHTML = `<div class="card">
-        <strong>Order:</strong> ${escapeHtml(o.product)}<br>
-        <strong>Color:</strong> ${escapeHtml(o.color)}<br>
-        <strong>Size:</strong> ${escapeHtml(o.size)}<br>
-        <strong>Price:</strong> PKR ${escapeHtml(String(o.price))}<br>
-        <strong>Name:</strong> ${escapeHtml(o.name)}<br>
-        <strong>Phone:</strong> ${escapeHtml(o.phone)}<br>
-        <strong>City:</strong> ${escapeHtml(o.city)}<br>
-        <strong>Address:</strong> ${escapeHtml(o.address)}
+        <h2 class="text-xl font-semibold mb-2">✅ Order Confirmed!</h2>
+        <p><strong>Order ID:</strong> ${escapeHtml(o.orderId || "(pending)")} </p>
+        <p><strong>Product:</strong> ${escapeHtml(o.product)}</p>
+        <p><strong>Color:</strong> ${escapeHtml(o.color)}</p>
+        <p><strong>Size:</strong> ${escapeHtml(o.size)}</p>
+        <p><strong>Price:</strong> PKR ${escapeHtml(String(o.price))}</p>
+        <p><strong>Name:</strong> ${escapeHtml(o.name)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(o.phone)}</p>
+        <p><strong>City:</strong> ${escapeHtml(o.city)}</p>
+        <p><strong>Address:</strong> ${escapeHtml(o.address)}</p>
+        <hr class="my-3" />
+        <p>Our team will contact you shortly to confirm your order. 💬</p>
       </div>`;
       sessionStorage.removeItem("dripnova_order");
     } else {
@@ -155,7 +160,9 @@ function closeModal() {
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
-  try { document.getElementById("orderForm").reset(); } catch (e) {}
+  try {
+    document.getElementById("orderForm").reset();
+  } catch (e) {}
 }
 
 /* ---------- Submit to Google Sheets ---------- */
@@ -171,13 +178,13 @@ document.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch(scriptURL, { method: "POST", body: new FormData(form) });
-    if (!res.ok) throw new Error("Response not OK");
     const data = await res.json();
 
-    if (data.result === "success") {
+    if (res.ok && data.result === "success") {
       const fd = new FormData(form);
       const order = Object.fromEntries(fd.entries());
       order.timestamp = new Date().toISOString();
+      order.orderId = data.orderId || "";
       sessionStorage.setItem("dripnova_order", JSON.stringify(order));
       form.style.display = "none";
       document.getElementById("paymentInfo").style.display = "block";
