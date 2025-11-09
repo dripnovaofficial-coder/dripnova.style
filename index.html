@@ -18,7 +18,6 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="menu-toggle" aria-label="menu">☰</button>
   </header>
 
   <main>
@@ -26,7 +25,7 @@
       <div class="hero-inner">
         <h2>Be your own hero</h2>
         <p>Streetwear — bold, minimal, and futuristic. Wear the future.</p>
-        <button class="btn" onclick="scrollToShop()">Shop Now</button>
+        <button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
       </div>
     </section>
 
@@ -34,54 +33,54 @@
       <h2>Our Collection</h2>
 
       <div class="product-list">
-        <!-- 1) Be Your Own Hero Hoodie -->
-        <article class="product" onclick="openProduct('Be Your Own Hero Hoodie',1450)">
+        <!-- 1) Be Your Own Hero -->
+        <article class="product" onclick="openProduct('Be Your Own Hero',1699)">
           <div class="thumb">
-            <img src="images/be-your-own-hero front black.png" alt="Be Your Own Hero Hoodie — black">
+            <img src="images/maroon front.png" alt="Be Your Own Hero — maroon">
           </div>
-          <h3>Be Your Own Hero Hoodie</h3>
-          <p class="price">PKR 1450</p>
-          <button class="small" onclick="openProduct('Be Your Own Hero Hoodie',1450); event.stopPropagation()">View</button>
+          <h3>Be Your Own Hero</h3>
+          <p class="price">PKR 1699</p>
+          <button class="small" onclick="openProduct('Be Your Own Hero',1699); event.stopPropagation()">View</button>
         </article>
 
-        <!-- 2) Just Keep Moving Forward Hoodie -->
-        <article class="product" onclick="openProduct('Just Keep Moving Forward Hoodie',1600)">
+        <!-- 2) Just Keep Moving Forward -->
+        <article class="product" onclick="openProduct('Just Keep Moving Forward',1699)">
           <div class="thumb">
-            <img src="images/moving-forward-hoodie.png" alt="Just Keep Moving Forward Hoodie">
+            <img src="images/moving-forward-hoodie.png" alt="Just Keep Moving Forward">
           </div>
-          <h3>Just Keep Moving Forward Hoodie</h3>
-          <p class="price">PKR 1600</p>
-          <button class="small" onclick="openProduct('Just Keep Moving Forward Hoodie',1600); event.stopPropagation()">View</button>
+          <h3>Just Keep Moving Forward</h3>
+          <p class="price">PKR 1699</p>
+          <button class="small" onclick="openProduct('Just Keep Moving Forward',1699); event.stopPropagation()">View</button>
         </article>
 
-        <!-- 3) Stay Focused Break Rules (T-Shirt) -->
-        <article class="product" onclick="openProduct('Stay Focused Break Rules',1299)">
+        <!-- 3) Stay Focused Break Rules -->
+        <article class="product" onclick="openProduct('Stay Focused Break Rules',1699)">
           <div class="thumb">
             <img src="images/stay-focused-break-rules front olive.png" alt="Stay Focused — olive">
           </div>
           <h3>Stay Focused Break Rules</h3>
-          <p class="price">PKR 1299</p>
-          <button class="small" onclick="openProduct('Stay Focused Break Rules',1299); event.stopPropagation()">View</button>
+          <p class="price">PKR 1699</p>
+          <button class="small" onclick="openProduct('Stay Focused Break Rules',1699); event.stopPropagation()">View</button>
         </article>
 
-        <!-- 4) Awesome Brother Hoodie -->
-        <article class="product" onclick="openProduct('Awesome Brother Hoodie',1699)">
+        <!-- 4) Your Mind -->
+        <article class="product" onclick="openProduct('Your Mind Hoodie',1299)">
+          <div class="thumb">
+            <img src="images/your mind hoodie front.png" alt="Your Mind Hoodie">
+          </div>
+          <h3>Your Mind Hoodie</h3>
+          <p class="price">PKR 1299</p>
+          <button class="small" onclick="openProduct('Your Mind Hoodie',1299); event.stopPropagation()">View</button>
+        </article>
+
+        <!-- 5) Awesome Brother -->
+        <article class="product" onclick="openProduct('Awesome Brother Hoodie',1299)">
           <div class="thumb">
             <img src="images/awesome-brother front.png" alt="Awesome Brother Hoodie">
           </div>
           <h3>Awesome Brother Hoodie</h3>
-          <p class="price">PKR 1699</p>
-          <button class="small" onclick="openProduct('Awesome Brother Hoodie',1699); event.stopPropagation()">View</button>
-        </article>
-
-        <!-- 5) Your Only Limit Is Your Mind (named Limit Your Mind Hoodie in UI as you confirmed) -->
-        <article class="product" onclick="openProduct('Limit Your Mind Hoodie',1699)">
-          <div class="thumb">
-            <img src="images/your mind hoodie front.png" alt="Limit Your Mind Hoodie">
-          </div>
-          <h3>Limit Your Mind Hoodie</h3>
-          <p class="price">PKR 1699</p>
-          <button class="small" onclick="openProduct('Limit Your Mind Hoodie',1699); event.stopPropagation()">View</button>
+          <p class="price">PKR 1299</p>
+          <button class="small" onclick="openProduct('Awesome Brother Hoodie',1299); event.stopPropagation()">View</button>
         </article>
       </div>
     </section>
@@ -107,4 +106,3 @@
   </footer>
 </body>
 </html>
-
