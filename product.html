@@ -29,12 +29,7 @@
         <p id="productPrice" class="price">PKR 0</p>
 
         <label class="label">Color</label>
-        <div class="color-options">
-          <!-- order in images folder: black, maroon, white -->
-          <button class="color-swatch" data-front="images/black front.png" data-back="images/black back.png" style="background:#000" aria-label="Black"></button>
-          <button class="color-swatch" data-front="images/maroon front.png" data-back="images/maroon back.png" style="background:#800000" aria-label="Maroon"></button>
-          <button class="color-swatch" data-front="images/white front.png" data-back="images/white back.png" style="background:#fff;border:1px solid #ccc" aria-label="White"></button>
-        </div>
+        <div id="colorOptions" class="color-options"></div>
 
         <label class="label">Size</label>
         <select id="sizeSelect">
@@ -63,6 +58,7 @@
         <input type="hidden" name="product" id="productField">
         <input type="hidden" name="price" id="priceField">
         <input type="hidden" name="size" id="sizeField">
+        <!-- color hidden injected by script if needed -->
 
         <label>Name</label>
         <input type="text" name="name" required>
