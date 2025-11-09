@@ -1,5 +1,5 @@
 // ========== Google Apps Script URL ==========
-const scriptURL = "https://script.google.com/macros/s/AKfycbwhxbVWEHaVbsgFKHaD57NmEU2IgaI-bIVenXsw9IAZ_FryWQ4mq8ctvjKLWNAwk5TROg/exec";
+const scriptURL ="https://script.google.com/macros/s/AKfycbz7TnyR4DRNpWuE2cz_wFjvib_E2xH6E0QA332Dkw4b9bWmOQARAEZn2pWu7Tyx8gw7ow/exec";
 
 /* ---------- Helpers ---------- */
 function openProduct(name, price) {
@@ -197,3 +197,4 @@ document.addEventListener("submit", async (e) => {
     btn.disabled = false;
   }
 });
+
