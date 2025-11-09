@@ -1,5 +1,5 @@
 // ========== configure your Google Apps Script web app URL here ==========
-const scriptURL ="https://script.google.com/macros/s/AKfycbwhxbVWEHaVbsgFKHaD57NmEU2IgaI-bIVenXsw9IAZ_FryWQ4mq8ctvjKLWNAwk5TROg/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwhxbVWEHaVbsgFKHaD57NmEU2IgaI-bIVenXsw9IAZ_FryWQ4mq8ctvjKLWNAwk5TROg/exec";
 
 /* ---------- Helpers ---------- */
 function openProduct(name, price) {
@@ -23,81 +23,134 @@ document.addEventListener("DOMContentLoaded", () => {
   const orderSummary = document.getElementById("orderSummary");
   const thankSummary = document.getElementById("thankSummary");
 
-  // Product page init
+  /* ---------- Product catalog (use exact filenames in images/ folder) ---------- */
+  const productCatalog = {
+    "Be Your Own Hero Hoodie": {
+      price: 1450,
+      colors: {
+        Black: { front: "images/be-your-own-hero front black.png", back: "images/be-your-own-hero back black.png" },
+        Maroon: { front: "images/be-your-own-hero front maroon.png", back: "images/be-your-own-hero back maroon.png" },
+        White: { front: "images/be-your-own-hero front white.png", back: "images/be-your-own-hero back white.png" }
+      },
+      defaultColor: "Maroon"
+    },
+
+    "Just Keep Moving Forward Hoodie": {
+      price: 1600,
+      colors: {
+        Black: { front: "images/moving-forward-hoodie.png", back: "images/moving-forward-back.png" }
+      },
+      defaultColor: "Black"
+    },
+
+    "Stay Focused Break Rules": {
+      price: 1299,
+      colors: {
+        Olive: { front: "images/stay-focused-break-rules front olive.png", back: "images/stay-focused-break-rules back olive.png" },
+        Charcoal: { front: "images/stay-focused-break-rules front charcol.png", back: "images/stay-focused-break-rules back charcol.png" },
+        OffWhite: { front: "images/stay-focused-break-rules front.png", back: "images/stay-focused-break-rules back.png" }
+      },
+      defaultColor: "Olive"
+    },
+
+    "Awesome Brother Hoodie": {
+      price: 1699,
+      colors: {
+        Black: { front: "images/awesome-brother front.png", back: "images/awesome-brother back.png" }
+      },
+      defaultColor: "Black"
+    },
+
+    "Limit Your Mind Hoodie": {
+      price: 1699,
+      colors: {
+        Black: { front: "images/your mind hoodie front.png", back: "images/your mind hoodie back.png" }
+      },
+      defaultColor: "Black"
+    }
+  };
+
+  // Initialize product page if present
   if (productNameEl && name && price) {
     const decodedName = decodeURIComponent(name);
     productNameEl.textContent = decodedName;
     productPriceEl.textContent = `PKR ${price}`;
     document.title = `${decodedName} — DripNova`;
 
-  // === Product image mapping ===
-const productImages = {
-  "Be Your Own Hero Hoodie": {
-    front: "images/maroon front.png",
-    back: "images/maroon back.png",
-    defaultColor: "Maroon"
-  },
-  "Just Keep Moving Forward Hoodie": {
-    front: "images/moving-forward-hoodie.png",
-    back: "images/moving-forward-back.png", // add this image to your folder
-    defaultColor: "Black"
-  }
-};
+    const productData = productCatalog[decodedName];
+    if (productData) {
+      const { colors, defaultColor } = productData;
+      const def = colors[defaultColor];
+      productImage.src = def.front;
+      productImage.dataset.front = def.front;
+      productImage.dataset.back = def.back;
 
-// === Load correct product image ===
-if (productImages[name]) {
-  const { front, back, defaultColor } = productImages[name];
-  productImage.src = front;
-  productImage.dataset.front = front;
-  productImage.dataset.back = back;
-  document.getElementById("selectedColorName").value = defaultColor;
-} else {
-  // fallback if not found
-  productImage.src = "images/default.png";
-  productImage.dataset.front = "images/default.png";
-  productImage.dataset.back = "images/default.png";
-}
+      // create hidden color input if not exists
+      let colorInput = document.getElementById("selectedColorName");
+      if (!colorInput) {
+        colorInput = document.createElement("input");
+        colorInput.type = "hidden";
+        colorInput.name = "color";
+        colorInput.id = "selectedColorName";
+        document.getElementById("orderForm").appendChild(colorInput);
+      }
+      colorInput.value = defaultColor;
 
-
-    // Default color
-    document.getElementById("selectedColorName")?.remove();
-    const hiddenColor = document.createElement("input");
-    hiddenColor.type = "hidden";
-    hiddenColor.name = "color";
-    hiddenColor.id = "selectedColorName";
-    hiddenColor.value = "Maroon";
-    document.getElementById("orderForm").appendChild(hiddenColor);
+      // render color swatches dynamically (only if multiple colors)
+      const colorContainer = document.getElementById("colorOptions");
+      if (colorContainer) {
+        colorContainer.innerHTML = "";
+        const keys = Object.keys(colors);
+        if (keys.length > 1) {
+          keys.forEach((k) => {
+            const sw = document.createElement("button");
+            sw.type = "button";
+            sw.className = "color-swatch";
+            sw.setAttribute("aria-label", k);
+            sw.title = k;
+            sw.style.backgroundImage = `url(${colors[k].front})`;
+            sw.style.backgroundSize = "cover";
+            sw.style.backgroundPosition = "center";
+            sw.addEventListener("click", () => {
+              productImage.src = colors[k].front;
+              productImage.dataset.front = colors[k].front;
+              productImage.dataset.back = colors[k].back;
+              colorInput.value = k;
+            });
+            colorContainer.appendChild(sw);
+          });
+        } else {
+          // single color - show text label (not interactive)
+          const onlyKey = keys[0];
+          const div = document.createElement("div");
+          div.textContent = onlyKey;
+          div.style.marginTop = "8px";
+          div.style.color = "var(--muted)";
+          colorContainer.appendChild(div);
+        }
+      }
+    } else {
+      productImage.src = "images/default.png";
+      productImage.dataset.front = "images/default.png";
+      productImage.dataset.back = "images/default.png";
+    }
 
     if (buyBtn) buyBtn.onclick = () => buyNow(decodedName, price);
   }
 
-  // Hover front/back
+  // front/back hover
   if (productImage) {
     productImage.addEventListener("mouseenter", () => {
-      if (productImage.dataset.back) productImage.src = productImage.dataset.back;
+      const back = productImage.dataset.back;
+      if (back) productImage.src = back;
     });
     productImage.addEventListener("mouseleave", () => {
-      if (productImage.dataset.front) productImage.src = productImage.dataset.front;
+      const front = productImage.dataset.front;
+      if (front) productImage.src = front;
     });
   }
 
-  // Color swatches
-  document.querySelectorAll(".color-swatch").forEach((sw) => {
-    sw.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const front = sw.getAttribute("data-front");
-      const back = sw.getAttribute("data-back");
-      const colorName = sw.getAttribute("aria-label");
-      if (front) {
-        productImage.src = front;
-        productImage.dataset.front = front;
-        productImage.dataset.back = back || front;
-      }
-      document.getElementById("selectedColorName").value = colorName;
-    });
-  });
-
-  // Payment navigation
+  // Payment and iPaid navigation
   if (gotoPaymentBtn) {
     gotoPaymentBtn.addEventListener("click", () => {
       if (!sessionStorage.getItem("dripnova_order")) {
@@ -107,7 +160,6 @@ if (productImages[name]) {
       window.location.href = "payment.html";
     });
   }
-
   if (iPaidBtn) {
     iPaidBtn.addEventListener("click", () => {
       if (!sessionStorage.getItem("dripnova_order")) {
@@ -119,7 +171,7 @@ if (productImages[name]) {
     });
   }
 
-  // Render order summary
+  // render order summary on payment page
   if (orderSummary) {
     const s = sessionStorage.getItem("dripnova_order");
     if (!s) {
@@ -138,7 +190,7 @@ if (productImages[name]) {
     }
   }
 
-  // Thankyou summary
+  // render thank you summary
   if (thankSummary) {
     const s = sessionStorage.getItem("dripnova_order");
     if (s) {
@@ -162,20 +214,22 @@ if (productImages[name]) {
       thankSummary.innerHTML = `<div class="card">Order not found — contact us if you paid.</div>`;
     }
   }
-});
+}); // end DOMContentLoaded
 
-/* ---------- Checkout modal ---------- */
+/* ---------- open checkout modal ---------- */
 function buyNow(productName, price) {
   const modal = document.getElementById("checkoutModal");
   const size = document.getElementById("sizeSelect").value;
-  const color = document.getElementById("selectedColorName").value;
+  const color = (document.getElementById("selectedColorName") && document.getElementById("selectedColorName").value) || "";
   document.getElementById("productInfo").textContent = `🛍️ ${productName} — PKR ${price} (Size: ${size}, Color: ${color})`;
   document.getElementById("productField").value = productName;
   document.getElementById("priceField").value = price;
   document.getElementById("sizeField").value = size;
-  document.getElementById("selectedColorName").value = color;
-  document.getElementById("orderForm").style.display = "block";
-  document.getElementById("paymentInfo").style.display = "none";
+  if (document.getElementById("selectedColorName")) document.getElementById("selectedColorName").value = color;
+  try {
+    document.getElementById("orderForm").style.display = "block";
+    document.getElementById("paymentInfo").style.display = "none";
+  } catch (e){}
   modal.style.display = "flex";
   modal.setAttribute("aria-hidden", "false");
 }
@@ -184,18 +238,16 @@ function closeModal() {
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
-  try {
-    document.getElementById("orderForm").reset();
-  } catch (e) {}
+  try { document.getElementById("orderForm").reset(); } catch (e){}
 }
 
-/* ---------- Submit to Google Sheets ---------- */
+/* ---------- submit order to Google Apps Script ---------- */
 document.addEventListener("submit", async (e) => {
   const form = e.target;
   if (!form || form.id !== "orderForm") return;
   e.preventDefault();
 
-  const btn = form.querySelector("button[type='submit']");
+  const btn = form.querySelector("button[type='submit']") || form.querySelector("button");
   const origText = btn.textContent;
   btn.textContent = "Placing order...";
   btn.disabled = true;
@@ -213,29 +265,21 @@ document.addEventListener("submit", async (e) => {
       form.style.display = "none";
       document.getElementById("paymentInfo").style.display = "block";
     } else {
-      alert("❌ Error saving order. Please try again.");
+      const msg = (data && data.message) ? data.message : "Server error while saving order.";
+      alert("❌ " + msg);
+      console.error("Server response:", data);
     }
   } catch (err) {
     alert("⚠️ Network error — please check your internet or script URL.");
-    console.error(err);
+    console.error("Fetch error:", err);
   } finally {
     btn.textContent = origText;
     btn.disabled = false;
   }
 });
 
-/* ---------- Escape helper ---------- */
-function escapeHtml(s) {
+/* ---------- small helper ---------- */
+function escapeHtml(s){
   if (!s) return "";
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
+  return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
 }
-
-
-
-
-
