@@ -3,10 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thank you — DripNova</title>
+  <title>Thank You — DripNova</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
+
+  <style>
+    .thankyou {
+      text-align: center;
+      margin-top: 60px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: inline-block;
+      text-align: left;
+      padding: 24px 32px;
+      max-width: 420px;
+      width: 100%;
+      line-height: 1.6;
+    }
+    .order-id {
+      background: linear-gradient(90deg, #FFD700, #FFB700);
+      color: #000;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 12px 0;
+    }
+    .btn.secondary {
+      text-decoration: none;
+      color: #fff;
+      background: #000;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: opacity 0.2s ease;
+    }
+    .btn.secondary:hover { opacity: 0.8; }
+  </style>
 </head>
+
 <body>
   <header>
     <div class="logo-container">
@@ -18,17 +55,47 @@
 
   <main>
     <section class="thankyou">
-      <h2>Thank you! ❤️</h2>
+      <h2>Thank you for your order! ❤️</h2>
       <p>Your payment confirmation has been received. We'll verify and contact you soon for shipping.</p>
 
       <div id="thankSummary" class="card"></div>
 
-      <p style="margin-top:18px"><a href="index.html" class="btn secondary">Back to Shop</a></p>
+      <p style="margin-top:18px">
+        <a href="index.html" class="btn secondary">Back to Shop</a>
+      </p>
     </section>
   </main>
 
   <footer>
     <p>© 2025 DripNova</p>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const s = sessionStorage.getItem("dripnova_order");
+      const thankSummary = document.getElementById("thankSummary");
+
+      if (s) {
+        const o = JSON.parse(s);
+        thankSummary.innerHTML = `
+          <h3>✅ Order Confirmed!</h3>
+          <p>Your unique Order ID:</p>
+          <div class="order-id">${o.orderId || "(Pending)"}</div>
+          <p><strong>Product:</strong> ${o.product}</p>
+          <p><strong>Color:</strong> ${o.color}</p>
+          <p><strong>Size:</strong> ${o.size}</p>
+          <p><strong>Price:</strong> PKR ${o.price}</p>
+          <p><strong>Name:</strong> ${o.name}</p>
+          <p><strong>Phone:</strong> ${o.phone}</p>
+          <p><strong>City:</strong> ${o.city}</p>
+          <p><strong>Address:</strong> ${o.address}</p>
+          <hr style="margin:12px 0">
+          <p>Our team will reach out shortly to confirm your order. 💬</p>`;
+        sessionStorage.removeItem("dripnova_order");
+      } else {
+        thankSummary.innerHTML = `<p>⚠️ Order not found — please contact us if you’ve completed payment.</p>`;
+      }
+    });
+  </script>
 </body>
 </html>
