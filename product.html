@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title id="pageTitle">DripNova Product</title>
+  <title id="pageTitle">Product — DripNova</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
@@ -34,12 +34,22 @@
         <label class="label">Size</label>
         <select id="sizeSelect">
           <option>S</option>
-          <option selected>M</option>
+          <option>M</option>
           <option>L</option>
           <option>XL</option>
+          <option>2XL</option>
         </select>
 
-        <div class="actions">
+        <label class="label">Quantity</label>
+        <select id="qtySelect">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+
+        <div class="actions" style="margin-top:12px">
           <button id="buyButton" class="btn">Buy Now</button>
           <button class="btn secondary" onclick="location.href='index.html'">← Back</button>
         </div>
@@ -58,7 +68,8 @@
         <input type="hidden" name="product" id="productField">
         <input type="hidden" name="price" id="priceField">
         <input type="hidden" name="size" id="sizeField">
-        <!-- color hidden injected by script if needed -->
+        <input type="hidden" name="quantity" id="quantityField">
+        <input type="hidden" name="color" id="colorField">
 
         <label>Name</label>
         <input type="text" name="name" required>
@@ -86,8 +97,6 @@
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 DripNova</p>
-  </footer>
+  <footer><p>© 2025 DripNova</p></footer>
 </body>
 </html>
