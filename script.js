@@ -30,9 +30,34 @@ document.addEventListener("DOMContentLoaded", () => {
     productPriceEl.textContent = `PKR ${price}`;
     document.title = `${decodedName} — DripNova`;
 
-    productImage.src = "images/maroon front.png";
-    productImage.dataset.front = "images/maroon front.png";
-    productImage.dataset.back = "images/maroon back.png";
+  // === Product image mapping ===
+const productImages = {
+  "Be Your Own Hero Hoodie": {
+    front: "images/maroon front.png",
+    back: "images/maroon back.png",
+    defaultColor: "Maroon"
+  },
+  "Just Keep Moving Forward Hoodie": {
+    front: "images/moving-forward-hoodie.png",
+    back: "images/moving-forward-back.png", // add this image to your folder
+    defaultColor: "Black"
+  }
+};
+
+// === Load correct product image ===
+if (productImages[name]) {
+  const { front, back, defaultColor } = productImages[name];
+  productImage.src = front;
+  productImage.dataset.front = front;
+  productImage.dataset.back = back;
+  document.getElementById("selectedColorName").value = defaultColor;
+} else {
+  // fallback if not found
+  productImage.src = "images/default.png";
+  productImage.dataset.front = "images/default.png";
+  productImage.dataset.back = "images/default.png";
+}
+
 
     // Default color
     document.getElementById("selectedColorName")?.remove();
@@ -209,6 +234,7 @@ function escapeHtml(s) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
+
 
 
 
