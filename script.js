@@ -1,145 +1,101 @@
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec";
+// PRODUCT DATA
+const productImages = {
+  "Be Your Own Hero": {
+    black: "images/black front.png",
+    maroon: "images/maroon front.png",
+    white: "images/white front.png"
+  },
+  "Stay Focused Break Rules": {
+    olive: "images/stay-focused-break-rules front olive .png",
+    charcol: "images/stay-focused-break-rules front charcol .png",
+    white: "images/stay-focused-break-rules front.png"
+  },
+  "Just Keep Moving Forward": {
+    black: "images/moving-forward-hoodie.png"
+  },
+  "Your Mind Hoodie": {
+    black: "images/your mind hoodie front.png"
+  },
+  "Awesome Brother Hoodie": {
+    black: "images/awesome-brother front.png"
+  }
+};
 
+// ✅ Show Product Info
 function openProduct(name, price) {
-  localStorage.setItem("dripnova_product", JSON.stringify({ name, price }));
-  window.location = "product.html";
+  localStorage.setItem("productName", name);
+  localStorage.setItem("productPrice", price);
+  window.location.href = "product.html";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const gallery = document.getElementById("gallery");
-  const info = document.getElementById("info");
-  if (!gallery || !info) return;
+// ✅ On product page load
+window.addEventListener("DOMContentLoaded", () => {
+  const name = localStorage.getItem("productName");
+  const price = localStorage.getItem("productPrice");
 
-  const data = JSON.parse(localStorage.getItem("dripnova_product") || "{}");
-  if (!data.name) {
-    info.innerHTML = "<p>Product not found.</p>";
-    return;
+  if (name && price) {
+    document.getElementById("product-name").textContent = name;
+    document.getElementById("product-price").textContent = "PKR " + price;
+    updateProductImage();
   }
-
-  const { name, price } = data;
-  const colors = getColors(name);
-  const defaultColor = colors[0];
-
-  // Load main product images
-  gallery.innerHTML = `
-    <img class="front" id="frontImg" src="${getImage(name, defaultColor, 'front')}" alt="front" />
-    <img class="back" id="backImg" src="${getImage(name, defaultColor, 'back')}" alt="back" />
-  `;
-
-  // Product info and Order Now button
-  info.innerHTML = `
-    <h2>${name}</h2>
-    <p class="price">PKR ${price}</p>
-
-    <label>Select Color:</label>
-    <div class="color-options">
-      ${colors.map(c => `<div class="color-swatch" data-color="${c}" title="${c}" style="background:${colorToHex(c)}"></div>`).join('')}
-    </div>
-
-    <label>Size:</label>
-    <select id="size">
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-      <option value="XL">XL</option>
-    </select>
-
-    <button id="orderNow" class="btn">Order Now</button>
-
-    <form id="orderForm">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="text" id="phone" placeholder="Phone Number" required>
-      <input type="text" id="city" placeholder="City" required>
-      <input type="text" id="address" placeholder="Full Address" required>
-      <button type="submit" class="btn">Place Order</button>
-      <div class="status" id="status"></div>
-    </form>
-  `;
-
-  // color switching
-  document.querySelectorAll(".color-swatch").forEach(s => {
-    s.addEventListener("click", e => {
-      document.querySelectorAll(".color-swatch").forEach(sw => sw.classList.remove("active"));
-      e.target.classList.add("active");
-      const c = e.target.dataset.color;
-      document.getElementById("frontImg").src = getImage(name, c, 'front');
-      document.getElementById("backImg").src = getImage(name, c, 'back');
-    });
-  });
-  document.querySelector(".color-swatch").classList.add("active");
-
-  // Show form when clicking Order Now
-  document.getElementById("orderNow").addEventListener("click", () => {
-    document.getElementById("orderForm").classList.add("active");
-    document.getElementById("orderNow").style.display = "none";
-  });
-
-  // Form submit logic
-  const form = document.getElementById("orderForm");
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    const btn = form.querySelector("button");
-    const status = document.getElementById("status");
-    btn.disabled = true;
-    status.textContent = "Submitting order...";
-
-    const order = {
-      product: name,
-      price,
-      color: document.querySelector(".color-swatch.active").dataset.color,
-      size: document.getElementById("size").value,
-      name: document.getElementById("name").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      city: document.getElementById("city").value.trim(),
-      address: document.getElementById("address").value.trim()
-    };
-
-    try {
-      const res = await fetch(SHEET_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order)
-      });
-      const result = await res.json();
-      if (result.result === "success") {
-        window.location = "thankyou.html";
-      } else {
-        status.textContent = "⚠️ Something went wrong. Try again.";
-      }
-    } catch {
-      status.textContent = "❌ Network error — please try again.";
-    } finally {
-      btn.disabled = false;
-    }
-  });
 });
 
-function getColors(name) {
-  const map = {
-    "Be Your Own Hero": ["black", "maroon", "white"],
-    "Stay Focused Break Rules": ["off white", "olive", "charcol"],
-    "Just Keep Moving Forward": ["black"],
-    "Your Mind Hoodie": ["black"],
-    "Awesome Brother Hoodie": ["black"]
-  };
-  return map[name] || ["black"];
+// ✅ Update image when color changes
+function updateProductImage() {
+  const name = localStorage.getItem("productName");
+  const color = document.getElementById("color-select").value;
+  const img = document.getElementById("product-img");
+
+  if (productImages[name] && productImages[name][color]) {
+    img.src = productImages[name][color];
+  } else {
+    img.src = "dripnova-logo.png"; // fallback
+  }
 }
 
-// Match your image names in /images/
-function getImage(name, color, side) {
-  const cleaned = name.toLowerCase().replaceAll(" ", "-");
-  if (color === "off white") color = "off-white";
-  return `images/${cleaned}-${color}-${side}.png`;
+// ✅ Show order form only when clicking "Order Now"
+function showOrderForm() {
+  document.getElementById("order-form").classList.remove("hidden");
+  document.getElementById("order-btn").style.display = "none";
 }
 
-function colorToHex(color) {
-  const map = {
-    black: "#000",
-    maroon: "#800000",
-    white: "#fff",
-    olive: "#808000",
-    charcol: "#36454F",
-    "off white": "#f8f8f8"
+// ✅ Smooth popup message
+function showPopup(message, isError = false) {
+  const popup = document.getElementById("popup");
+  popup.textContent = message;
+  popup.className = "popup " + (isError ? "error" : "success");
+  popup.classList.remove("hidden");
+  setTimeout(() => popup.classList.add("hidden"), 2500);
+}
+
+// ✅ Submit order to Google Apps Script
+function submitOrder(e) {
+  e.preventDefault();
+
+  const data = {
+    product: localStorage.getItem("productName"),
+    price: localStorage.getItem("productPrice"),
+    color: document.getElementById("color-select").value,
+    size: document.getElementById("size-select").value,
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    address: document.getElementById("address").value
   };
-  return map[color] || "#ccc";
+
+  fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+    .then(res => res.text())
+    .then(response => {
+      if (response.includes("Success")) {
+        showPopup("✅ Order placed successfully!");
+        setTimeout(() => (window.location.href = "thankyou.html"), 2000);
+      } else {
+        showPopup("⚠️ Something went wrong. Try again.", true);
+      }
+    })
+    .catch(() => {
+      showPopup("⚠️ Network error. Please try again.", true);
+    });
 }
