@@ -49,15 +49,27 @@
     </div>
 
     <!-- Hidden Order Form -->
-    <div id="order-form" class="hidden">
-      <h3>Complete Your Order</h3>
-      <form id="checkout-form" onsubmit="submitOrder(event)">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="text" id="phone" placeholder="Phone Number" required />
-        <input type="text" id="address" placeholder="Address" required />
-        <button type="submit" class="btn">Place Order</button>
-      </form>
-    </div>
+    <div id="orderForm" class="card" style="display:none; margin-top:20px;">
+  <h3>Place Your Order</h3>
+
+  <label for="name">Name</label>
+  <input type="text" id="name" placeholder="Full Name" required>
+
+  <label for="phone">Phone</label>
+  <input type="text" id="phone" placeholder="03XXXXXXXXX" required>
+
+  <label for="city">City</label>
+  <input type="text" id="city" placeholder="Your City" required>
+
+  <label for="address">Address</label>
+  <textarea id="address" placeholder="Complete Address" required></textarea>
+
+  <button class="btn" id="placeOrderBtn">Place Order</button>
+</div>
+
+<!-- This stays outside -->
+<button class="btn" id="order-btn" onclick="showOrderForm()">Order Now</button>
+
 
     <div id="popup" class="popup hidden"></div>
   </main>
