@@ -69,34 +69,70 @@ function showPopup(message, isError = false) {
 }
 
 // ✅ Submit order to Google Apps Script
-function submitOrder(e) {
+// replace SHEET_URL with your actual script URL
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec";
+
+async function submitOrder(e) {
   e.preventDefault();
+  const statusEl = document.getElementById("status");
+  statusEl.textContent = "Submitting order...";
 
   const data = {
     product: localStorage.getItem("productName"),
     price: localStorage.getItem("productPrice"),
     color: document.getElementById("color-select").value,
     size: document.getElementById("size-select").value,
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    address: document.getElementById("address").value
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    address: document.getElementById("address").value.trim()
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-    .then(res => res.text())
-    .then(response => {
-      if (response.includes("Success")) {
-        showPopup("✅ Order placed successfully!");
-        setTimeout(() => (window.location.href = "thankyou.html"), 2000);
-      } else {
-        showPopup("⚠️ Something went wrong. Try again.", true);
-      }
-    })
-    .catch(() => {
-      showPopup("⚠️ Network error. Please try again.", true);
-    });
-}
+  // Basic client-side validation
+  if (!data.product || !data.name || !data.phone || !data.address) {
+    statusEl.textContent = "⚠️ Please complete all required fields.";
+    return;
+  }
 
+  try {
+    const res = await fetch(SHEET_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      mode: "cors"
+    });
+
+    const text = await res.text();                  // raw server response for debugging
+    let json;
+    try { json = JSON.parse(text); } catch(e){ json = null; }
+
+    console.log("SubmitOrder: HTTP", res.status, res.statusText, "raw:", text, "json:", json);
+
+    if (!res.ok) {
+      statusEl.textContent = `⚠️ Server returned ${res.status} ${res.statusText}`;
+      return;
+    }
+
+    // Prefer well-formed JSON { result: "success" } from server
+    if (json && json.result === "success") {
+      statusEl.textContent = "✅ Order placed. Redirecting...";
+      // optionally store order and redirect to thankyou
+      sessionStorage.setItem("dripnova_order", JSON.stringify({ ...data, orderId: json.orderId || null }));
+      setTimeout(()=> window.location.href = "thankyou.html", 800);
+      return;
+    }
+
+    // If server returned text-based success message, check that
+    if (typeof text === "string" && /success/i.test(text)) {
+      statusEl.textContent = "✅ Order placed (text success). Redirecting...";
+      sessionStorage.setItem("dripnova_order", JSON.stringify({ ...data }));
+      setTimeout(()=> window.location.href = "thankyou.html", 800);
+      return;
+    }
+
+    // Otherwise show server message to help debug
+    statusEl.textContent = "⚠️ Server response: " + (json?.message || text.slice(0,200));
+  } catch (err) {
+    console.error("submitOrder error:", err);
+    statusEl.textContent = "❌ Network error — please check your connection or script URL.";
+  }
+}
