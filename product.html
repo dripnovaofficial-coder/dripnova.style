@@ -2,80 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DripNova | Product</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Product</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
-      <h1>DripNova</h1>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <img src="dripnova-logo.png" alt="DripNova" class="logo" />
+        <h1>DripNova</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#shop">Shop</a>
+      </nav>
     </div>
   </header>
 
-  <main class="product-page">
-    <button class="back-btn" onclick="history.back()">← Back</button>
+  <main class="wrap">
+    <button class="btn ghost back" onclick="history.back()">← Back</button>
 
-    <div class="product-view">
-      <div class="product-image">
-        <img id="product-img" src="" alt="Product Image" />
+    <section id="productArea" class="product-area">
+      <!-- Image column -->
+      <div class="product-image card">
+        <img id="productFront" src="" alt="Product front" />
+        <img id="productBack" src="" alt="Product back" style="display:none; position:absolute; top:0; left:0; width:100%; height:auto; border-radius:12px;" />
       </div>
 
-      <div class="product-details">
-        <h2 id="product-name"></h2>
-        <p id="product-price"></p>
+      <!-- Info column -->
+      <div class="product-details card">
+        <h2 id="productTitle">Product Title</h2>
+        <div class="muted" id="productSKU"></div>
+        <p class="price" id="productPrice">PKR 0</p>
 
-        <label>Color:</label>
-        <select id="color-select" onchange="updateProductImage()">
-          <option value="black">Black</option>
-          <option value="maroon">Maroon</option>
-          <option value="white">White</option>
-          <option value="olive">Olive</option>
-          <option value="charcol">Charcol</option>
-        </select>
+        <div>
+          <label class="label">Color</label>
+          <div id="colorOptions" class="color-options">
+            <!-- swatches injected by script.js -->
+          </div>
+        </div>
 
-        <label>Size:</label>
-        <select id="size-select">
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
-          <option value="XL">XL</option>
-        </select>
+        <div>
+          <label class="label">Size</label>
+          <select id="sizeSelect">
+            <option>S</option>
+            <option>M</option>
+            <option selected>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+          </select>
+        </div>
 
-        <button class="btn" id="order-btn" onclick="showOrderForm()">Order Now</button>
+        <div style="margin-top:12px">
+          <label class="label">Quantity</label>
+          <select id="qtySelect">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+
+        <div id="orderActions" style="margin-top:18px">
+          <button class="btn" id="orderNowBtn">Order Now</button>
+          <button class="btn ghost" onclick="location.href='index.html'">Continue Shopping</button>
+        </div>
+
+        <!-- order form injected when Order Now clicked -->
+        <div id="orderFormWrap" style="margin-top:14px; display:none"></div>
+
+        <div id="productStatus" class="muted" style="margin-top:12px"></div>
       </div>
-    </div>
-
-    <!-- Hidden Order Form -->
-    <div id="orderForm" class="card" style="display:none; margin-top:20px;">
-  <h3>Place Your Order</h3>
-
-  <label for="name">Name</label>
-  <input type="text" id="name" placeholder="Full Name" required>
-
-  <label for="phone">Phone</label>
-  <input type="text" id="phone" placeholder="03XXXXXXXXX" required>
-
-  <label for="city">City</label>
-  <input type="text" id="city" placeholder="Your City" required>
-
-  <label for="address">Address</label>
-  <textarea id="address" placeholder="Complete Address" required></textarea>
-
-  <button class="btn" id="placeOrderBtn">Place Order</button>
-</div>
-
-<!-- This stays outside -->
-<button class="btn" id="order-btn" onclick="showOrderForm()">Order Now</button>
-
-
-    <div id="popup" class="popup hidden"></div>
+    </section>
   </main>
 
-  <footer>
-    <p>© 2025 DripNova | All Rights Reserved</p>
+  <footer class="site-footer">
+    <div class="wrap">© 2025 DripNova • All rights reserved</div>
   </footer>
 </body>
 </html>
