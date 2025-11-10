@@ -1,5 +1,5 @@
 // script.js — loads products.json, renders index and product pages, handles modal + order post
-const WEBAPP_URL = "REPLACE_WITH_YOUR_WEBAPP_URL"; // <- set this to your deployed Apps Script web app URL
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzDw2aXgirPrCdtxscrAM8K0t4hs9NRcK5jXdqJ26KYaz9jtOD25MCAXzXDzAIAV0SwvQ/exec"; // <- set this to your deployed Apps Script web app URL
 const PRODUCTS_JSON = "products.json";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -200,3 +200,4 @@ function submitOrder(){
 function escapeHtml(str = "") {
   return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 }
+
