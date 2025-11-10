@@ -70,7 +70,7 @@ function showPopup(message, isError = false) {
 
 // ✅ Submit order to Google Apps Script
 // replace SHEET_URL with your actual script URL
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbz5hA2Imx7TZlbTULofmGXo6oJr5iSwZjn0w7Hloo3Ldmio2gjanhuMJERMNuhkqpnPBw/exec";
 
 async function submitOrder(e) {
   e.preventDefault();
@@ -136,3 +136,4 @@ async function submitOrder(e) {
     statusEl.textContent = "❌ Network error — please check your connection or script URL.";
   }
 }
+
