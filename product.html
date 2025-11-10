@@ -1,82 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DripNova — Product</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Product — DripNova</title>
+  <link rel="stylesheet" href="style.css"/>
   <script defer src="script.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap header-inner">
-      <div class="brand">
-        <img src="dripnova-logo.png" alt="DripNova" class="logo" />
-        <h1>DripNova</h1>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="index.html#shop">Shop</a>
-      </nav>
+    <div class="logo-container">
+      <img src="dripnova-logo.png" alt="DripNova" class="logo" />
+      <h1>DripNova</h1>
     </div>
+    <nav>
+      <a href="index.html">Shop</a>
+    </nav>
   </header>
 
-  <main class="wrap">
-    <button class="btn ghost back" onclick="history.back()">← Back</button>
-
-    <section id="productArea" class="product-area">
-      <!-- Image column -->
-      <div class="product-image card">
-        <img id="productFront" src="" alt="Product front" />
-        <img id="productBack" src="" alt="Product back" style="display:none; position:absolute; top:0; left:0; width:100%; height:auto; border-radius:12px;" />
-      </div>
-
-      <!-- Info column -->
-      <div class="product-details card">
-        <h2 id="productTitle">Product Title</h2>
-        <div class="muted" id="productSKU"></div>
-        <p class="price" id="productPrice">PKR 0</p>
-
-        <div>
-          <label class="label">Color</label>
-          <div id="colorOptions" class="color-options">
-            <!-- swatches injected by script.js -->
-          </div>
-        </div>
-
-        <div>
-          <label class="label">Size</label>
-          <select id="sizeSelect">
-            <option>S</option>
-            <option>M</option>
-            <option selected>L</option>
-            <option>XL</option>
-            <option>2XL</option>
-          </select>
-        </div>
-
-        <div style="margin-top:12px">
-          <label class="label">Quantity</label>
-          <select id="qtySelect">
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </div>
-
-        <div id="orderActions" style="margin-top:18px">
-          <button class="btn" id="orderNowBtn">Order Now</button>
-          <button class="btn ghost" onclick="location.href='index.html'">Continue Shopping</button>
-        </div>
-
-        <!-- order form injected when Order Now clicked -->
-        <div id="orderFormWrap" style="margin-top:14px; display:none"></div>
-
-        <div id="productStatus" class="muted" style="margin-top:12px"></div>
-      </div>
+  <main>
+    <section id="product-detail" class="product-detail">
+      <!-- populated by script.js -->
+      <div class="product-gallery" id="gallery"></div>
+      <div class="product-info" id="productInfo"></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">© 2025 DripNova • All rights reserved</div>
+  <!-- Order Modal -->
+  <div id="orderModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <button class="close" onclick="closeModal()">✕</button>
+      <div id="orderFormWrap"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 DripNova</p>
   </footer>
 </body>
 </html>
