@@ -70,10 +70,14 @@
     }
 
     form {
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: .6rem;
       margin-top: 1rem;
+    }
+
+    form.active {
+      display: flex;
     }
 
     form input, form select {
