@@ -1,0 +1,160 @@
+[
+  {
+    "id": "sneaker",
+    "name": "Sneaker",
+    "price": 999,
+    "description": "Sports wear hoodie",
+    "sizes": ["S","M","L","XL"],
+    "images": [
+      {"color":"dark chocolate","front":"images/sneaker-dark-front.png","back":"images/sneaker-dark-back.png"},
+      {"color":"red","front":"images/sneaker-red-front.png","back":"images/sneaker-red-back.png"},
+      {"color":"modal front","front":"images/sneaker-modal-front.png","back":"images/sneaker-modal-back.png"}
+    ]
+  },
+
+  {
+    "id": "astronauts",
+    "name": "Astronauts",
+    "price": 1299,
+    "description": "Astronaut hoodie — white & black",
+    "sizes": ["S","M","L","XL"],
+    "images":[
+      {"color":"white","front":"images/unisex-heavy-blend-hooded-sweatshirt.jpg","back":"images/unisex-heavy-blend-hooded-sweatshirt (2).jpg","folded":"images/unisex-heavy-blend-hooded-sweatshirt (3).jpg"},
+      {"color":"black","front":"images/unisex-heavy-blend-hooded-sweatshirt (4).jpg","back":"images/unisex-heavy-blend-hooded-sweatshirt (5).jpg","folded":"images/unisex-heavy-blend-hooded-sweatshirt (1).jpg"}
+    ]
+  },
+
+  {
+    "id":"climb-your-way",
+    "name":"Climb Your Way To The Top",
+    "price":1499,
+    "description":"Sweater — multiple colors",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"white","front":"images/unisex-sweatshirt.jpg","back":"images/unisex-sweatshirt (1).jpg"},
+      {"color":"black","front":"images/unisex-sweatshirt (2).jpg","back":"images/unisex-sweatshirt (3).jpg"},
+      {"color":"maroon","front":"images/unisex-sweatshirt (4).jpg","back":"images/unisex-sweatshirt (5).jpg"},
+      {"color":"dark chocolate","front":"images/unisex-sweatshirt (6).jpg","back":"images/unisex-sweatshirt (7).jpg"}
+    ]
+  },
+
+  {
+    "id":"footballer",
+    "name":"Footballer",
+    "price":1299,
+    "description":"Unisex sweatshirt — black/sky blue/navy/white",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/footballer-black-front.png","back":"images/footballer-black-back.png"},
+      {"color":"sky blue","front":"images/footballer-sky-front.png","back":"images/footballer-sky-back.png"},
+      {"color":"navy blue","front":"images/footballer-navy-front.png","back":"images/footballer-navy-back.png"},
+      {"color":"white","front":"images/footballer-white-front.png","back":"images/footballer-white-back.png"}
+    ]
+  },
+
+  {
+    "id":"hello-there",
+    "name":"Hello There",
+    "price":1499,
+    "description":"Hoodie — multiple colors",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/hello-black-front.png","back":"images/hello-black-back.png"},
+      {"color":"white","front":"images/hello-white-front.png","back":"images/hello-white-back.png"},
+      {"color":"maroon","front":"images/hello-maroon-front.png","back":"images/hello-maroon-back.png"},
+      {"color":"army green","front":"images/hello-army-front.png","back":"images/hello-army-back.png"},
+      {"color":"off white","front":"images/hello-offwhite-front.png","back":"images/hello-offwhite-back.png"}
+    ]
+  },
+
+  {
+    "id":"king-wild",
+    "name":"King Wild",
+    "price":1499,
+    "description":"Hoodie — grey",
+    "sizes":["S","M","L","XL"],
+    "images":[{"color":"grey","front":"images/king-wild-front.png","back":"images/king-wild-back.png"}]
+  },
+
+  {
+    "id":"moving-forward",
+    "name":"Moving Forward",
+    "price":1299,
+    "description":"Zip hoodie — black",
+    "sizes":["S","M","L","XL"],
+    "images":[{"color":"black","front":"images/moving-forward-hoodie.png","back":"images/moving-forward-back.png"}]
+  },
+
+  {
+    "id":"stay-focus",
+    "name":"Stay Focus Break Rules",
+    "price":999,
+    "description":"T-shirt / sweat variant — 3 colours",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"off white","front":"images/stay-focused-break-rules front.png","back":"images/stay-focused-break-rules back.png"},
+      {"color":"olive","front":"images/stay-focused-break-rules front olive.png","back":"images/stay-focused-break-rules back olive .png"},
+      {"color":"charcoal","front":"images/stay-focused-break-rules front charcol .png","back":"images/stay-focused-break-rules back charcol .png"}
+    ]
+  },
+
+  {
+    "id":"thumbs-up",
+    "name":"Thumbs Upp",
+    "price":1499,
+    "description":"Hoodie — white/black/bottle green",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"white","front":"images/thumbs-front-white.png","back":"images/thumbs-back-white.png"},
+      {"color":"black","front":"images/thumbs-front-black.png","back":"images/thumbs-back-black.png"},
+      {"color":"bottle green","front":"images/thumbs-front-green.png","back":"images/thumbs-back-green.png"}
+    ]
+  },
+
+  {
+    "id":"basketball",
+    "name":"Basketball",
+    "price":1499,
+    "description":"Hoodie — black/white",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/basketball-black-front.png","back":"images/basketball-black-back.png"},
+      {"color":"white","front":"images/basketball-white-front.png","back":"images/basketball-white-back.png"}
+    ]
+  },
+
+  {
+    "id":"awesome-brother",
+    "name":"Awesome Brother",
+    "price":1299,
+    "description":"Hoodie — black only",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/awesome-brother front.png","back":"images/awesome-brother back.png"}
+    ]
+  },
+
+  {
+    "id":"your-only-limit",
+    "name":"Your Only Limit Is Your Mind",
+    "price":1299,
+    "description":"Hoodie — black only",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/your mind hoodie front.png","back":"images/your mind hoodie back.png"}
+    ]
+  },
+
+  {
+    "id":"be-your-own-hero",
+    "name":"Be Your Own Hero",
+    "price":999,
+    "description":"Sweatshirt — black, maroon, white",
+    "sizes":["S","M","L","XL"],
+    "images":[
+      {"color":"black","front":"images/black front.png","back":"images/black back.png"},
+      {"color":"maroon","front":"images/maroon front.png","back":"images/maroon back.png"},
+      {"color":"white","front":"images/white front.png","back":"images/white back.png"}
+    ]
+  }
+]
