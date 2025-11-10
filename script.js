@@ -1,189 +1,202 @@
-// PRODUCT DATA
-const productImages = {
-  "Be Your Own Hero": {
-    black: "images/black front.png",
-    maroon: "images/maroon front.png",
-    white: "images/white front.png"
-  },
-  "Stay Focused Break Rules": {
-    olive: "images/stay-focused-break-rules front olive .png",
-    charcol: "images/stay-focused-break-rules front charcol .png",
-    white: "images/stay-focused-break-rules front.png"
-  },
-  "Just Keep Moving Forward": {
-    black: "images/moving-forward-hoodie.png"
-  },
-  "Your Mind Hoodie": {
-    black: "images/your mind hoodie front.png"
-  },
-  "Awesome Brother Hoodie": {
-    black: "images/awesome-brother front.png"
-  }
-};
+// script.js — loads products.json, renders index and product pages, handles modal + order post
+const WEBAPP_URL = "REPLACE_WITH_YOUR_WEBAPP_URL"; // <- set this to your deployed Apps Script web app URL
+const PRODUCTS_JSON = "products.json";
 
-// ✅ Show Product Info
-function openProduct(name, price) {
-  localStorage.setItem("productName", name);
-  localStorage.setItem("productPrice", price);
-  window.location.href = "product.html";
-}
-
-// ✅ On product page load
-window.addEventListener("DOMContentLoaded", () => {
-  const name = localStorage.getItem("productName");
-  const price = localStorage.getItem("productPrice");
-
-  if (name && price) {
-    document.getElementById("product-name").textContent = name;
-    document.getElementById("product-price").textContent = "PKR " + price;
-    updateProductImage();
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const isProductPage = location.pathname.endsWith("product.html") || location.search.includes("product=");
+  fetch(PRODUCTS_JSON).then(r => r.json()).then(products => {
+    if (isProductPage) renderProductPage(products);
+    else renderIndex(products);
+  }).catch(err => {
+    console.error("Failed loading products:", err);
+    // optionally show a friendly message
+  });
 });
 
-// ✅ Update image when color changes
-function updateProductImage() {
-  const name = localStorage.getItem("productName");
-  const color = document.getElementById("color-select").value;
-  const img = document.getElementById("product-img");
+/* ---------- Index ---------- */
+function renderIndex(products) {
+  const list = document.getElementById("product-list");
+  if (!list) return;
+  list.innerHTML = "";
+  products.forEach(p => {
+    const el = document.createElement("article");
+    el.className = "product";
+    el.onclick = () => location.href = `product.html?id=${encodeURIComponent(p.id)}`;
+    el.innerHTML = `
+      <div class="thumb">
+        <img src="${p.images[0].front}" alt="${escapeHtml(p.name)}">
+      </div>
+      <h3>${escapeHtml(p.name)}</h3>
+      <p class="price">PKR ${p.price}</p>
+      <button class="small" onclick="event.stopPropagation(); location.href='product.html?id=${encodeURIComponent(p.id)}'">View</button>
+    `;
+    list.appendChild(el);
+  });
+}
 
-  if (productImages[name] && productImages[name][color]) {
-    img.src = productImages[name][color];
-  } else {
-    img.src = "dripnova-logo.png"; // fallback
+/* ---------- Product page ---------- */
+function renderProductPage(products) {
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id") || params.get("product");
+  if (!id) {
+    document.getElementById("product-detail").innerHTML = "<p>Product not found.</p>";
+    return;
   }
-}
-
-// ✅ Show order form only when clicking "Order Now"
-function showOrderForm() {
-  document.getElementById("order-form").classList.remove("hidden");
-  document.getElementById("order-btn").style.display = "none";
-}
-
-// ✅ Smooth popup message
-function showPopup(message, isError = false) {
-  const popup = document.getElementById("popup");
-  popup.textContent = message;
-  popup.className = "popup " + (isError ? "error" : "success");
-  popup.classList.remove("hidden");
-  setTimeout(() => popup.classList.add("hidden"), 2500);
-}
-
-// ✅ Submit order to Google Apps Script
-// replace SHEET_URL with your actual script URL
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbz5hA2Imx7TZlbTULofmGXo6oJr5iSwZjn0w7Hloo3Ldmio2gjanhuMJERMNuhkqpnPBw/exec";
-
-async function submitOrder(e) {
-  e.preventDefault();
-  const statusEl = document.getElementById("status");
-  statusEl.textContent = "Submitting order...";
-
-  const data = {
-    product: localStorage.getItem("productName"),
-    price: localStorage.getItem("productPrice"),
-    color: document.getElementById("color-select").value,
-    size: document.getElementById("size-select").value,
-    name: document.getElementById("name").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    address: document.getElementById("address").value.trim()
-  };
-
-  // Basic client-side validation
-  if (!data.product || !data.name || !data.phone || !data.address) {
-    statusEl.textContent = "⚠️ Please complete all required fields.";
+  const product = products.find(p => p.id === id);
+  if (!product) {
+    document.getElementById("product-detail").innerHTML = "<p>Product not found.</p>";
     return;
   }
 
-  try {
-    const res = await fetch(SHEET_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-      mode: "cors"
-    });
+  const gallery = document.getElementById("gallery");
+  const info = document.getElementById("productInfo");
 
-    const text = await res.text();                  // raw server response for debugging
-    let json;
-    try { json = JSON.parse(text); } catch(e){ json = null; }
+  // gallery
+  const galleryMain = document.createElement("div");
+  galleryMain.className = "gallery-main";
+  const mainImg = document.createElement("img");
+  mainImg.src = product.images[0].front;
+  mainImg.alt = product.name;
+  galleryMain.appendChild(mainImg);
 
-    console.log("SubmitOrder: HTTP", res.status, res.statusText, "raw:", text, "json:", json);
+  const thumbs = document.createElement("div");
+  thumbs.className = "gallery-thumbs";
 
-    if (!res.ok) {
-      statusEl.textContent = `⚠️ Server returned ${res.status} ${res.statusText}`;
-      return;
-    }
+  // create thumb for each color variant (use front image)
+  product.images.forEach(imgObj => {
+    const t = document.createElement("div");
+    t.className = "thumb-swatch";
+    const im = document.createElement("img");
+    im.src = imgObj.front;
+    im.alt = product.name + " " + imgObj.color;
+    im.style.width = "100%";
+    t.appendChild(im);
+    t.onclick = () => { mainImg.src = imgObj.front; };
+    thumbs.appendChild(t);
+  });
 
-    // Prefer well-formed JSON { result: "success" } from server
-    if (json && json.result === "success") {
-      statusEl.textContent = "✅ Order placed. Redirecting...";
-      // optionally store order and redirect to thankyou
-      sessionStorage.setItem("dripnova_order", JSON.stringify({ ...data, orderId: json.orderId || null }));
-      setTimeout(()=> window.location.href = "thankyou.html", 800);
-      return;
-    }
+  gallery.appendChild(galleryMain);
+  gallery.appendChild(thumbs);
 
-    // If server returned text-based success message, check that
-    if (typeof text === "string" && /success/i.test(text)) {
-      statusEl.textContent = "✅ Order placed (text success). Redirecting...";
-      sessionStorage.setItem("dripnova_order", JSON.stringify({ ...data }));
-      setTimeout(()=> window.location.href = "thankyou.html", 800);
-      return;
-    }
+  // info
+  info.innerHTML = `
+    <h2>${escapeHtml(product.name)}</h2>
+    <p class="muted">${escapeHtml(product.description || "")}</p>
+    <div class="card">
+      <div class="price">PKR ${product.price}</div>
+      <label class="label">Choose color</label>
+      <div id="colorOptions" class="color-options"></div>
+      <label class="label">Size</label>
+      <select id="sizeSelect" class="input">
+        ${product.sizes.map(s => `<option value="${s}">${s}</option>`).join("")}
+      </select>
+      <div class="actions">
+        <button class="btn" id="order-btn">Order Now</button>
+        <a href="index.html" class="btn secondary">Back</a>
+      </div>
+    </div>
+  `;
 
-    // Otherwise show server message to help debug
-    statusEl.textContent = "⚠️ Server response: " + (json?.message || text.slice(0,200));
-  } catch (err) {
-    console.error("submitOrder error:", err);
-    statusEl.textContent = "❌ Network error — please check your connection or script URL.";
+  // populate swatches
+  const colorWrap = document.getElementById("colorOptions");
+  product.images.forEach((imgObj, idx) => {
+    const sw = document.createElement("div");
+    sw.className = "thumb-swatch";
+    sw.style.width = "44px";
+    sw.style.height = "44px";
+    sw.title = imgObj.color;
+    sw.innerHTML = `<img src="${imgObj.front}" alt="${imgObj.color}" style="width:100%;height:100%;object-fit:cover">`;
+    sw.onclick = () => {
+      mainImg.src = imgObj.front;
+      selectedColor = imgObj.color;
+      // visual active state:
+      [...colorWrap.children].forEach(c => c.style.boxShadow = "");
+      sw.style.boxShadow = "0 0 0 3px rgba(0,0,0,0.08)";
+    };
+    colorWrap.appendChild(sw);
+  });
+
+  // default selection
+  let selectedColor = product.images[0].color;
+  colorWrap.children[0].style.boxShadow = "0 0 0 3px rgba(0,0,0,0.08)";
+
+  document.getElementById("order-btn").addEventListener("click", () => {
+    openOrderModal(product, selectedColor);
+  });
+}
+
+/* ---------- Order modal / form ---------- */
+function openOrderModal(product, selectedColor) {
+  const modal = document.getElementById("orderModal");
+  modal.setAttribute("aria-hidden", "false");
+  const wrap = document.getElementById("orderFormWrap");
+  wrap.innerHTML = `
+    <h3 id="orderTitle">Order — ${escapeHtml(product.name)}</h3>
+    <form id="orderForm" class="card">
+      <input class="input" name="product" readonly value="${escapeHtml(product.name)}" />
+      <input class="input" name="color" readonly value="${escapeHtml(selectedColor)}" />
+      <input class="input" name="size" id="orderSize" value="${product.sizes[0]}" />
+      <input class="input" name="price" readonly value="${product.price}" />
+      <input class="input" name="name" placeholder="Full name" required />
+      <input class="input" name="phone" placeholder="Phone number" required />
+      <input class="input" name="city" placeholder="City" required />
+      <textarea class="input" name="address" placeholder="Address" required></textarea>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+        <button type="button" class="btn" onclick="submitOrder()">Place order</button>
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+      </div>
+      <div id="orderMsg" style="margin-top:8px;color:#333"></div>
+    </form>
+  `;
+  // sync size select (if present)
+  const sizeSelect = document.getElementById("sizeSelect");
+  const orderSize = document.getElementById("orderSize");
+  if (sizeSelect && orderSize) {
+    orderSize.value = sizeSelect.value || orderSize.value;
+    sizeSelect.addEventListener("change", () => orderSize.value = sizeSelect.value);
   }
 }
-// Show order form when user clicks "Order Now"
-function showOrderForm() {
-  document.getElementById("order-btn").style.display = "none";
-  document.getElementById("orderForm").style.display = "block";
+
+function closeModal(){
+  const modal = document.getElementById("orderModal");
+  modal.setAttribute("aria-hidden", "true");
+  document.getElementById("orderFormWrap").innerHTML = "";
 }
 
-// Handle order placement
-document.addEventListener("DOMContentLoaded", () => {
-  const orderBtn = document.getElementById("placeOrderBtn");
-  if (orderBtn) {
-    orderBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const city = document.getElementById("city").value.trim();
-      const address = document.getElementById("address").value.trim();
-
-      const product = document.getElementById("productName")?.innerText || "Unknown Product";
-      const size = document.getElementById("size")?.value || "";
-      const color = document.querySelector(".color-swatch.active")?.dataset.color || "";
-      const price = document.getElementById("price")?.innerText || "";
-
-      if (!name || !phone || !city || !address) {
-        alert("⚠️ Please fill in all fields before placing your order.");
-        return;
-      }
-
-      const orderData = { product, color, size, price, name, phone, city, address };
-
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec", {
-          method: "POST",
-          mode: "no-cors",
-          body: JSON.stringify(orderData),
-        });
-
-        // Store order data for thankyou.html
-        sessionStorage.setItem("dripnova_order", JSON.stringify(orderData));
-
-        // Redirect to thankyou page
-        window.location.href = "thankyou.html";
-      } catch (err) {
-        alert("❌ Network error — please try again.");
-        console.error("Order error:", err);
-      }
-    });
+/* ---------- submit to Apps Script ---------- */
+function submitOrder(){
+  const form = document.querySelector("#orderForm");
+  const msg = document.getElementById("orderMsg");
+  if (!form) return;
+  const data = {};
+  new FormData(form).forEach((v,k) => data[k] = v);
+  // small validation
+  if (!data.name || !data.phone || !data.address) {
+    msg.textContent = "Please fill required fields.";
+    return;
   }
-});
+  msg.textContent = "Placing order...";
+  fetch(WEBAPP_URL, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  }).then(r => r.json())
+    .then(res => {
+      if (res && res.success) {
+        msg.innerHTML = `✅ Order received. Reference: <strong>${escapeHtml(res.id || res.reference || "")}</strong><br/>We will contact you soon.`;
+        // optionally redirect to thank-you
+        setTimeout(() => { closeModal(); location.href = "thankyou.html"; }, 1600);
+      } else {
+        msg.textContent = "Network error — please try again or contact us.";
+        console.warn("order error", res);
+      }
+    }).catch(e => {
+      msg.textContent = "Network error — please try again.";
+      console.error(e);
+    });
+}
 
-
+/* ---------- utils ---------- */
+function escapeHtml(str = "") {
+  return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+}
