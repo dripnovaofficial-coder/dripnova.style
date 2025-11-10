@@ -2,110 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DripNova | Product</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
-  <style>
-    .product-detail {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
-
-    .image-container {
-      position: relative;
-      width: 320px;
-      height: 400px;
-      cursor: pointer;
-    }
-
-    .image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 1rem;
-      transition: opacity 0.4s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .image-container img.back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-
-    .image-container:hover img.front {
-      opacity: 0;
-    }
-
-    .image-container:hover img.back {
-      opacity: 1;
-    }
-
-    .product-info {
-      max-width: 400px;
-    }
-
-    .color-options {
-      display: flex;
-      gap: .5rem;
-      margin-bottom: 1rem;
-    }
-
-    .color-swatch {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid #ccc;
-      cursor: pointer;
-    }
-
-    .color-swatch.active {
-      border-color: #000;
-      transform: scale(1.1);
-    }
-
-    form {
-      display: none;
-      flex-direction: column;
-      gap: .6rem;
-      margin-top: 1rem;
-    }
-
-    form.active {
-      display: flex;
-    }
-
-    form input, form select {
-      padding: .6rem;
-      border: 1px solid #ccc;
-      border-radius: .4rem;
-      width: 100%;
-    }
-
-    .btn {
-      background: black;
-      color: white;
-      border: none;
-      padding: .8rem;
-      border-radius: .5rem;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .btn:hover {
-      background: #222;
-    }
-
-    .status {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -113,16 +13,57 @@
       <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
       <h1>DripNova</h1>
     </div>
-    <nav><a href="index.html">Home</a></nav>
   </header>
 
-  <main>
-    <section class="product-detail">
-      <div class="image-container" id="gallery"></div>
-      <div class="product-info" id="info"></div>
-    </section>
+  <main class="product-page">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+
+    <div class="product-view">
+      <div class="product-image">
+        <img id="product-img" src="" alt="Product Image" />
+      </div>
+
+      <div class="product-details">
+        <h2 id="product-name"></h2>
+        <p id="product-price"></p>
+
+        <label>Color:</label>
+        <select id="color-select" onchange="updateProductImage()">
+          <option value="black">Black</option>
+          <option value="maroon">Maroon</option>
+          <option value="white">White</option>
+          <option value="olive">Olive</option>
+          <option value="charcol">Charcol</option>
+        </select>
+
+        <label>Size:</label>
+        <select id="size-select">
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">XL</option>
+        </select>
+
+        <button class="btn" id="order-btn" onclick="showOrderForm()">Order Now</button>
+      </div>
+    </div>
+
+    <!-- Hidden Order Form -->
+    <div id="order-form" class="hidden">
+      <h3>Complete Your Order</h3>
+      <form id="checkout-form" onsubmit="submitOrder(event)">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="text" id="phone" placeholder="Phone Number" required />
+        <input type="text" id="address" placeholder="Address" required />
+        <button type="submit" class="btn">Place Order</button>
+      </form>
+    </div>
+
+    <div id="popup" class="popup hidden"></div>
   </main>
 
-  <footer><p>© 2025 DripNova</p></footer>
+  <footer>
+    <p>© 2025 DripNova | All Rights Reserved</p>
+  </footer>
 </body>
 </html>
