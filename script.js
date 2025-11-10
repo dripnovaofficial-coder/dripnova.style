@@ -20,18 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const colors = getColors(name);
   const defaultColor = colors[0];
 
+  // Load main product images
   gallery.innerHTML = `
     <img class="front" id="frontImg" src="${getImage(name, defaultColor, 'front')}" alt="front" />
     <img class="back" id="backImg" src="${getImage(name, defaultColor, 'back')}" alt="back" />
   `;
 
+  // Product info and Order Now button
   info.innerHTML = `
     <h2>${name}</h2>
     <p class="price">PKR ${price}</p>
+
     <label>Select Color:</label>
     <div class="color-options">
       ${colors.map(c => `<div class="color-swatch" data-color="${c}" title="${c}" style="background:${colorToHex(c)}"></div>`).join('')}
     </div>
+
     <label>Size:</label>
     <select id="size">
       <option value="S">S</option>
@@ -39,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <option value="L">L</option>
       <option value="XL">XL</option>
     </select>
+
+    <button id="orderNow" class="btn">Order Now</button>
 
     <form id="orderForm">
       <input type="text" id="name" placeholder="Full Name" required>
@@ -50,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </form>
   `;
 
-  // color click
+  // color switching
   document.querySelectorAll(".color-swatch").forEach(s => {
     s.addEventListener("click", e => {
       document.querySelectorAll(".color-swatch").forEach(sw => sw.classList.remove("active"));
@@ -62,7 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelector(".color-swatch").classList.add("active");
 
-  // form submit
+  // Show form when clicking Order Now
+  document.getElementById("orderNow").addEventListener("click", () => {
+    document.getElementById("orderForm").classList.add("active");
+    document.getElementById("orderNow").style.display = "none";
+  });
+
+  // Form submit logic
   const form = document.getElementById("orderForm");
   form.addEventListener("submit", async e => {
     e.preventDefault();
@@ -113,10 +125,11 @@ function getColors(name) {
   return map[name] || ["black"];
 }
 
+// Match your image names in /images/
 function getImage(name, color, side) {
-  const n = name.toLowerCase().replaceAll(" ", "-");
-  // adapt to consistent file names you have in /images/
-  return `images/${n}-${color}-${side}.png`;
+  const cleaned = name.toLowerCase().replaceAll(" ", "-");
+  if (color === "off white") color = "off-white";
+  return `images/${cleaned}-${color}-${side}.png`;
 }
 
 function colorToHex(color) {
