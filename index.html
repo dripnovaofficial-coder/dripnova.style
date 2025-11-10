@@ -1,55 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DripNova — Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DripNova | Streetwear Collection</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <div class="brand">
-        <img src="dripnova-logo.png" alt="DripNova" class="logo"/>
-        <h1>DripNova</h1>
-      </div>
-      <nav class="main-nav">
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <header>
+    <div class="logo-container">
+      <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
+      <h1>DripNova</h1>
     </div>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="hero-text">
-          <h2>Streetwear, reimagined.</h2>
-          <p>Minimal. Bold. Future-ready. Shop our curated hoodies.</p>
-          <button class="btn primary" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop collection</button>
-        </div>
-        <div class="hero-image">
-          <img src="images/maroon front.png" alt="DripNova hero">
-        </div>
+      <div class="hero-inner">
+        <h2>Express Yourself with DripNova</h2>
+        <p>Premium streetwear for the bold and confident. Redefine your style today.</p>
+        <button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
       </div>
     </section>
 
-    <section id="shop" class="wrap products-section">
-      <h2 class="section-title">Our Collection</h2>
-      <div id="productGrid" class="product-grid">
-        <!-- JS will populate product cards here -->
+    <!-- Products Section -->
+    <section id="shop" class="products">
+      <h2>Our Collection</h2>
+
+      <div class="product-list">
+
+        <!-- Be Your Own Hero -->
+        <article class="product">
+          <a href="product.html?name=be-your-own-hero">
+            <div class="thumb">
+              <img src="images/maroon front.png" alt="Be Your Own Hero">
+            </div>
+            <h3>Be Your Own Hero</h3>
+            <p class="price">PKR 1699</p>
+          </a>
+        </article>
+
+        <!-- Stay Focused Break Rules -->
+        <article class="product">
+          <a href="product.html?name=stay-focused-break-rules">
+            <div class="thumb">
+              <img src="images/stay-focused-break-rules front olive .png" alt="Stay Focused Break Rules">
+            </div>
+            <h3>Stay Focused Break Rules</h3>
+            <p class="price">PKR 1699</p>
+          </a>
+        </article>
+
+        <!-- Just Keep Moving Forward -->
+        <article class="product">
+          <a href="product.html?name=moving-forward">
+            <div class="thumb">
+              <img src="images/moving-forward-hoodie.png" alt="Just Keep Moving Forward">
+            </div>
+            <h3>Just Keep Moving Forward</h3>
+            <p class="price">PKR 1699</p>
+          </a>
+        </article>
+
+        <!-- Your Mind Hoodie -->
+        <article class="product">
+          <a href="product.html?name=your-mind-hoodie">
+            <div class="thumb">
+              <img src="images/your mind hoodie front.png" alt="Your Mind Hoodie">
+            </div>
+            <h3>Your Mind Hoodie</h3>
+            <p class="price">PKR 1299</p>
+          </a>
+        </article>
+
+        <!-- Awesome Brother Hoodie -->
+        <article class="product">
+          <a href="product.html?name=awesome-brother">
+            <div class="thumb">
+              <img src="images/awesome-brother front.png" alt="Awesome Brother Hoodie">
+            </div>
+            <h3>Awesome Brother Hoodie</h3>
+            <p class="price">PKR 1299</p>
+          </a>
+        </article>
+
       </div>
     </section>
 
-    <section id="about" class="wrap about-section">
-      <h3>About DripNova</h3>
-      <p>DripNova blends comfort and minimal streetwear style. We focus on premium finishing, thoughtful cuts, and bold yet refined designs.</p>
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2>About DripNova</h2>
+      <p>DripNova merges comfort and confidence in every stitch. Our hoodies are crafted to make a statement — wherever you go.</p>
     </section>
 
-    <section id="contact" class="wrap contact-section">
-      <h3>Contact</h3>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
       <div class="contact-grid">
         <div>📍 Karachi, Pakistan</div>
         <div>📞 0330-2936798</div>
@@ -59,8 +113,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">© 2025 DripNova • All rights reserved</div>
+  <footer>
+    <p>© 2025 DripNova | All Rights Reserved</p>
   </footer>
 </body>
 </html>
