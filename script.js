@@ -82,7 +82,7 @@ function submitOrder(e) {
     address: document.getElementById("address").value
   };
 
-  fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+  fetch("https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
@@ -99,3 +99,4 @@ function submitOrder(e) {
       showPopup("⚠️ Network error. Please try again.", true);
     });
 }
+
