@@ -136,4 +136,54 @@ async function submitOrder(e) {
     statusEl.textContent = "❌ Network error — please check your connection or script URL.";
   }
 }
+// Show order form when user clicks "Order Now"
+function showOrderForm() {
+  document.getElementById("order-btn").style.display = "none";
+  document.getElementById("orderForm").style.display = "block";
+}
+
+// Handle order placement
+document.addEventListener("DOMContentLoaded", () => {
+  const orderBtn = document.getElementById("placeOrderBtn");
+  if (orderBtn) {
+    orderBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      const product = document.getElementById("productName")?.innerText || "Unknown Product";
+      const size = document.getElementById("size")?.value || "";
+      const color = document.querySelector(".color-swatch.active")?.dataset.color || "";
+      const price = document.getElementById("price")?.innerText || "";
+
+      if (!name || !phone || !city || !address) {
+        alert("⚠️ Please fill in all fields before placing your order.");
+        return;
+      }
+
+      const orderData = { product, color, size, price, name, phone, city, address };
+
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxympv_30sMFi5mV_G_tmvS3AtFZUTe-6NhUSiM8YV1VGdjoq8Xyv7c_EFRrLIk4AuJ6Q/exec", {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(orderData),
+        });
+
+        // Store order data for thankyou.html
+        sessionStorage.setItem("dripnova_order", JSON.stringify(orderData));
+
+        // Redirect to thankyou page
+        window.location.href = "thankyou.html";
+      } catch (err) {
+        alert("❌ Network error — please try again.");
+        console.error("Order error:", err);
+      }
+    });
+  }
+});
+
 
