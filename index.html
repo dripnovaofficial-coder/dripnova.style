@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DripNova — Shop</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>Shop — DripNova</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="store.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo-container">
-      <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
-      <h1>DripNova</h1>
-    </div>
-    <nav>
-      <a href="index.html">Shop</a>
-      <a href="payment.html">Cart / Payment</a>
-    </nav>
-  </header>
+<header><h1>DripNova Store</h1></header>
+<section id="shop" class="shop-grid"></section>
 
-  <main class="products">
-    <h2>Our Products</h2>
-    <div id="product-list" class="product-list"></div>
-  </main>
+<div id="cart" class="modal">
+  <div class="modal-content">
+    <button onclick="closeCart()">✕</button>
+    <h2>Your Cart 🛒</h2>
+    <div id="cartItems"></div>
+    <h3>Total: Rs <span id="cartTotal">0</span></h3>
+    <h3>Checkout Details</h3>
+    <input id="cName" placeholder="Full Name"/>
+    <input id="cEmail" placeholder="Email"/>
+    <input id="cPhone" placeholder="Phone"/>
+    <input id="cAddress" placeholder="Delivery Address"/>
+    <button onclick="checkout()">Confirm Order</button>
+  </div>
+</div>
 
-  <footer>
-    <p>© 2025 DripNova</p>
-  </footer>
 </body>
 </html>
+
