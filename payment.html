@@ -3,57 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DripNova — Payment</title>
+  <title>Payment — DripNova</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="logo-container">
       <img src="dripnova-logo.png" class="logo" alt="DripNova Logo" />
       <h1>DripNova</h1>
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="product.html">Shop</a>
+      <a href="index.html">Shop</a>
     </nav>
   </header>
 
-  <main>
-    <section class="payment-page">
-      <h2>Payment Details</h2>
-      <p class="muted">Complete your payment using one of the methods below and confirm once done.</p>
+  <main class="products">
+    <h2>Your Cart</h2>
+    <div id="cartSummary" class="product-list"></div>
+    <div id="cartTotal" style="margin:20px; font-weight:bold;"></div>
 
-      <div id="orderSummary" class="card">
-        <!-- This will be filled dynamically from script.js -->
-      </div>
-
-      <div class="payment-methods card">
-        <h3>Pay with Easypaisa</h3>
-        <p><strong>0330-2936798</strong> (Muhammad Asim Khan)</p>
-
-        <h3>Pay with JazzCash / NayaPay</h3>
-        <p><strong>0330-2936798</strong> (Muhammad Khuzaima Raza)</p>
-
-        <p style="margin-top: 12px;">
-          After payment, please send your payment proof or screenshot to:
-        </p>
-        <ul>
-          <li>📩 <strong>dripnova.official@gmail.com</strong></li>
-          <li>📱 Instagram:
-            <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a>
-          </li>
-        </ul>
-
-        <div style="margin-top: 16px;">
-          <button class="btn" id="iPaidBtn">I have paid — Confirm</button>
-        </div>
-      </div>
+    <section class="payment-methods card">
+      <h3>Pay with Easypaisa</h3>
+      <p><strong>0330-2936798</strong> (Muhammad Asim Khan)</p>
+      <h3>Pay with JazzCash / NayaPay</h3>
+      <p><strong>0330-2936798</strong> (Muhammad Khuzaima Raza)</p>
+      <p>After payment, send proof to:</p>
+      <ul>
+        <li>📩 <strong>dripnova.official@gmail.com</strong></li>
+        <li>📱 Instagram: <a href="https://instagram.com/dripn_ovaofficial" target="_blank">@dripn_ovaofficial</a></li>
+      </ul>
+      <button class="btn" id="confirmPayment">I have paid — Confirm</button>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 DripNova | All Rights Reserved</p>
+    <p>© 2025 DripNova</p>
   </footer>
 </body>
 </html>
