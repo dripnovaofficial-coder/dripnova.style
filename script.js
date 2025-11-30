@@ -1,5 +1,5 @@
 // Use your Apps Script Web App as backend
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyMOmeHrMRVzTWnPQ30XbQB0kpzckuYxIszTwlzsX675bNn-n_xeXXqiHeISYxezfZo/exec";
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyMsUpbszwvGhXYwFrY65C7QlYQAnA1O_1H6fjoVCCOE14eUG9xXMya4lWUY_TI-4qu/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch(WEBAPP_URL)
@@ -133,3 +133,4 @@ function renderCart() {
     }
   }
 }
+
