@@ -1,4 +1,4 @@
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwB3yKl4K6l6HU_-BGh4ZJK0pC5dwU725xlIvpyho1ZCa3oekf-nBC2epoymPzVKpJn/exec";
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxBpn5ogMgCpBf-IdmAftc87ujX_V5zfjgchzqON93Si9iKXBOaQ9WudMIdlZSdgB9D/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch(WEBAPP_URL)
@@ -141,3 +141,4 @@ function renderCart() {
     }
   }
 }
+
