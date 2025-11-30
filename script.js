@@ -1,4 +1,4 @@
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbw8IpulC-Oxf_opfeZ_Sy4_qMaUYcSNPlXHdP14pxtseAkG8fWjtjhS1_zd83eNKWsI/exec"; // Your Apps Script Web App
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxR9zyiFjmXNu3pi_3AkcVli94X123LsN4RJHVZyVM-uk4elXUNirsbjFqiWTNgb5q6/exec"; // Your Apps Script Web App
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch(WEBAPP_URL)
@@ -132,3 +132,4 @@ function renderCart() {
     };
   }
 }
+
