@@ -1,10 +1,17 @@
-.shop-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:30px;}
-.product-card {background:#111;padding:15px;border-radius:12px;text-align:center;}
-.product-img {width:220px;height:260px;object-fit:cover;border-radius:10px;}
-.detail-img {width:380px;height:480px;object-fit:cover;margin:8px;border-radius:10px;}
-.modal {position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;}
-.modal-content {background:#222;padding:20px;border-radius:12px;width:90%;max-width:450px;}
-.cart-item {display:flex;gap:15px;align-items:center;background:#333;padding:10px;border-radius:10px;margin-bottom:10px;}
-.cart-img {width:90px;height:110px;object-fit:cover;border-radius:8px;}
-input, select, button {width:100%;padding:8px;margin-bottom:10px;border-radius:6px;border:none;}
-button {background:gold;font-weight:bold;cursor:pointer;}
+body {margin:0;font-family:Poppins,sans-serif;background:#000;color:#fff;}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#111;}
+.logo-container{display:flex;align-items:center;gap:10px;}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-weight:bold;}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:30px;}
+.product-card, .card{background:#111;padding:15px;border-radius:12px;text-align:center;}
+.product-img, .detail-img{width:100%;object-fit:cover;border-radius:10px;margin-bottom:8px;}
+.product-detail{display:flex;gap:20px;flex-wrap:wrap;padding:30px;}
+.gallery-main img{width:380px;height:480px;object-fit:cover;border-radius:10px;}
+.gallery-thumbs{display:flex;gap:8px;margin-top:10px;}
+.thumb-swatch img{width:60px;height:60px;object-fit:cover;border-radius:5px;cursor:pointer;border:2px solid #333;}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:100;}
+.modal-content{background:#222;padding:20px;border-radius:12px;width:90%;max-width:450px;}
+.cart-item{display:flex;gap:15px;align-items:center;background:#333;padding:10px;border-radius:10px;margin-bottom:10px;}
+.cart-img{width:90px;height:110px;object-fit:cover;border-radius:8px;}
+input, select, button{width:100%;padding:8px;margin-bottom:10px;border-radius:6px;border:none;}
+button{background:gold;font-weight:bold;cursor:pointer;}
