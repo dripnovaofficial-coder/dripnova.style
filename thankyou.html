@@ -1,29 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You — DripNova</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <title>Thank You — DripNova</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script>
+    window.onload = function(){
+      const order = JSON.parse(localStorage.getItem("latestOrder")) || [];
+      const orderList = document.getElementById("orderItems");
+      if(order.length === 0){
+        orderList.innerHTML = "<p>No recent orders 😔</p>";
+        return;
+      }
+      orderList.innerHTML = order.map(i=>`
+        <div class="cart-item">
+          <img src="${i.image}" class="cart-img"/>
+          <div>
+            <h4>${i.name}</h4>
+            <p>Size: ${i.size} | Color: ${i.color}</p>
+            <p>Rs ${i.price}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+  </script>
 </head>
 <body>
 <header>
-  <div class="logo-container">
-    <img src="dripnova-logo.png" class="logo" alt="DripNova Logo">
-    <h1>DripNova</h1>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
+  <img src="dripnova-logo.png" class="logo"/>
+  <h1>Thank You!</h1>
 </header>
 
-<main>
-  <section class="thankyou">
-    <h2>Thank you for your order! ❤️</h2>
-    <p>Your order has been placed successfully.</p>
-    <a href="index.html" class="btn">Back to Shop</a>
-  </section>
-</main>
+<section class="shop-grid">
+  <h2>Your Order Has Been Placed ✅</h2>
+  <div id="orderItems"></div>
+  <a href="index.html"><button>Back to Shop</button></a>
+</section>
 </body>
 </html>
