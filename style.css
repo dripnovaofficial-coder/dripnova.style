@@ -1,10 +1,9 @@
-/* Header and Logo */
 header, .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #000; /* or your preferred header color */
+  background-color: #000;
   color: #fff;
 }
 
@@ -15,10 +14,10 @@ header, .site-header {
 }
 
 .logo-container .logo {
-  width: 80px; /* adjust size */
+  width: 80px; /* smaller logo */
   height: auto;
   object-fit: contain;
-  border-radius: 6px; /* optional, for rounded corners */
+  border-radius: 6px;
 }
 
 nav a {
@@ -29,5 +28,5 @@ nav a {
 }
 
 nav a:hover {
-  color: gold; /* hover effect */
+  color: gold;
 }
