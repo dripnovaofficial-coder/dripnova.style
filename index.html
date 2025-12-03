@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Shop — DripNova</title>
+  <title>DripNova Store</title>
   <link rel="stylesheet" href="style.css"/>
   <script defer src="script.js"></script>
 </head>
@@ -9,19 +9,16 @@
 <header>
   <img src="dripnova-logo.png" class="logo"/>
   <h1>DripNova Store</h1>
-  <button onclick="openCart()" class="cart-btn">🛒 Cart</button>
 </header>
 
 <section id="shop" class="shop-grid"></section>
 
-<!-- CART MODAL -->
-<div id="cart" class="modal" style="display:none">
+<div id="cart" class="modal">
   <div class="modal-content">
     <button onclick="closeCart()">✕</button>
     <h2>Your Cart 🛒</h2>
     <div id="cartItems"></div>
     <h3>Total: Rs <span id="cartTotal">0</span></h3>
-    <button onclick="checkout()">Checkout</button>
   </div>
 </div>
 </body>
