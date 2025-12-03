@@ -1,22 +1,16 @@
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/";
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   const res = await fetch(GITHUB_RAW_BASE + "products.json");
   const products = await res.json();
 
-  const page = location.pathname;
-
-  if (page.includes("product.html")) loadProductPage(products);
-  else if (page.includes("payment.html")) renderCart(products);
-  else loadShop(products);
+  if (document.getElementById("shop")) renderShop(products);
+  if (document.getElementById("productInfo")) loadProductPage(products);
 });
 
-/* --- SHOP PAGE --- */
-function loadShop(products) {
+function renderShop(products) {
   const shop = document.getElementById("shop");
-  if (!shop) return;
   shop.innerHTML = "";
 
   products.forEach(p => {
@@ -37,7 +31,7 @@ function viewProduct(id) {
   location.href = `product.html?id=${encodeURIComponent(id)}`;
 }
 
-/* --- PRODUCT PAGE --- */
+/* PRODUCT PAGE */
 function loadProductPage(products) {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
@@ -47,22 +41,7 @@ function loadProductPage(products) {
   const gallery = document.getElementById("gallery");
   const info = document.getElementById("productInfo");
 
-  gallery.innerHTML = "";
-  const mainImg = document.createElement("img");
-  mainImg.src = GITHUB_RAW_BASE + product.images[0].front;
-  mainImg.className = "detail-img";
-  gallery.appendChild(mainImg);
-
-  const thumbs = document.createElement("div");
-  thumbs.className = "thumbs";
-  product.images.forEach(img => {
-    const t = document.createElement("img");
-    t.src = GITHUB_RAW_BASE + img.front;
-    t.className = "thumb-swatch";
-    t.onclick = () => mainImg.src = GITHUB_RAW_BASE + img.front;
-    thumbs.appendChild(t);
-  });
-  gallery.appendChild(thumbs);
+  gallery.innerHTML = `<img src="${GITHUB_RAW_BASE + product.images[0].front}" class="detail-img">`;
 
   info.innerHTML = `
     <h2>${product.name}</h2>
@@ -79,7 +58,7 @@ function loadProductPage(products) {
   `;
 }
 
-/* --- CART FUNCTIONS --- */
+/* CART FUNCTIONS */
 function addToCart(id) {
   fetch(GITHUB_RAW_BASE + "products.json")
     .then(res => res.json())
@@ -130,4 +109,8 @@ function removeFromCart(idx) {
 
 function closeCart() {
   document.getElementById("cart").style.display = "none";
+}
+
+function checkout() {
+  alert("Checkout functionality not yet linked!"); 
 }
