@@ -5,141 +5,148 @@
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {"color":"BLACK","front":"products/astronauts-black-front.jpg","back":"products/astronauts-black-back.jpg","folded":"products/astronauts-black-folded.jpg"},
-      {"color":"WHITE","front":"products/astronauts-white-front.jpg","back":"products/astronauts-white-back.jpg","folded":"products/astronauts-white-folded.jpg"}
+      {
+        "color": "BLACK",
+        "back": "astronauts-black-back.jpg",
+        "folded": "astronauts-black-folded.jpg",
+        "front": "astronauts-black-front.jpg"
+      },
+      {
+        "color": "WHITE",
+        "back": "astronauts-white-back.jpg",
+        "folded": "astronauts-white-folded.jpg",
+        "front": "astronauts-white-front.jpg"
+      }
     ],
     "price": 1299
   },
   {
     "id": "#0002",
-    "name": "AWESOME BROTHER",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "images": [
-      {"color":"BLACK","front":"products/awesome-brother-front.png","back":"products/awesome-brother-back.png"}
-    ],
-    "price": 1299
-  },
-  {
-    "id": "#0003",
-    "name": "be-your own hero",
+    "name": "Climb your way to the top",
     "type": "SWEATSHIRT",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {"color":"BLACK","front":"products/black front.png","back":"products/black back.png"},
-      {"color":"MAROON","front":"products/maroon front.png","back":"products/maroon back.png"},
-      {"color":"WHITE","front":"products/white front.png","back":"products/white back.png"}
+      {
+        "color": "BLACK",
+        "back": "climb-your-way-to-the-top-black-back.jpg",
+        "front": "climb-your-way-to-the-top-black-front.jpg"
+      },
+      {
+        "color": "CHOCOLATE",
+        "back": "climb-your-way-to-the-top-chocolate-back.jpg",
+        "front": "climb-your-way-to-the-top-chocolate-front.jpg"
+      },
+      {
+        "color": "MAROON",
+        "back": "climb-your-way-to-the-top-maroon-back.jpg",
+        "front": "climb-your-way-to-the-top-maroon-front.jpg"
+      },
+      {
+        "color": "WHITE",
+        "back": "climb-your-way-to-the-top-white-back.jpg",
+        "front": "climb-your-way-to-the-top-white-front.jpg"
+      }
+    ],
+    "price": 999
+  },
+  {
+    "id": "#0003",
+    "name": "Footballer",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "images": [
+      {
+        "color": "BLACK",
+        "back": "footballer_black_back.jpg",
+        "front": "footballer_black_front.jpg"
+      },
+      {
+        "color": "NAVY",
+        "back": "footballer_navy_back.jpg",
+        "front": "footballer_navy_front.jpg"
+      },
+      {
+        "color": "SKY BLUE",
+        "back": "footballer_skyblue_back.jpg",
+        "front": "footballer_skyblue_front.jpg"
+      },
+      {
+        "color": "WHITE",
+        "back": "footballer_white_back.jpg",
+        "front": "footballer_white_front.jpg"
+      }
     ],
     "price": 999
   },
   {
     "id": "#0004",
-    "name": "Climb your way to the top",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "images": [
-      {"color":"BLACK","front":"products/climb-your-way-to-the-top-black-front.jpg","back":"products/climb-your-way-to-the-top-black-back.jpg"},
-      {"color":"CHOCOLATE","front":"products/climb-your-way-to-the-top-chocolate-front.jpg","back":"products/climb-your-way-to-the-top-chocolate-back.jpg"},
-      {"color":"MAROON","front":"products/climb-your-way-to-the-top-maroon-front.jpg","back":"products/climb-your-way-to-the-top-maroon-back.jpg"},
-      {"color":"WHITE","front":"products/climb-your-way-to-the-top-white-front.jpg","back":"products/climb-your-way-to-the-top-white-back.jpg"}
-    ],
-    "price": 999
-  },
-  {
-    "id": "#0005",
-    "name": "Footballer",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "images": [
-      {"color":"BLACK","front":"products/footballer_black_front.jpg","back":"products/footballer_black_back.jpg"},
-      {"color":"NAVY","front":"products/footballer_navy_front.jpg","back":"products/footballer_navy_back.jpg"},
-      {"color":"SKY BLUE","front":"products/footballer_skyblue_front.jpg","back":"products/footballer_skyblue_back.jpg"},
-      {"color":"WHITE","front":"products/footballer_white_front.jpg","back":"products/footballer_white_back.jpg"}
-    ],
-    "price": 999
-  },
-  {
-    "id": "#0006",
     "name": "Hello there",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {"color":"ARMY","front":"products/ARMY FRONT.jpg","back":"products/ARMY BACK.jpg","hanger":"products/ARMY HANGERED.jpg","pair":"products/ARMY PAIR.jpg"},
-      {"color":"BLACK","front":"products/BLACK FRONT.jpg","back":"products/BLACK BACK.jpg","hanger":"products/BLACK HANGERED.jpg","pair":"products/BLACK PAIR.jpg"},
-      {"color":"MAROON","front":"products/MAROON FRONT.jpg","back":"products/MAROON BACK.jpg","hanger":"products/MAROON HANGER.jpg","pair":"products/MAROON PAIR.jpg"},
-      {"color":"OFF WHITE","front":"products/OFF WHITE FRONT.jpg","back":"products/OFF WHITE BACK.jpg","hanger":"products/OFF WHITE HANGER.jpg","pair":"products/OFF WHITE PAIR.jpg"},
-      {"color":"WHITE","front":"products/WHITE FRONT.jpg","back":"products/WHITE BACK.jpg","hanger":"products/WHITE HANGER.jpg","pair":"products/WHITE PAIR.jpg"}
+      {
+        "color": "ARMY",
+        "back": "ARMY BACK.jpg",
+        "front": "ARMY FRONT.jpg",
+        "hanger": "ARMY HANGERED.jpg",
+        "pair": "ARMY PAIR.jpg"
+      },
+      {
+        "color": "BLACK",
+        "back": "BLACK BACK.jpg",
+        "front": "BLACK FRONT.jpg",
+        "hanger": "BLACK HANGERED.jpg",
+        "pair": "BLACK PAIR.jpg"
+      },
+      {
+        "color": "MAROON",
+        "back": "MAROON BACK.jpg",
+        "front": "MAROON FRONT.jpg",
+        "hanger": "MAROON HANGER.jpg",
+        "pair": "MAROON PAIR.jpg"
+      },
+      {
+        "color": "OFF WHITE",
+        "back": "OFF WHITE BACK.jpg",
+        "front": "OFF WHITE FRONT.jpg",
+        "hanger": "OFF WHITE HANGER.jpg",
+        "pair": "OFF WHITE PAIR.jpg"
+      },
+      {
+        "color": "WHITE",
+        "back": "WHITE BACK.jpg",
+        "front": "WHITE FRONT.jpg",
+        "hanger": "WHITE HANGER.jpg",
+        "pair": "WHITE PAIR.jpg"
+      }
     ],
     "price": 1299
   },
   {
-    "id": "#0007",
+    "id": "#0005",
     "name": "king wild",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
-    "images":[{"color":"GREY","front":"products/GREY FRONT.jpg","back":"products/GREY BACK.jpg"}],
-    "price":1299
+    "images": [
+      {
+        "color": "GREY",
+        "back": "GREY BACK.jpg",
+        "front": "GREY FRONT.jpg"
+      }
+    ],
+    "price": 1299
   },
   {
-    "id": "#0008",
+    "id": "#0006",
     "name": "moving-forward",
     "type": "HOODIE",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[{"color":"BLACK","front":"products/moving-forward-hoodie.png"}],
-    "price":1299
-  },
-  {
-    "id": "#0009",
-    "name": "DN Special",
-    "type":"HOODIE",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[
-      {"color":"BLACK","front":"products/BLACK FRONT.jpg","back":"products/BLACK BACK.jpg","hanger":"products/BLACK FRONT HANGER.jpg","pair":"products/BLACK PAIR.jpg"},
-      {"color":"WHITE","front":"products/WHITE FRONT.jpg","back":"products/WHITE BACK.jpg","hanger":"products/WHITE FRONT HANGERED.jpg","pair":"products/WHITE PAIR.jpg"}
+    "sizes": ["S","M","L","XL","XXL"],
+    "images": [
+      {
+        "color": "BLACK",
+        "front": "moving-forward-hoodie.png"
+      }
     ],
-    "price":1299
-  },
-  {
-    "id":"#0010",
-    "name":"Sneaker",
-    "type":"HOODIE",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[
-      {"color":"BROWN","front":"products/BROWN FRONT.jpg","back":"products/BROWN BACK.jpg","modelFront":"products/BROWN FRONT MODEL.jpg","modelBack":"products/BROWN BACK MODEL.jpg"},
-      {"color":"RED","front":"products/RED FRONT.jpg","back":"products/RED BACK.jpg","modelFront":"products/RED FRONT MODEL.jpg","modelBack":"products/RED BACK MODEL.jpg"}
-    ],
-    "price":1299
-  },
-  {
-    "id":"#0011",
-    "name":"stay focused break rules",
-    "type":"SWEATSHIRT",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[
-      {"color":"CHARCOL","front":"products/stay-focused-break-rules front charcol .png","back":"products/stay-focused-break-rules back charcol .png"},
-      {"color":"OLIVE","front":"products/stay-focused-break-rules front olive .png","back":"products/stay-focused-break-rules back olive .png"},
-      {"color":"OFF WHITE","front":"products/stay-focused-break-rules front.png","back":"products/stay-focused-break-rules back.png"}
-    ],
-    "price":999
-  },
-  {
-    "id":"#0012",
-    "name":"thumbs up",
-    "type":"HOODIE",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[
-      {"color":"BLACK","front":"products/black front.jpg","back":"products/BLACK BACK.jpg"},
-      {"color":"GREEN","front":"products/green front.jpg","back":"products/green back .jpg"},
-      {"color":"WHITE","front":"products/WHITE FRONT.jpg","back":"products/white back.jpg"}
-    ],
-    "price":1299
-  },
-  {
-    "id":"#0013",
-    "name":"limit your mind",
-    "type":"HOODIE",
-    "sizes":["S","M","L","XL","XXL"],
-    "images":[{"color":"BLACK","front":"products/your mind hoodie front.png","back":"products/your mind hoodie back.png"}],
-    "price":1299
+    "price": 1299
   }
 ]
