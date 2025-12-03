@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DripNova Store</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Shop — DripNova</title>
+  <link rel="stylesheet" href="style.css"/>
   <script defer src="script.js"></script>
 </head>
 <body>
 <header>
-  <div class="logo-container">
-    <img src="dripnova-logo.png" class="logo" alt="DripNova Logo">
-    <h1>DripNova</h1>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
+  <img src="dripnova-logo.png" class="logo"/>
+  <h1>DripNova Store</h1>
 </header>
 
-<main>
-  <section id="shop" class="shop-grid"></section>
-</main>
+<!-- SHOP GRID -->
+<section id="shop" class="shop-grid"></section>
 
-<div id="cart" class="modal">
+<!-- CART MODAL -->
+<div id="cart" class="modal" style="display:none">
   <div class="modal-content">
     <button onclick="closeCart()">✕</button>
     <h2>Your Cart 🛒</h2>
@@ -31,6 +24,5 @@
     <button onclick="checkout()">Checkout</button>
   </div>
 </div>
-
 </body>
 </html>
