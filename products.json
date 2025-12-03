@@ -5,148 +5,141 @@
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {
-        "color": "BLACK",
-        "back": "astronauts-black-back.jpg",
-        "folded": "astronauts-black-folded.jpg",
-        "front": "astronauts-black-front.jpg"
-      },
-      {
-        "color": "WHITE",
-        "back": "astronauts-white-back.jpg",
-        "folded": "astronauts-white-folded.jpg",
-        "front": "astronauts-white-front.jpg"
-      }
+      {"color": "BLACK", "back":"astronauts-black-back.jpg","folded":"astronauts-black-folded.jpg","front":"astronauts-black-front.jpg"},
+      {"color": "WHITE", "back":"astronauts-white-back.jpg","folded":"astronauts-white-folded.jpg","front":"astronauts-white-front.jpg"}
     ],
     "price": 1299
   },
   {
     "id": "#0002",
-    "name": "Climb your way to the top",
-    "type": "SWEATSHIRT",
+    "name": "AWESOME BROTHER",
+    "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {
-        "color": "BLACK",
-        "back": "climb-your-way-to-the-top-black-back.jpg",
-        "front": "climb-your-way-to-the-top-black-front.jpg"
-      },
-      {
-        "color": "CHOCOLATE",
-        "back": "climb-your-way-to-the-top-chocolate-back.jpg",
-        "front": "climb-your-way-to-the-top-chocolate-front.jpg"
-      },
-      {
-        "color": "MAROON",
-        "back": "climb-your-way-to-the-top-maroon-back.jpg",
-        "front": "climb-your-way-to-the-top-maroon-front.jpg"
-      },
-      {
-        "color": "WHITE",
-        "back": "climb-your-way-to-the-top-white-back.jpg",
-        "front": "climb-your-way-to-the-top-white-front.jpg"
-      }
+      {"color": "BLACK","front":"awesome-brother-front.png","back":"awesome-brother-back.png"}
     ],
-    "price": 999
+    "price": 1299
   },
   {
     "id": "#0003",
-    "name": "Footballer",
+    "name": "be-your own hero",
     "type": "SWEATSHIRT",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {
-        "color": "BLACK",
-        "back": "footballer_black_back.jpg",
-        "front": "footballer_black_front.jpg"
-      },
-      {
-        "color": "NAVY",
-        "back": "footballer_navy_back.jpg",
-        "front": "footballer_navy_front.jpg"
-      },
-      {
-        "color": "SKY BLUE",
-        "back": "footballer_skyblue_back.jpg",
-        "front": "footballer_skyblue_front.jpg"
-      },
-      {
-        "color": "WHITE",
-        "back": "footballer_white_back.jpg",
-        "front": "footballer_white_front.jpg"
-      }
+      {"color":"BLACK","back":"black back.png","front":"black front.png"},
+      {"color":"MAROON","back":"maroon back.png","front":"maroon front.png"},
+      {"color":"WHITE","back":"white back.png","front":"white front.png"}
     ],
     "price": 999
   },
   {
     "id": "#0004",
+    "name": "Climb your way to the top",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "images": [
+      {"color":"BLACK","back":"climb-your-way-to-the-top-black-back.jpg","front":"climb-your-way-to-the-top-black-front.jpg"},
+      {"color":"CHOCOLATE","back":"climb-your-way-to-the-top-chocolate-back.jpg","front":"climb-your-way-to-the-top-chocolate-front.jpg"},
+      {"color":"MAROON","back":"climb-your-way-to-the-top-maroon-back.jpg","front":"climb-your-way-to-the-top-maroon-front.jpg"},
+      {"color":"WHITE","back":"climb-your-way-to-the-top-white-back.jpg","front":"climb-your-way-to-the-top-white-front.jpg"}
+    ],
+    "price": 999
+  },
+  {
+    "id": "#0005",
+    "name": "Footballer",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "images": [
+      {"color":"BLACK","back":"footballer_black_back.jpg","front":"footballer_black_front.jpg"},
+      {"color":"NAVY","back":"footballer_navy_back.jpg","front":"footballer_navy_front.jpg"},
+      {"color":"SKY BLUE","back":"footballer_skyblue_back.jpg","front":"footballer_skyblue_front.jpg"},
+      {"color":"WHITE","back":"footballer_white_back.jpg","front":"footballer_white_front.jpg"}
+    ],
+    "price": 999
+  },
+  {
+    "id": "#0006",
     "name": "Hello there",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "images": [
-      {
-        "color": "ARMY",
-        "back": "ARMY BACK.jpg",
-        "front": "ARMY FRONT.jpg",
-        "hanger": "ARMY HANGERED.jpg",
-        "pair": "ARMY PAIR.jpg"
-      },
-      {
-        "color": "BLACK",
-        "back": "BLACK BACK.jpg",
-        "front": "BLACK FRONT.jpg",
-        "hanger": "BLACK HANGERED.jpg",
-        "pair": "BLACK PAIR.jpg"
-      },
-      {
-        "color": "MAROON",
-        "back": "MAROON BACK.jpg",
-        "front": "MAROON FRONT.jpg",
-        "hanger": "MAROON HANGER.jpg",
-        "pair": "MAROON PAIR.jpg"
-      },
-      {
-        "color": "OFF WHITE",
-        "back": "OFF WHITE BACK.jpg",
-        "front": "OFF WHITE FRONT.jpg",
-        "hanger": "OFF WHITE HANGER.jpg",
-        "pair": "OFF WHITE PAIR.jpg"
-      },
-      {
-        "color": "WHITE",
-        "back": "WHITE BACK.jpg",
-        "front": "WHITE FRONT.jpg",
-        "hanger": "WHITE HANGER.jpg",
-        "pair": "WHITE PAIR.jpg"
-      }
+      {"color":"ARMY","back":"ARMY BACK.jpg","front":"ARMY FRONT.jpg","hanger":"ARMY HANGERED.jpg","pair":"ARMY PAIR.jpg"},
+      {"color":"BLACK","back":"BLACK BACK.jpg","front":"BLACK FRONT.jpg","hanger":"BLACK HANGERED.jpg","pair":"BLACK PAIR.jpg"},
+      {"color":"MAROON","back":"MAROON BACK.jpg","front":"MAROON FRONT.jpg","hanger":"MAROON HANGER.jpg","pair":"MAROON PAIR.jpg"},
+      {"color":"OFF WHITE","back":"OFF WHITE BACK.jpg","front":"OFF WHITE FRONT.jpg","hanger":"OFF WHITE HANGER.jpg","pair":"OFF WHITE PAIR.jpg"},
+      {"color":"WHITE","back":"WHITE BACK.jpg","front":"WHITE FRONT.jpg","hanger":"WHITE HANGER.jpg","pair":"WHITE PAIR.jpg"}
     ],
     "price": 1299
   },
   {
-    "id": "#0005",
+    "id": "#0007",
     "name": "king wild",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
-    "images": [
-      {
-        "color": "GREY",
-        "back": "GREY BACK.jpg",
-        "front": "GREY FRONT.jpg"
-      }
-    ],
+    "images":[{"color":"GREY","back":"GREY BACK.jpg","front":"GREY FRONT.jpg"}],
     "price": 1299
   },
   {
-    "id": "#0006",
+    "id": "#0008",
     "name": "moving-forward",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
-    "images": [
-      {
-        "color": "BLACK",
-        "front": "moving-forward-hoodie.png"
-      }
-    ],
+    "images":[{"color":"BLACK","front":"moving-forward-hoodie.png"}],
     "price": 1299
+  },
+  {
+    "id": "#0009",
+    "name": "DN Special",
+    "type": "HOODIE",
+    "sizes":["S","M","L","XL","XXL"],
+    "images":[
+      {"color":"BLACK","back":"BLACK BACK.jpg","front":"BLACK FRONT.jpg","hanger":"BLACK FRONT HANGER.jpg","pair":"BLACK PAIR.jpg"},
+      {"color":"WHITE","back":"WHITE BACK.jpg","front":"WHITE FRONT.jpg","hanger":"WHITE FRONT HANGERED.jpg","pair":"WHITE PAIR.jpg"}
+    ],
+    "price":1299
+  },
+  {
+    "id": "#0010",
+    "name":"Sneaker",
+    "type":"HOODIE",
+    "sizes":["S","M","L","XL","XXL"],
+    "images":[
+      {"color":"BROWN","back":"BROWN BACK.jpg","front":"BROWN FRONT.jpg","modelFront":"BROWN FRONT MODEL.jpg","modelBack":"BROWN BACK MODEL.jpg"},
+      {"color":"RED","back":"RED BACK.jpg","front":"RED FRONT.jpg","modelFront":"RED FRONT MODEL.jpg","modelBack":"RED BACK MODEL.jpg"}
+    ],
+    "price":1299
+  },
+  {
+    "id": "#0011",
+    "name":"stay focused break rules",
+    "type":"SWEATSHIRT",
+    "sizes":["S","M","L","XL","XXL"],
+    "images":[
+      {"color":"CHARCOL","back":"stay-focused-break-rules back charcol .png","front":"stay-focused-break-rules front charcol .png"},
+      {"color":"OLIVE","back":"stay-focused-break-rules back olive .png","front":"stay-focused-break-rules front olive .png"},
+      {"color":"OFF WHITE","back":"stay-focused-break-rules back.png","front":"stay-focused-break-rules front.png"}
+    ],
+    "price":999
+  },
+  {
+    "id": "#0012",
+    "name":"thumbs up",
+    "type":"HOODIE",
+    "sizes":["S","M","L","XL","XXL"],
+    "images":[
+      {"color":"BLACK","back":"BLACK BACK.jpg","front":"black front.jpg"},
+      {"color":"GREEN","back":"green back .jpg","front":"green front.jpg"},
+      {"color":"WHITE","back":"white back.jpg","front":"WHITE FRONT.jpg"}
+    ],
+    "price":1299
+  },
+  {
+    "id":"#0013",
+    "name":"limit your mind",
+    "type":"HOODIE",
+    "sizes":["S","M","L","XL","XXL"],
+    "images":[{"color":"BLACK","back":"your mind hoodie back.png","front":"your mind hoodie front.png"}],
+    "price":1299
   }
 ]
