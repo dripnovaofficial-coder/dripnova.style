@@ -1,167 +1,104 @@
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyMOmeHrMRVzTWnPQ30XbQB0kpzckuYxIszTwlzsX675bNn-n_xeXXqiHeISYxezfZo/exec";
-const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/";
+const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/";
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch(GITHUB_RAW_BASE + "products.json")
-    .then(r => r.json())
-    .then(products => {
+  fetch("products.json")
+    .then(res=>res.json())
+    .then(products=>{
       const page = location.pathname;
-
-      if (page.includes("product.html")) renderProductPage(products);
-      else if (page.includes("payment.html")) renderCart();
-      else renderIndex(products);
-    })
-    .catch(err => console.error("Fetch error:", err));
+      if(page.includes("product.html")) loadProductPage(products);
+      else loadShop(products);
+    });
 });
 
-/* --- SHOP PAGE --- */
-function renderIndex(products) {
-  const list = document.getElementById("product-list");
-  if (!list) return;
-  list.innerHTML = "";
-
-  products.forEach(p => {
-    const el = document.createElement("div");
-    el.className = "product";
-    el.innerHTML = `
-      <div class="thumb"><img src="${p.images[0]?.front ? GITHUB_RAW_BASE + p.images[0].front : "placeholder.jpg"}" alt="${p.name}"></div>
-      <h3>${p.name}</h3>
-      <p class="price">PKR ${p.price}</p>
-      <button class="small btn" onclick="addToCart('${p.id}')">Add to Cart</button>
-    `;
-
-    el.onclick = (e) => {
-      if (e.target.tagName !== "BUTTON")
-      location.href = `product.html?id=${encodeURIComponent(p.id)}`;
-    };
-    list.appendChild(el);
+function loadShop(products){
+  const shop = document.getElementById("shop");
+  shop.innerHTML="";
+  products.forEach(p=>{
+    const el=document.createElement("div");
+    el.className="product-card";
+    const img = p.images[0].front || "";
+    el.innerHTML=`<img src="${GITHUB_RAW_BASE+img}" class="product-img">
+                  <h3>${p.name}</h3>
+                  <p>Rs ${p.price}</p>
+                  <button onclick="viewProduct('${p.id}')">View Product</button>`;
+    shop.appendChild(el);
   });
 }
 
-/* --- PRODUCT DETAIL PAGE --- */
-function renderProductPage(products) {
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
-  const product = products.find(p => p.id === id);
-  if (!product) return;
+function viewProduct(id){location.href="product.html?id="+encodeURIComponent(id);}
 
-  const gallery = document.getElementById("gallery");
-  const info = document.getElementById("productInfo");
+function loadProductPage(products){
+  const id = new URLSearchParams(location.search).get("id");
+  const p = products.find(x=>x.id===id);
+  if(!p)return;
+  const gallery=document.getElementById("gallery");
+  const info=document.getElementById("productInfo");
+  let mainImg = document.createElement("img");
+  mainImg.src = GITHUB_RAW_BASE + p.images[0].front;
+  mainImg.className="detail-img";
+  gallery.appendChild(mainImg);
 
-  gallery.innerHTML = `<div class="gallery-main"></div><div class="gallery-thumbs"></div>`;
-  const mainWrap = gallery.querySelector(".gallery-main");
-  const mainImg = document.createElement("img");
-  mainImg.src = GITHUB_RAW_BASE + (product.images[0]?.front || "placeholder.jpg");
-  mainWrap.appendChild(mainImg);
-
-  const thumbs = gallery.querySelector(".gallery-thumbs");
-  product.images.forEach(img => {
-    const t = document.createElement("div");
-    t.className = "thumb-swatch";
-    t.innerHTML = `<img src="${GITHUB_RAW_BASE + img.front}">`;
-    t.onclick = () => mainImg.src = GITHUB_RAW_BASE + img.front;
+  let thumbs = document.createElement("div"); thumbs.className="gallery-thumbs";
+  p.images.forEach(img=>{
+    const t=document.createElement("div"); t.className="thumb-swatch";
+    t.innerHTML=`<img src="${GITHUB_RAW_BASE+img.front}">`;
+    t.onclick=()=>mainImg.src=GITHUB_RAW_BASE+img.front;
     thumbs.appendChild(t);
   });
+  gallery.appendChild(thumbs);
 
-  info.innerHTML = `
-    <h2>${product.name}</h2>
-    <div class="card">
-      <div class="price">PKR ${product.price}</div>
-      <label>Size:</label>
-      <select id="sizeSelect">${product.sizes.map(s => `<option>${s}</option>`).join('')}</select>
-
-      <label>Color:</label>
-      <select id="colorSelect">${product.images.map(i => `<option>${i.color}</option>`).join('')}</select>
-
-      <div class="actions">
-        <button class="btn" onclick="addToCart('${product.id}')">Add to Cart</button>
-        <a href="index.html" class="btn secondary">Back</a>
-      </div>
-    </div>
+  info.innerHTML=`
+    <h2>${p.name}</h2>
+    <p><b>Type:</b> ${p.type}</p>
+    <p><b>Price:</b> Rs ${p.price}</p>
+    <label>Size:</label>
+    <select id="sizeSelect">${p.sizes.map(s=>`<option>${s}</option>`).join("")}</select>
+    <label>Color:</label>
+    <select id="colorSelect">${p.images.map(i=>`<option value="${i.color}">${i.color}</option>`).join("")}</select>
+    <button onclick="addToCart('${p.id}')">Add to Cart</button>
+    <button onclick="openCart()">View Cart</button>
   `;
-}
-
-/* --- CART FUNCTIONS --- */
-function addToCart(id) {
-  fetch(GITHUB_RAW_BASE + "products.json")
-    .then(r => r.json())
-    .then(products => {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-
-      const size = document.getElementById("sizeSelect")?.value || product.sizes[0];
-      const color = document.getElementById("colorSelect")?.value || product.images[0].color;
-
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ ...product, size, color });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert("✅ Added to Cart!");
-    });
-}
-
-function renderCart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const wrap = document.getElementById("cartSummary");
-  const total = document.getElementById("cartTotal");
-
-  if (!wrap) return;
-  wrap.innerHTML = "";
-
-  let sum = 0;
-
-  cart.forEach(item => {
-    sum += Number(item.price);
-    wrap.innerHTML += `
-      <div class="card">
-        <p><strong>${item.name}</strong></p>
-        <p>Color: ${item.color}</p>
-        <p>Size: ${item.size}</p>
-        <p>Price: PKR ${item.price}</p>
-      </div>`;
+  document.getElementById("colorSelect").addEventListener("change", e=>{
+    const imgObj = p.images.find(v=>v.color===e.target.value);
+    mainImg.src = GITHUB_RAW_BASE + imgObj.front;
   });
-
-  total.innerText = `Total: PKR ${sum}`;
-
-  const btn = document.getElementById("confirmPayment");
-  if (btn) {
-    btn.onclick = () => {
-      if (cart.length === 0) { alert("Cart empty ❌"); return; }
-      sessionStorage.setItem("dripnova_order", JSON.stringify(cart.at(-1)));
-      localStorage.removeItem("cart");
-      location.href = "thankyou.html";
-    };
-  }
 }
 
-/* --- ORDER FORM SUBMISSION --- */
-function openOrderModal(productId) {
-  const modal = document.getElementById("orderModal");
-  const wrap = document.getElementById("orderFormWrap");
-  modal.style.display = "flex";
-  wrap.innerHTML = `
-    <h2>Place Order</h2>
-    <input placeholder="Name" id="orderName"/>
-    <input placeholder="Phone" id="orderPhone"/>
-    <textarea placeholder="Address" id="orderAddress"></textarea>
-    <button class="btn" onclick="submitOrder('${productId}')">Confirm Order</button>
-  `;
+function addToCart(id){
+  fetch("products.json").then(res=>res.json()).then(products=>{
+    const p=products.find(x=>x.id===id); if(!p)return;
+    const size=document.getElementById("sizeSelect")?.value||p.sizes[0];
+    const color=document.getElementById("colorSelect")?.value||p.images[0].color;
+    const variant=p.images.find(v=>v.color===color);
+    cart.push({id:p.id,name:p.name,type:p.type,size,color,price:p.price,image:variant.front});
+    localStorage.setItem("cart",JSON.stringify(cart));
+    alert("✅ Added to Cart!");
+  });
 }
 
-function closeModal() {
-  document.getElementById("orderModal").style.display = "none";
+function openCart(){
+  const modal=document.getElementById("cart"); modal.style.display="flex";
+  const list=document.getElementById("cartItems");
+  list.innerHTML = cart.map((i,idx)=>`
+    <div class="cart-item">
+      <img src="${GITHUB_RAW_BASE+i.image}" class="cart-img"/>
+      <div>
+        <h4>${i.name}</h4>
+        <p>Size: ${i.size} | Color: ${i.color}</p>
+        <p>Rs ${i.price}</p>
+        <button onclick="removeFromCart(${idx})">Remove</button>
+      </div>
+    </div>`).join("");
+  document.getElementById("cartTotal").innerText=cart.reduce((a,b)=>a+b.price,0);
 }
 
-function submitOrder(id) {
-  const order = {
-    id,
-    name: document.getElementById("orderName").value,
-    phone: document.getElementById("orderPhone").value,
-    address: document.getElementById("orderAddress").value,
-    price: document.getElementById("sizeSelect")?.value || ""
-  };
+function removeFromCart(i){cart.splice(i,1);localStorage.setItem("cart",JSON.stringify(cart));openCart();}
+function closeCart(){document.getElementById("cart").style.display="none";}
 
-fetch(WEBAPP_URL, {
-  method: "POST",
-  body: JSON.stringify(order)
-}).then(()=> location.href = "thankyou.html");
+function checkout(){
+  if(cart.length===0){alert("Cart empty ❌");return;}
+  localStorage.setItem("lastOrder",JSON.stringify(cart));
+  cart=[]; localStorage.setItem("cart",JSON.stringify(cart)); closeCart();
+  location.href="thankyou.html";
 }
