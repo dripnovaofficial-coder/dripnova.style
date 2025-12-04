@@ -1,26 +1,26 @@
 [
   {
     "id": "#0001",
-    "name": "Astronauts Hoodie",
+    "name": "AUSTRONATS Hoodie",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "colors": ["BLACK","WHITE"],
     "price": 1299,
     "currency": "PKR",
     "images": [
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg"
+      "products-images/Astronauts/astronauts-black-back.jpg",
+      "products-images/Astronauts/astronauts-black-front.jpg"
     ]
   },
   {
     "id": "#0002",
-    "name": "Awesome Brother Hoodie",
+    "name": "AWESOME BROTHER Hoodie",
     "type": "HOODIE",
     "sizes": ["S","M","L","XL","XXL"],
     "colors": ["BLACK"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/AWESOME_BROTHER/front.jpg"]
   },
   {
     "id": "#0003",
@@ -30,7 +30,7 @@
     "colors": ["BLACK","MAROON","WHITE"],
     "price": 999,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/BE_YOUR_OWN_HERO/front.jpg"]
   },
   {
     "id": "#0004",
@@ -40,7 +40,7 @@
     "colors": ["BLACK","CHOCOLATE","MAROON","WHITE"],
     "price": 999,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/CLIMB_YOUR_WAY_TO_THE_TOP/front.jpg"]
   },
   {
     "id": "#0005",
@@ -50,7 +50,7 @@
     "colors": ["BLACK","NAVY","SKY BLUE","WHITE"],
     "price": 999,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/FOOTBALLER/front.jpg"]
   },
   {
     "id": "#0006",
@@ -60,7 +60,7 @@
     "colors": ["ARMY","BLACK","MAROON","OFF WHITE","WHITE"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/HELLO_THERE/front.jpg"]
   },
   {
     "id": "#0007",
@@ -70,7 +70,7 @@
     "colors": ["GREY"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/KING_WILD/front.jpg"]
   },
   {
     "id": "#0008",
@@ -80,7 +80,7 @@
     "colors": ["BLACK"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/MOVING_FORWARD/front.jpg"]
   },
   {
     "id": "#0009",
@@ -90,7 +90,7 @@
     "colors": ["BLACK","WHITE"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/DN_SPECIAL/front.jpg"]
   },
   {
     "id": "#0010",
@@ -100,7 +100,7 @@
     "colors": ["BROWN","RED"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/SNEAKER/front.jpg"]
   },
   {
     "id": "#0011",
@@ -110,7 +110,7 @@
     "colors": ["CHARCOAL","OLIVE","OFF WHITE"],
     "price": 999,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/STAY_FOCUSED_BREAK_RULES/front.jpg"]
   },
   {
     "id": "#0012",
@@ -120,7 +120,7 @@
     "colors": ["BLACK","GREEN","WHITE"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/THUMBS_UP/front.jpg"]
   },
   {
     "id": "#0013",
@@ -130,6 +130,6 @@
     "colors": ["BLACK"],
     "price": 1299,
     "currency": "PKR",
-    "images": ["https://via.placeholder.com/400"]
+    "images": ["products-images/LIMIT_YOUR_MIND/front.jpg"]
   }
 ]
