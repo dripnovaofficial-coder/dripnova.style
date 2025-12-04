@@ -207,7 +207,7 @@ function escapeHtml(s){ return String(s||"").replace(/[&<>"']/g, c=>({ '&':'&amp
 /* ---------------- INITIALIZERS ---------------- */
 // If shop page loaded, load products and show them
 if(document.getElementById("product-list")){
-  loadProducts().then(setupFilters);
+  loadProducts().then(displayProductsOnly);
 }
 // If product page loaded, ensure products loaded and then init
 if(document.getElementById("slider-images")){
