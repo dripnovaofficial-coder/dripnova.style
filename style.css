@@ -59,3 +59,9 @@ body{margin:0;font-family:Inter,system-ui,Arial;color:#fff;background:var(--bg)}
   text-align:center;font-size:18px;font-weight:600;margin:12px 0 6px;
   letter-spacing:1px
 }
+.product-filters{
+  display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap
+}
+.product-filters select{
+  background:#050505;color:#fff;padding:8px;border-radius:8px;border:1px solid #333
+}
