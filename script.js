@@ -126,6 +126,28 @@ function updateSlider(){
     thumbs[currentSlide].classList.add("active");
   }
 }
+function loadSingleProductSlider(){
+  const id = localStorage.getItem("selectedProduct");
+  const p = products.find(x=>x.PRODUCT_ID === id);
+  if(!p) return;
+
+  // Load colors
+  const colorSel = document.getElementById("product-color");
+  const sizeSel = document.getElementById("product-size");
+
+  (p.COLOURS||"").split(",").map(c=>c.trim()).forEach(c=>{
+     const o=document.createElement("option");
+     o.value=c;o.innerText=c;colorSel.appendChild(o)
+  });
+
+  (p.SIZE||"").split(",").map(s=>s.trim()).forEach(s=>{
+     const o=document.createElement("option");
+     o.value=s;o.innerText=s;sizeSel.appendChild(o)
+  });
+
+  // Slider logic continues below...
+}
+
 
 // New Shop page renderer (image + name only)
 function displayProductsOnly(list){
