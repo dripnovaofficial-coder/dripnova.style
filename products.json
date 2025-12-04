@@ -8,7 +8,7 @@
     "price": 1299,
     "currency": "PKR",
     "images": [
-      "products-images/Astronauts/astronauts-black-back.jpg",
+      "https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-back.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-folded.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-front.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-back.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-folded.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-front.jpg",
       "products-images/Astronauts/astronauts-black-front.jpg"
     ]
   },
