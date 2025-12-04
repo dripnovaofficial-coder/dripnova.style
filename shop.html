@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shop - Drip Nova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html">← Home</a>
+  <a href="cart.html">Cart</a>
+</header>
+
+<section class="filters">
+  <select id="filter-type"><option value="">All Types</option></select>
+  <select id="filter-color"><option value="">All Colors</option></select>
+  <select id="filter-size"><option value="">All Sizes</option></select>
+  <button onclick="applyFilters()">Apply</button>
+</section>
+
+<section id="product-list" class="product-grid"></section>
+
+<script src="script.js"></script>
+<script>
+  loadProducts().then(setupFilters);
+</script>
+</body>
+</html>
