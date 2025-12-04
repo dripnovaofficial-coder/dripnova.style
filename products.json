@@ -1,95 +1,135 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "Product 1",
-      "price": 1999,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product1/image1.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Product 2",
-      "price": 2499,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product2/image1.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
-      "price": 2999,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product3/image1.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Product 4",
-      "price": 2199,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product4/image1.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Product 5",
-      "price": 2699,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product5/image1.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Product 6",
-      "price": 1599,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product6/image1.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Product 7",
-      "price": 1899,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product7/image1.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Product 8",
-      "price": 2799,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product8/image1.jpg"
-    },
-    {
-      "id": 9,
-      "name": "Product 9",
-      "price": 2899,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product9/image1.jpg"
-    },
-    {
-      "id": 10,
-      "name": "Product 10",
-      "price": 1699,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product10/image1.jpg"
-    },
-    {
-      "id": 11,
-      "name": "Product 11",
-      "price": 2299,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product11/image1.jpg"
-    },
-    {
-      "id": 12,
-      "name": "Product 12",
-      "price": 3199,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product12/image1.jpg"
-    },
-    {
-      "id": 13,
-      "name": "Product 13",
-      "price": 1999,
-      "description": "Premium quality product.",
-      "image": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/products/product13/image1.jpg"
-    }
-  ]
-}
+[
+  {
+    "id": "#0001",
+    "name": "Astronauts Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","WHITE"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": [
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg",
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg"
+    ]
+  },
+  {
+    "id": "#0002",
+    "name": "Awesome Brother Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0003",
+    "name": "Be Your Own Hero Sweatshirt",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","MAROON","WHITE"],
+    "price": 999,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0004",
+    "name": "Climb Your Way To The Top Sweatshirt",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","CHOCOLATE","MAROON","WHITE"],
+    "price": 999,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0005",
+    "name": "Footballer Sweatshirt",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","NAVY","SKY BLUE","WHITE"],
+    "price": 999,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0006",
+    "name": "Hello There Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["ARMY","BLACK","MAROON","OFF WHITE","WHITE"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0007",
+    "name": "King Wild Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["GREY"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0008",
+    "name": "Moving Forward Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0009",
+    "name": "DN Special Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","WHITE"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0010",
+    "name": "Sneaker Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BROWN","RED"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0011",
+    "name": "Stay Focused Break Rules Sweatshirt",
+    "type": "SWEATSHIRT",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["CHARCOAL","OLIVE","OFF WHITE"],
+    "price": 999,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0012",
+    "name": "Thumbs Up Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK","GREEN","WHITE"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  },
+  {
+    "id": "#0013",
+    "name": "Limit Your Mind Hoodie",
+    "type": "HOODIE",
+    "sizes": ["S","M","L","XL","XXL"],
+    "colors": ["BLACK"],
+    "price": 1299,
+    "currency": "PKR",
+    "images": ["https://via.placeholder.com/400"]
+  }
+]
