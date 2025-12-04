@@ -1,135 +1,157 @@
 [
   {
-    "id": "#0001",
-    "name": "AUSTRONATS Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","WHITE"],
-    "price": 1299,
-    "currency": "PKR",
+    "PRODUCT_ID": "#0001",
+    "PRODUCT_NAME": "Astronauts",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,White",
+    "PRICE_PKR": 1299,
     "images": [
-      "https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-back.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-folded.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-black-front.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-back.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-folded.jpg,https://github.com/dripnovaofficial-coder/dripnova.style/blob/main/products/Astronauts/astronauts-white-front.jpg",
-      "products-images/Astronauts/astronauts-black-front.jpg"
+      "products/Astronauts/astronauts-black-back.jpg",
+      "products/Astronauts/astronauts-white-front.jpg"
     ]
   },
   {
-    "id": "#0002",
-    "name": "AWESOME BROTHER Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/AWESOME_BROTHER/front.jpg"]
+    "PRODUCT_ID": "#0002",
+    "PRODUCT_NAME": "Awesome Brother",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/Awesome Brother/awesome-brother-black-front.jpg",
+      "products/Awesome Brother/awesome-brother-black-back.jpg"
+    ]
   },
   {
-    "id": "#0003",
-    "name": "Be Your Own Hero Sweatshirt",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","MAROON","WHITE"],
-    "price": 999,
-    "currency": "PKR",
-    "images": ["products-images/BE_YOUR_OWN_HERO/front.jpg"]
+    "PRODUCT_ID": "#0003",
+    "PRODUCT_NAME": "Be Your Own Hero",
+    "TYPE": "Sweatshirt",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,Maroon,White",
+    "PRICE_PKR": 999,
+    "images": [
+      "products/Be Your Own Hero/hero-black-front.jpg",
+      "products/Be Your Own Hero/hero-maroon-front.jpg",
+      "products/Be Your Own Hero/hero-white-front.jpg"
+    ]
   },
   {
-    "id": "#0004",
-    "name": "Climb Your Way To The Top Sweatshirt",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","CHOCOLATE","MAROON","WHITE"],
-    "price": 999,
-    "currency": "PKR",
-    "images": ["products-images/CLIMB_YOUR_WAY_TO_THE_TOP/front.jpg"]
+    "PRODUCT_ID": "#0004",
+    "PRODUCT_NAME": "Climb Your Way To The Top",
+    "TYPE": "Sweatshirt",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,Chocolate,Maroon,White",
+    "PRICE_PKR": 999,
+    "images": [
+      "products/Climb Top/climb-black-front.jpg",
+      "products/Climb Top/climb-chocolate-front.jpg",
+      "products/Climb Top/climb-maroon-front.jpg"
+    ]
   },
   {
-    "id": "#0005",
-    "name": "Footballer Sweatshirt",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","NAVY","SKY BLUE","WHITE"],
-    "price": 999,
-    "currency": "PKR",
-    "images": ["products-images/FOOTBALLER/front.jpg"]
+    "PRODUCT_ID": "#0005",
+    "PRODUCT_NAME": "Footballer",
+    "TYPE": "Sweatshirt",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,Navy,Sky Blue,White",
+    "PRICE_PKR": 999,
+    "images": [
+      "products/Footballer/footballer-black-front.jpg",
+      "products/Footballer/footballer-white-front.jpg"
+    ]
   },
   {
-    "id": "#0006",
-    "name": "Hello There Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["ARMY","BLACK","MAROON","OFF WHITE","WHITE"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/HELLO_THERE/front.jpg"]
+    "PRODUCT_ID": "#0006",
+    "PRODUCT_NAME": "Hello There",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Army,Black,Maroon,Off White,White",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/Hello There/hello-army-front.jpg",
+      "products/Hello There/hello-black-front.jpg"
+    ]
   },
   {
-    "id": "#0007",
-    "name": "King Wild Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["GREY"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/KING_WILD/front.jpg"]
+    "PRODUCT_ID": "#0007",
+    "PRODUCT_NAME": "King Wild",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Grey",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/King Wild/king-wild-grey-front.jpg"
+    ]
   },
   {
-    "id": "#0008",
-    "name": "Moving Forward Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/MOVING_FORWARD/front.jpg"]
+    "PRODUCT_ID": "#0008",
+    "PRODUCT_NAME": "Moving Forward",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/Moving Forward/moving-forward-black-front.jpg"
+    ]
   },
   {
-    "id": "#0009",
-    "name": "DN Special Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","WHITE"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/DN_SPECIAL/front.jpg"]
+    "PRODUCT_ID": "#0009",
+    "PRODUCT_NAME": "DN Special",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,White",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/DN Special/dn-special-black-front.jpg",
+      "products/DN Special/dn-special-white-front.jpg"
+    ]
   },
   {
-    "id": "#0010",
-    "name": "Sneaker Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BROWN","RED"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/SNEAKER/front.jpg"]
+    "PRODUCT_ID": "#0010",
+    "PRODUCT_NAME": "Sneaker",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Brown,Red",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/Sneaker/sneaker-brown-front.jpg",
+      "products/Sneaker/sneaker-red-front.jpg"
+    ]
   },
   {
-    "id": "#0011",
-    "name": "Stay Focused Break Rules Sweatshirt",
-    "type": "SWEATSHIRT",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["CHARCOAL","OLIVE","OFF WHITE"],
-    "price": 999,
-    "currency": "PKR",
-    "images": ["products-images/STAY_FOCUSED_BREAK_RULES/front.jpg"]
+    "PRODUCT_ID": "#0011",
+    "PRODUCT_NAME": "Stay Focused Break Rules",
+    "TYPE": "Sweatshirt",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Charcoal,Olive,Off White",
+    "PRICE_PKR": 999,
+    "images": [
+      "products/Stay Focused/focused-charcoal-front.jpg",
+      "products/Stay Focused/focused-olive-front.jpg"
+    ]
   },
   {
-    "id": "#0012",
-    "name": "Thumbs Up Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK","GREEN","WHITE"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/THUMBS_UP/front.jpg"]
+    "PRODUCT_ID": "#0012",
+    "PRODUCT_NAME": "Thumbs Up",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black,Green,White",
+    "PRICE_PKR": 1299,
+    "images": [
+      "products/Thumbs Up/thumbs-up-black-front.jpg",
+      "products/Thumbs Up/thumbs-up-white-front.jpg"
+    ]
   },
   {
-    "id": "#0013",
-    "name": "Limit Your Mind Hoodie",
-    "type": "HOODIE",
-    "sizes": ["S","M","L","XL","XXL"],
-    "colors": ["BLACK"],
-    "price": 1299,
-    "currency": "PKR",
-    "images": ["products-images/LIMIT_YOUR_MIND/front.jpg"]
+    "PRODUCT_ID": "#0013",
+    "PRODUCT_NAME": "Astronauts Special Variant",
+    "TYPE": "Hoodie",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "Black",
+    "PRICE_PKR": 1299,
+    "images": [
+      :contentReference[oaicite:0]{index=0}"products/Astronauts Special/astronauts-black-back.jpg"
+    ]
   }
 ]
