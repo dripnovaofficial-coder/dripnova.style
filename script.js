@@ -1,78 +1,70 @@
-const repoBase = "products-images/"; // ✅ Local folder OR GitHub folder
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Load Products
 async function loadProducts() {
   const container = document.getElementById("products-container");
   if (!container) return;
+  container.innerHTML = "";
 
-  container.innerHTML = "<p>Loading products…</p>";
+  const res = await fetch("products.json");
+  const products = await res.json();
 
-  try {
-    const res = await fetch("products.json");
-    const products = await res.json();
-    container.innerHTML = "";
+  products.forEach(p => {
+    const img = p.images[0];
+    const div = document.createElement("div");
+    div.className = "product-card border p-2 rounded-xl shadow";
+    div.innerHTML = `
+      <img src="${img}" class="w-full rounded-xl">
+      <h3 class="text-lg font-bold mt-2">${p.name}</h3>
+      <p class="text-md">💰 ${p.currency} ${p.price}</p>
+      <p class="text-sm">Sizes: ${p.sizes.join(", ")}</p>
+      <p class="text-sm">Colors: ${p.colors.join(", ")}</p>
+      <button class="bg-black text-white px-4 py-1 rounded-xl mt-2" onclick="addToCart('${p.id}')">
+        Add to Cart
+      </button>
+    `;
+    container.appendChild(div);
+  });
+}
 
-    products.forEach(product => {
-      const imgURL = product.IMAGES && product.IMAGES.length > 0 ? product.IMAGES[0] : "";
-      const card = document.createElement("div");
-      card.className = "product-card";
-
-      card.innerHTML = `
-        <img src="${imgURL}" alt="${product.PRODUCT_NAME}">
-        <h3>${product.PRODUCT_NAME}</h3>
-        <p>PKR ${product.PRICE}</p>
-        <p>Sizes: ${product.SIZE}</p>
-        <p>Colours: ${product.COLOURS}</p>
-
-        <button onclick='addToCart("${product.PRODUCT_ID}", "${product.PRODUCT_NAME}", ${product.PRICE}, "${imgURL}")'>
-          Add to Cart
-        </button>
-      `;
-
-      container.appendChild(card);
+function addToCart(id) {
+  fetch("products.json")
+    .then(res => res.json())
+    .then(products => {
+      const p = products.find(x => x.id === id);
+      cart.push(p);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Cart ✅");
     });
-
-  } catch (err) {
-    console.error("Error loading products:", err);
-    container.innerHTML = "<p>❌ Failed to load products</p>";
-  }
 }
 
-// Cart system
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(id, name, price, img) {
-  cart.push({ id, name, price, img });
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert("✅ Added to cart!");
-}
-
-// Load Cart
 function loadCart() {
   const container = document.getElementById("cart-container");
-  const totalBox = document.getElementById("cart-total");
   if (!container) return;
-
   container.innerHTML = "";
   let total = 0;
 
-  cart.forEach((item, i) => {
-    total += Number(item.price);
-
+  cart.forEach((p,i) => {
+    total += p.price;
     container.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.img}" class="cart-img">
-        <p>${item.name} — PKR ${item.price}</p>
-        <button onclick="removeItem(${i})">Remove</button>
+      <div class="cart-item border-b pb-2">
+        <img src="${p.images[0]}" class="w-20 rounded-xl">
+        <div>
+          <h3>${p.name}</h3>
+          <p>${p.currency} ${p.price}</p>
+          <button onclick="removeFromCart(${i})">Remove</button>
+        </div>
       </div>
     `;
   });
 
-  totalBox.innerText = `Total: PKR ${total}`;
+  document.getElementById("cart-total").innerText = `PKR ${total}`;
 }
 
-function removeItem(i) {
-  cart.splice(i, 1);
+function removeFromCart(i) {
+  cart.splice(i,1);
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCart();
 }
+
+if (document.getElementById("products-container")) loadProducts();
+if (document.getElementById("cart-container")) loadCart();
