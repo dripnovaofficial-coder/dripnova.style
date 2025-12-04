@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Product - Drip Nova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="shop.html">← Back to shop</a>
+  <a href="cart.html">Cart</a>
+</header>
+
+<main id="single-product" class="product-page">
+  <div class="slider-container">
+    <button class="prev-btn">&#10094;</button>
+    <div class="slider-images" id="slider-images"></div>
+    <button class="next-btn">&#10095;</button>
+  </div>
+  <div class="thumbnails" id="thumbnails"></div>
+
+  <h2 id="product-name"></h2>
+  <p id="product-type"></p>
+  <p id="product-sizes"></p>
+  <p id="product-colors"></p>
+  <p id="product-price"></p>
+  <button id="add-cart-btn" class="btn">Add to Cart</button>
+</main>
+
+<script src="script.js"></script>
+<script>
+  loadProducts().then(loadSingleProductSlider);
+</script>
+</body>
+</html>
