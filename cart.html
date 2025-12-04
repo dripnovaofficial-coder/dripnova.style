@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cart - Drip Nova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="shop.html">← Shop</a>
+  <a href="index.html">Home</a>
+</header>
+
+<main>
+  <h1>Your Cart</h1>
+  <div id="cart-items"></div>
+  <h2>Total: <span id="cart-total">PKR 0</span></h2>
+  <button id="checkout-btn" class="btn">Checkout (local)</button>
+</main>
+
+<script src="script.js"></script>
+<script>
+  loadCart();
+  document.getElementById("checkout-btn").onclick = function(){
+    if(!JSON.parse(localStorage.getItem("cart")||"[]").length){ alert("Cart is empty"); return; }
+    alert("Checkout complete (local). Cart cleared.");
+    localStorage.removeItem("cart");
+    loadCart();
+    window.location.href = "index.html";
+  };
+</script>
+</body>
+</html>
