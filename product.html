@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product – Drip Nova</title>
 
-  <!-- External CSS (Optional global styles) -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* ================= GLOBAL STYLES ================= */
     body {
       margin: 0;
       padding: 0;
@@ -30,7 +31,29 @@
       box-sizing: border-box;
     }
 
-    /* PRODUCT WRAPPER */
+    /* ================= HEADER / NAVIGATION ================= */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    header img.logo {
+      height: 50px; /* reduced height for mobile */
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+      font-size: 16px;
+    }
+
+    nav a {
+      color: #fff;
+    }
+
+    /* ================= PRODUCT PAGE ================= */
     .product-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -61,6 +84,7 @@
       flex-shrink: 0;
     }
 
+    /* NAV BUTTONS */
     .prev-btn, .next-btn {
       position: absolute;
       top: 50%;
@@ -69,15 +93,14 @@
       background: rgba(255,255,255,0.1);
       border: none;
       font-size: 22px;
-      cursor: pointer;
       border-radius: 50%;
       color: #fff;
       z-index: 10;
     }
-
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
+    /* THUMBNAILS */
     #thumbnails {
       display: flex;
       gap: 10px;
@@ -93,7 +116,6 @@
       border-radius: 8px;
       opacity: 0.5;
       cursor: pointer;
-      transition: 0.3s ease;
       border: 2px solid transparent;
     }
 
@@ -102,6 +124,7 @@
       border-color: #fff;
     }
 
+    /* PRODUCT INFO */
     .product-info h1 {
       margin: 0 0 10px 0;
       font-size: 28px;
@@ -124,7 +147,6 @@
       color: #fff;
       border: 1px solid #333;
       border-radius: 8px;
-      cursor: pointer;
       outline: none;
       width: 100%;
     }
@@ -138,21 +160,25 @@
       border: none;
       border-radius: 10px;
       color: #fff;
-      cursor: pointer;
       font-size: 18px;
-      transition: 0.3s ease;
     }
 
     .add-btn:hover {
       background: #a885ff;
     }
 
-    /* ===== MOBILE RESPONSIVE ===== */
+    /* ================= MOBILE RESPONSIVE ================= */
     @media (max-width: 850px) {
+      /* HEADER */
+      header img.logo {
+        height: 35px; /* smaller logo */
+      }
+
+      /* PRODUCT PAGE */
       .product-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* single column */
         gap: 15px;
-        padding: 15px;
+        padding: 15px 0;
       }
 
       .slider-container {
@@ -160,6 +186,7 @@
       }
 
       #slider-images img {
+        width: 100%;
         height: auto;
         object-fit: contain;
       }
@@ -189,10 +216,20 @@
   </style>
 </head>
 <body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <img class="logo" src="dripnova-logo.png" alt="Drip Nova">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <a href="index.html">← Back to shop</a>
 
     <div class="product-wrapper">
+
       <!-- LEFT: SLIDER -->
       <div class="slider-wrapper">
         <div class="slider-container">
@@ -216,6 +253,7 @@
 
         <button id="add-cart-btn" class="add-btn">Add to Cart</button>
       </div>
+
     </div>
   </div>
 
