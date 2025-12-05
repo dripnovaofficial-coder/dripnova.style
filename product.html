@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product – Drip Nova</title>
 
+  <!-- LINK TO EXTERNAL CSS -->
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* PAGE WRAPPER */
+    /* ======= PRODUCT PAGE INLINE CSS (OPTIONAL) ======= */
     body {
       margin: 0;
       padding: 0;
@@ -26,18 +27,20 @@
     .container {
       max-width: 1200px;
       margin: auto;
-      padding: 30px 20px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
-    /* PRODUCT LAYOUT */
+    /* PRODUCT WRAPPER */
     .product-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 20px;
       align-items: start;
+      width: 100%;
     }
 
-    /* ---- IMAGE SLIDER ---- */
+    /* SLIDER */
     .slider-container {
       width: 100%;
       overflow: hidden;
@@ -48,17 +51,17 @@
     #slider-images {
       display: flex;
       transition: transform 0.4s ease;
+      width: 100%;
     }
 
     #slider-images img {
       width: 100%;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       border-radius: 12px;
-      max-height: 500px;
-      background: #111;
+      flex-shrink: 0;
     }
 
-    /* NAV BUTTONS */
     .prev-btn, .next-btn {
       position: absolute;
       top: 50%;
@@ -70,23 +73,23 @@
       cursor: pointer;
       border-radius: 50%;
       color: #fff;
+      z-index: 10;
     }
 
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
 
-    /* THUMBNAILS */
     #thumbnails {
       display: flex;
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     #thumbnails img {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       border-radius: 8px;
       opacity: 0.5;
@@ -100,21 +103,18 @@
       border-color: #fff;
     }
 
-    /* PRODUCT DETAILS */
-    .product-info h1 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 600;
+    .product-info {
+      width: 100%;
     }
 
-    .product-info p {
-      margin: 8px 0;
-      color: #ccc;
+    .product-info h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
     }
 
     .selectors {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       margin: 15px 0;
     }
 
@@ -124,20 +124,21 @@
       color: white;
       border: 1px solid #333;
       border-radius: 8px;
-      outline: none;
       cursor: pointer;
+      outline: none;
     }
 
     .add-btn {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 12px 20px;
+      width: 100%;
+      max-width: 250px;
       background: #8a63ff;
       border: none;
       border-radius: 10px;
-      color: white;
+      color: #fff;
       cursor: pointer;
       font-size: 16px;
-      width: 200px;
       transition: 0.3s ease;
     }
 
@@ -145,12 +146,22 @@
       background: #a885ff;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 850px) {
       .product-wrapper {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      #slider-images img {
+        height: auto;
+        max-height: 400px;
+      }
+
+      .add-btn {
+        max-width: 100%;
       }
     }
-
   </style>
 </head>
 <body>
@@ -161,7 +172,7 @@
     <div class="product-wrapper">
 
       <!-- LEFT: SLIDER -->
-      <div>
+      <div class="slider-wrapper">
         <div class="slider-container">
           <div id="slider-images"></div>
           <button class="prev-btn">❮</button>
@@ -175,8 +186,6 @@
         <h1 id="product-name"></h1>
         <p id="product-type"></p>
         <p id="product-price"></p>
-        <p id="product-sizes"></p>
-        <p id="product-colors"></p>
 
         <div class="selectors">
           <select id="product-color"></select>
@@ -189,6 +198,7 @@
     </div>
   </div>
 
+  <!-- LINK TO EXTERNAL JS -->
   <script src="script.js"></script>
 
 </body>
