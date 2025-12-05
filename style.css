@@ -10,7 +10,6 @@ body {
 a {
   color: #a27bff;
   text-decoration: none;
-  font-size: 15px;
 }
 
 .container {
@@ -20,9 +19,25 @@ a {
   box-sizing: border-box;
 }
 
-button {
-  cursor: pointer;
-  transition: 0.3s ease;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+header img.logo {
+  height: 50px;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+}
+
+nav a {
+  color: #fff;
 }
 
 /* ================= PRODUCT PAGE ================= */
@@ -31,10 +46,8 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: start;
-  width: 100%;
 }
 
-/* SLIDER */
 .slider-container {
   width: 100%;
   overflow: hidden;
@@ -45,7 +58,6 @@ button {
 #slider-images {
   display: flex;
   transition: transform 0.4s ease;
-  width: 100%;
 }
 
 #slider-images img {
@@ -56,7 +68,6 @@ button {
   flex-shrink: 0;
 }
 
-/* NAV BUTTONS */
 .prev-btn, .next-btn {
   position: absolute;
   top: 50%;
@@ -69,10 +80,10 @@ button {
   color: #fff;
   z-index: 10;
 }
+
 .prev-btn { left: 10px; }
 .next-btn { right: 10px; }
 
-/* THUMBNAILS */
 #thumbnails {
   display: flex;
   gap: 10px;
@@ -96,7 +107,6 @@ button {
   border-color: #fff;
 }
 
-/* PRODUCT DETAILS */
 .product-info h1 {
   margin: 0 0 10px 0;
   font-size: 28px;
@@ -119,7 +129,6 @@ select {
   color: #fff;
   border: 1px solid #333;
   border-radius: 8px;
-  outline: none;
   width: 100%;
 }
 
@@ -152,6 +161,11 @@ select {
   border-radius: 12px;
   padding: 10px;
   text-align: center;
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
 }
 
 .product-card img {
@@ -189,16 +203,14 @@ select {
 
 /* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 850px) {
-
-  /* PRODUCT PAGE */
   .product-wrapper {
     grid-template-columns: 1fr;
     gap: 15px;
-    padding: 15px;
+    padding: 15px 0;
   }
 
-  .slider-container {
-    max-height: 400px;
+  header img.logo {
+    height: 35px;
   }
 
   #slider-images img {
@@ -209,10 +221,6 @@ select {
 
   .product-info h1 {
     font-size: 24px;
-  }
-
-  .product-info p {
-    font-size: 16px;
   }
 
   .selectors {
@@ -229,9 +237,9 @@ select {
     height: 50px;
   }
 
-  /* SHOP PAGE */
+  /* SHOP GRID: 2 products per row */
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     padding: 15px;
   }
@@ -241,15 +249,21 @@ select {
   }
 
   .product-card h2 {
-    font-size: 18px;
-  }
-
-  .product-card p {
     font-size: 16px;
   }
 
+  .product-card p {
+    font-size: 14px;
+  }
+
   .product-card button {
-    font-size: 18px;
-    padding: 14px 0;
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .products-grid {
+    grid-template-columns: 1fr; /* single product on very small screens */
   }
 }
