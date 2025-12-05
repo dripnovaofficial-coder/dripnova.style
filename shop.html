@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop – Drip Nova</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop – Drip Nova</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-container">
+    <img src="dripnova-logo.png" alt="Drip Nova Logo" class="logo">
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE TITLE -->
 <h1 style="text-align:center; padding:20px;">Drip Nova Shop</h1>
 
+<!-- PRODUCTS GRID -->
 <div class="products-grid" id="products-grid"></div>
 
+<!-- SCRIPT TO LOAD PRODUCTS -->
 <script>
 fetch('products.json')
   .then(res => res.json())
