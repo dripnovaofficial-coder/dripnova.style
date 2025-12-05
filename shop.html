@@ -42,7 +42,8 @@ fetch('products.json')
       `;
       grid.appendChild(card);
     });
-  });
+  })
+  .catch(err => console.error("Failed to load products:", err));
 </script>
 
 </body>
