@@ -57,14 +57,16 @@ async function renderProductPage(){
   const id = params.get('id') || params.get('product') || params.get('PRODUCT_ID');
   if(!id) {
     // If no id, show first product list
-    document.getElementById('product-wrap').innerHTML = '<p>No product specified. <a href="index.html">Back to shop</a></p>';
+    const w = document.getElementById('product-wrap');
+    if(w) w.innerHTML = '<p>No product specified. <a href="index.html">Back to shop</a></p>';
     return;
   }
 
   const data = await loadProducts();
   const product = data.find(p => p.PRODUCT_ID === id);
   if(!product){
-    document.getElementById('product-wrap').innerHTML = '<p>Product not found. <a href="index.html">Back to shop</a></p>';
+    const w = document.getElementById('product-wrap');
+    if(w) w.innerHTML = '<p>Product not found. <a href="index.html">Back to shop</a></p>';
     return;
   }
 
@@ -161,16 +163,20 @@ async function renderProductPage(){
   selectColor(currentColor);
 
   // arrows
-  document.getElementById('prev-image').addEventListener('click', ()=>{
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    mainImage.src = currentImages[currentIndex];
-    renderThumbs();
-  });
-  document.getElementById('next-image').addEventListener('click', ()=>{
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    mainImage.src = currentImages[currentIndex];
-    renderThumbs();
-  });
+  const prevBtn = document.getElementById('prev-image');
+  const nextBtn = document.getElementById('next-image');
+  if(prevBtn && nextBtn){
+    prevBtn.addEventListener('click', ()=>{
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      mainImage.src = currentImages[currentIndex];
+      renderThumbs();
+    });
+    nextBtn.addEventListener('click', ()=>{
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      mainImage.src = currentImages[currentIndex];
+      renderThumbs();
+    });
+  }
 
   // touch swipe for main image
   let touchStartX = 0;
@@ -179,28 +185,31 @@ async function renderProductPage(){
   mainImage.addEventListener('touchend', (e)=>{
     touchEndX = e.changedTouches[0].screenX;
     if(touchEndX + 40 < touchStartX){ // swipe left
-      document.getElementById('next-image').click();
+      if(nextBtn) nextBtn.click();
     } else if(touchEndX > touchStartX + 40){ // swipe right
-      document.getElementById('prev-image').click();
+      if(prevBtn) prevBtn.click();
     }
   });
 
   // add to cart
-  document.getElementById('add-to-cart').addEventListener('click', ()=>{
-    const size = document.getElementById('size-select').value;
-    const cart = JSON.parse(localStorage.getItem('drip_cart')||'[]');
-    cart.push({
-      id: product.PRODUCT_ID,
-      name: product.PRODUCT_NAME,
-      price: product.PRICE_PKR,
-      size,
-      color: currentColor,
-      image: currentImages[0]
+  const addBtn = document.getElementById('add-to-cart');
+  if(addBtn){
+    addBtn.addEventListener('click', ()=>{
+      const size = document.getElementById('size-select').value;
+      const cart = JSON.parse(localStorage.getItem('drip_cart')||'[]');
+      cart.push({
+        id: product.PRODUCT_ID,
+        name: product.PRODUCT_NAME,
+        price: product.PRICE_PKR,
+        size,
+        color: currentColor,
+        image: currentImages[0]
+      });
+      localStorage.setItem('drip_cart', JSON.stringify(cart));
+      updateCartCount();
+      alert('Added to cart');
     });
-    localStorage.setItem('drip_cart', JSON.stringify(cart));
-    updateCartCount();
-    alert('Added to cart');
-  });
+  }
 }
 
 /* ---------------- Color detection helpers ---------------- */
