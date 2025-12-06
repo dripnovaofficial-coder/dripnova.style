@@ -1,98 +1,89 @@
-// --- Load all products for product page grid ---
-function loadAllProducts() {
-  fetch('products.json')
-    .then(res => res.json())
-    .then(products => {
-      const list = document.getElementById('product-list');
-      list.innerHTML = ''; // clear old content
+let products = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}" class="product-image">
-          <h3 class="product-name">${product.name}</h3>
-          <p class="product-price">${product.price}</p>
-          <button onclick="viewProduct(${product.id})">View</button>
-        `;
-        list.appendChild(card);
-      });
-    })
-    .catch(err => console.error('Error loading products:', err));
+// Load all products from products.json
+async function loadProducts() {
+  const res = await fetch('products.json');
+  products = await res.json();
 }
 
-// --- View single product detail ---
+// Render products on Home Page
+function renderHomeProducts() {
+  loadProducts().then(() => {
+    const container = document.getElementById('product-grid');
+    container.innerHTML = '';
+
+    products.forEach((product, index) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <a href="product.html?id=${index}">
+          <img src="${product.images[0]}" alt="${product.PRODUCT_NAME}">
+          <h3>${product.PRODUCT_NAME}</h3>
+          <p>PKR ${product.PRICE_PKR}</p>
+        </a>
+      `;
+      container.appendChild(card);
+    });
+  });
+}
+
+// Render a single product on Product Page
 function renderProductPage() {
   const params = new URLSearchParams(window.location.search);
-  const productId = params.get('id');
+  const id = params.get('id');
 
-  if (!productId) return; // No single product to show
+  if (id === null) return;
 
-  fetch('products.json')
-    .then(res => res.json())
-    .then(products => {
-      const product = products.find(p => p.id == productId);
-      if (!product) return;
+  loadProducts().then(() => {
+    const product = products[id];
+    if (!product) return;
 
-      const wrap = document.getElementById('product-wrap');
-      wrap.innerHTML = `
-        <div class="product-detail-card">
-          <img src="${product.image}" alt="${product.name}" class="product-detail-image">
-          <div class="product-detail-info">
-            <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p class="product-price">${product.price}</p>
-            <form onsubmit="addToCart(event, ${product.id})">
-              <input type="text" name="name" placeholder="Your Name" required>
-              <input type="number" name="quantity" value="1" min="1">
-              <button type="submit">Add to Cart</button>
-            </form>
-          </div>
+    const wrap = document.getElementById('product-wrap');
+    wrap.innerHTML = `
+      <div class="product-detail-card">
+        <div class="product-detail-images">
+          ${product.images.map(img => `<img src="${img}" alt="${product.PRODUCT_NAME}">`).join('')}
         </div>
-      `;
-    })
-    .catch(err => console.error('Error loading product:', err));
+        <div class="product-detail-info">
+          <h2>${product.PRODUCT_NAME}</h2>
+          <p>Type: ${product.TYPE}</p>
+          <p>Sizes: ${product.SIZE}</p>
+          <p>Colours: ${product.COLOURS}</p>
+          <p>Price: PKR ${product.PRICE_PKR}</p>
+          <form onsubmit="addToCart(event, ${id})">
+            <input type="text" name="customerName" placeholder="Your Name" required>
+            <input type="email" name="customerEmail" placeholder="Your Email" required>
+            <button type="submit">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    `;
+  });
 }
 
-// --- Handle "View" button click ---
-function viewProduct(id) {
-  window.location.href = `product.html?id=${id}`;
-}
-
-// --- Cart management ---
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart') || '[]');
-}
-
-function updateCartCount() {
-  const count = getCart().reduce((acc, item) => acc + item.quantity, 0);
-  document.getElementById('cart-count').textContent = count;
-}
-
-function addToCart(event, productId) {
+// Add product to cart
+function addToCart(event, index) {
   event.preventDefault();
+  const product = products[index];
   const form = event.target;
-  const name = form.name.value;
-  const quantity = parseInt(form.quantity.value);
+  const customerName = form.customerName.value;
+  const customerEmail = form.customerEmail.value;
 
-  fetch('products.json')
-    .then(res => res.json())
-    .then(products => {
-      const product = products.find(p => p.id == productId);
-      if (!product) return;
+  cart.push({
+    product,
+    customerName,
+    customerEmail
+  });
 
-      const cart = getCart();
-      const existing = cart.find(item => item.id == productId);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  alert('Product added to cart!');
+  form.reset();
+}
 
-      if (existing) {
-        existing.quantity += quantity;
-      } else {
-        cart.push({ id: productId, name: product.name, price: product.price, quantity });
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-      alert('Product added to cart!');
-      form.reset();
-    });
+// Update cart badge
+function updateCartCount() {
+  const el = document.getElementById('cart-count');
+  if(el) el.textContent = cart.length;
 }
