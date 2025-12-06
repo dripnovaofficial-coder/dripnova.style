@@ -1,35 +1,49 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thank You — DripNova</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Thank you</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-  <div class="nav-left">
-    <img src="dripnova-logo.png" alt="Logo" class="brand-logo">
-    <div class="brand">DripNova</div>
-  </div>
-  <div class="nav-right">
-    <a href="index.html">Home</a>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-left"><div class="brand">DripNova</div></div>
+    <div class="nav-right"><a href="index.html">Home</a></div>
+  </nav>
 
-<div class="container" style="text-align:center;margin-top:50px;">
-  <h2>Thank you for your order!</h2>
-  <p>Your Order ID is: <span id="order-id"></span></p>
-  <p>You can track your order status in 2-3 days.</p>
-  <a href="index.html" class="btn">Back to Home</a>
-</div>
+  <div class="container">
+    <h2>Thank You!</h2>
+    <div id="order-info"></div>
 
-<script>
-document.addEventListener('DOMContentLoaded', ()=>{
-  const params = new URLSearchParams(location.search);
-  const id = params.get('order');
-  document.getElementById('order-id').textContent = id || 'N/A';
-});
-</script>
+    <div style="margin-top:16px">
+      <a href="track.html" class="btn">Track Your Order</a>
+      <a href="index.html" class="btn" style="background:#444;color:#fff">Back to Shop</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const el = document.getElementById('order-info');
+      if(!id){
+        el.innerHTML = '<p>No order id found.</p>';
+        return;
+      }
+      const order = getOrder(id);
+      if(!order){
+        el.innerHTML = `<p>Order not found for ID <strong>${id}</strong></p>`;
+        return;
+      }
+      el.innerHTML = `
+        <p>Your order has been placed successfully.</p>
+        <p><strong>Order ID:</strong> ${id}</p>
+        <p><strong>Status:</strong> ${order.status}</p>
+        <p>We will contact you on <strong>${order.customer.phone}</strong> for updates.</p>
+      `;
+    });
+  </script>
 </body>
 </html>
