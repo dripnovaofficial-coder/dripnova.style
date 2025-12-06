@@ -6,44 +6,50 @@
   <title>Shop – Drip Nova</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- HEADER -->
-<header class="site-header">
-  <div class="header-container">
-    <img src="dripnova-logo.png" alt="Drip Nova Logo" class="logo">
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-  </div>
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="dripnova-logo.png" alt="Drip Nova Logo">
+  </a>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </nav>
 </header>
 
 <!-- PAGE TITLE -->
-<h1 style="text-align:center; padding:20px;">Drip Nova Shop</h1>
+<h1 style="text-align:center; padding:30px 10px; font-size:32px;">
+  DRIP NOVA SHOP
+</h1>
 
 <!-- PRODUCTS GRID -->
 <div class="products-grid" id="products-grid"></div>
 
-<!-- SCRIPT TO LOAD PRODUCTS -->
+<!-- LOAD PRODUCTS -->
 <script>
 fetch('products.json')
   .then(res => res.json())
   .then(products => {
     const grid = document.getElementById('products-grid');
-    products.forEach(product => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
+
+    products.forEach(p => {
+      let card = document.createElement('div');
+      card.className = "product-card";
+
       card.innerHTML = `
-        <img src="${product.images[0]}" alt="${product.PRODUCT_NAME}">
-        <h2>${product.PRODUCT_NAME}</h2>
-        <p>PKR ${product.PRICE_PKR}</p>
-        <button onclick="window.location.href='product.html?id=${product.PRODUCT_ID}'">View</button>
+        <img src="${p.images[0]}" alt="${p.PRODUCT_NAME}">
+        <h2>${p.PRODUCT_NAME}</h2>
+        <p>PKR ${p.PRICE_PKR}</p>
+        <button onclick="location.href='product.html?id=${p.PRODUCT_ID}'">View Details</button>
       `;
+
       grid.appendChild(card);
     });
-  })
-  .catch(err => console.error("Failed to load products:", err));
+  });
 </script>
 
 </body>
