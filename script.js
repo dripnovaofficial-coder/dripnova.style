@@ -330,21 +330,4 @@ function escapeHtml(s){
   return String(s||'').replace(/[&<>"']/g, function(m){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
   });
-}                                                                                                                                                                     
-function openProduct(imgSrc, title) {
-    document.getElementById('popup-img').src = imgSrc;
-    document.getElementById('popup-title').innerText = title;
-    document.getElementById('product-popup').style.display = 'flex';
 }
-
-function closeProduct() {
-    document.getElementById('product-popup').style.display = 'none';
-}
-
-// Form submit event
-document.getElementById('add-to-cart-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    alert('Product added to cart!');
-    closeProduct();
-});
-
