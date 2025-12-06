@@ -52,7 +52,14 @@
     <section class="product-grid" id="product-grid">
       <!-- cards injected by script.js -->
     </section>
-
+    
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderHomeProducts();
+    updateCartCount();
+  });
+</script>
     <div class="footer">
       <div>© DripNova</div>
       <div class="contact-row">
