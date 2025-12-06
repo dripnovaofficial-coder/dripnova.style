@@ -1,99 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DripNova - Products</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Product</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">
-        <img src="dripnova-logo.png" alt="DripNova Logo" height="50">
+  <nav>
+    <div class="nav-left"><div class="brand">DripNova</div></div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
     </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="product.html">Products</a>
-        <a href="cart.html">Cart</a>
-    </nav>
-</header>
+  </nav>
 
-<!-- PRODUCT GRID -->
-<section class="product-grid-section">
-    <h1>Our Products</h1>
-    <div class="product-grid">
-        <div class="product-card" onclick="openProduct('product1.png', 'Product 1')">
-            <img src="product1.png" alt="Product 1">
-            <h2>Product 1</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product2.png', 'Product 2')">
-            <img src="product2.png" alt="Product 2">
-            <h2>Product 2</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product3.png', 'Product 3')">
-            <img src="product3.png" alt="Product 3">
-            <h2>Product 3</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product4.png', 'Product 4')">
-            <img src="product4.png" alt="Product 4">
-            <h2>Product 4</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product5.png', 'Product 5')">
-            <img src="product5.png" alt="Product 5">
-            <h2>Product 5</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product6.png', 'Product 6')">
-            <img src="product6.png" alt="Product 6">
-            <h2>Product 6</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product7.png', 'Product 7')">
-            <img src="product7.png" alt="Product 7">
-            <h2>Product 7</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product8.png', 'Product 8')">
-            <img src="product8.png" alt="Product 8">
-            <h2>Product 8</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product9.png', 'Product 9')">
-            <img src="product9.png" alt="Product 9">
-            <h2>Product 9</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product10.png', 'Product 10')">
-            <img src="product10.png" alt="Product 10">
-            <h2>Product 10</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product11.png', 'Product 11')">
-            <img src="product11.png" alt="Product 11">
-            <h2>Product 11</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product12.png', 'Product 12')">
-            <img src="product12.png" alt="Product 12">
-            <h2>Product 12</h2>
-        </div>
-        <div class="product-card" onclick="openProduct('product13.png', 'Product 13')">
-            <img src="product13.png" alt="Product 13">
-            <h2>Product 13</h2>
-        </div>
+  <div class="container">
+    <div id="product-wrap" class="product-detail">
+      <!-- injected -->
     </div>
-</section>
+  </div>
 
-<!-- PRODUCT POPUP -->
-<div id="product-popup" class="product-popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closeProduct()">&times;</span>
-        <img id="popup-img" src="" alt="Product Image">
-        <h2 id="popup-title">Product Title</h2>
-        <form id="add-to-cart-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="number" name="quantity" placeholder="Quantity" value="1" min="1" required>
-            <button type="submit">Add to Cart</button>
-        </form>
-    </div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProductPage();
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
