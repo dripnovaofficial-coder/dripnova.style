@@ -15,8 +15,10 @@
   <div class="container">
     <h2>Your Cart</h2>
     <div id="cart-items"></div>
-    <div style="margin-top:20px">
+
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
       <button id="clear-cart" class="btn">Clear Cart</button>
+      <button id="go-checkout" class="btn">Proceed to Checkout</button>
     </div>
   </div>
 
@@ -25,10 +27,16 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderCartPage();
       updateCartCount();
+
       document.getElementById('clear-cart').addEventListener('click', () => {
         localStorage.removeItem('drip_cart');
         renderCartPage();
         updateCartCount();
+      });
+
+      document.getElementById('go-checkout').addEventListener('click', () => {
+        // go to payment page
+        location.href = 'payment.html';
       });
     });
   </script>
