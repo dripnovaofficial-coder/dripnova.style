@@ -1,57 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drip Nova — Streetwear Pakistan</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Home</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <a href="index.html" class="logo">
-    <img src="dripnova-logo.png" alt="Drip Nova Logo">
-  </a>
-
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="cart.html">Cart</a>
+  <nav>
+    <div class="nav-left">
+      <div class="brand">DripNova</div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
+    </div>
   </nav>
-</header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Drip Nova</h1>
-    <p>Premium Hoodies & Streetwear — Pakistan</p>
-    <a href="shop.html" class="hero-btn">Shop Now</a>
+  <!-- HERO (keeps within viewport, no dragging) -->
+  <section class="hero">
+    <img src="https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/hero/hero-sample.jpg" alt="DripNova hero">
+  </section>
+
+  <div class="container">
+    <!-- Featured -->
+    <div class="featured">
+      <div class="feature-box">
+        <h3>New Arrivals</h3>
+        <p>Trending hoodies & sweatshirts</p>
+      </div>
+      <div class="feature-box">
+        <h3>Best Sellers</h3>
+        <p>Customer favorites</p>
+      </div>
+      <div class="feature-box">
+        <h3>Discounts</h3>
+        <p>Special offers</p>
+      </div>
+    </div>
+
+    <!-- Products grid -->
+    <section class="product-grid" id="product-grid">
+      <!-- cards injected by script.js -->
+    </section>
+
+    <div class="footer">
+      <div>© DripNova</div>
+      <div class="contact-row">
+        <a id="wa-link" href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        <a id="site-link" href="https://yourwebsite.com" target="_blank">Website</a>
+        <a id="mail-link" href="mailto:youremail@example.com">Email</a>
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- CONTACT SECTION -->
-<section class="contact">
-  <h2>Contact Us</h2>
-
-  <div class="contact-links">
-    <a href="https://wa.me/923161233951" target="_blank" class="contact-btn">
-      WhatsApp: 0316-1233951
-    </a>
-    <a href="https://instagram.com/dripnovaofficial" target="_blank" class="contact-btn">
-      Instagram: @dripnovaofficial
-    </a>
-    <a href="mailto:dripnova.official@gmail.com" class="contact-btn">
-      Email: dripnova.official@gmail.com
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2025 Drip Nova — All Rights Reserved</p>
-</footer>
-
+  <script src="script.js"></script>
+  <script>
+    // index page specific
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHomeProducts();
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
