@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — DripNova</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <img src="dripnova-logo.png" alt="Logo" class="brand-logo">
+      <div class="brand">DripNova</div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Checkout</h2>
+    <div id="checkout-items"></div>
+
+    <h3>Select Payment Method:</h3>
+    <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label><br>
+    <label><input type="radio" name="payment" value="PREPAID"> Prepaid (Easypaisa / JazzCash / NayaPay)</label>
+
+    <div id="prepaid-details" style="display:none; margin-top:10px;">
+      <p>Easypaisa: 03302936798 (Muhammad Asim Khan)</p>
+      <p>JazzCash/NayaPay: 03302936798 (Muhammad Khuzaima Raza)</p>
+    </div>
+
+    <button id="confirm-order" class="btn" style="margin-top:20px;">Confirm Order</button>
+  </div>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  const checkoutWrap = document.getElementById('checkout-items');
+  const cart = JSON.parse(localStorage.getItem('drip_cart')||'[]');
+  if(cart.length===0){checkoutWrap.innerHTML='<p>No items in cart.</p>'; return;}
+  let total=0;
+  cart.forEach(item=>{
+    total+=Number(item.price||0);
+    checkoutWrap.innerHTML += `<div>${item.name} • ${item.size} • ${item.color} • PKR ${item.price}</div>`;
+  });
+  checkoutWrap.innerHTML += `<h3>Total: PKR ${total}</h3>`;
+
+  const paymentRadios = document.querySelectorAll('input[name="payment"]');
+  const prepaidDetails = document.getElementById('prepaid-details');
+  paymentRadios.forEach(r=>{
+    r.addEventListener('change', ()=>{
+      prepaidDetails.style.display = r.value==='PREPAID' ? 'block':'none';
+    });
+  });
+
+  document.getElementById('confirm-order').addEventListener('click', ()=>{
+    const orderId = 'DN'+Date.now();
+    localStorage.setItem('drip_last_order', JSON.stringify({id:orderId,cart}));
+    localStorage.removeItem('drip_cart');
+    window.location.href = 'thankyou.html?order='+orderId;
+  });
+});
+</script>
+</body>
+</html>
