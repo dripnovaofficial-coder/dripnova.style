@@ -144,3 +144,40 @@ nav{
   .footer{flex-direction:column;gap:10px;align-items:center}
   .contact-row{flex-wrap:wrap;justify-content:center}
 }
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.product-detail-image {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-detail-info {
+  flex: 1;
+  min-width: 250px;
+}
