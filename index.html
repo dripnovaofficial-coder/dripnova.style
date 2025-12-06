@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DripNova — Home</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,8 @@
 
   <nav>
     <div class="nav-left">
-      <img src="dripnova-logo.png" alt="DripNova Logo" class="brand-logo">
+      <!-- Logo: put your file at assets/logo.png or change path -->
+      <img src="assets/logo.png" alt="DripNova" class="logo" onerror="this.style.display='none'">
       <div class="brand">DripNova</div>
     </div>
     <div class="nav-right">
@@ -20,15 +21,33 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO - small -->
   <section class="hero">
-    <div class="hero-text">
-      <h1>I style your fashion</h1>
-      <p>Exclusive hoodies & sweatshirts for trendsetters</p>
+    <div class="hero-inner">
+      <div>
+        <h1>We Style Your Fashion</h1>
+        <p>Luxury hoodies & sweatshirts — premium streetwear</p>
+      </div>
     </div>
   </section>
 
   <div class="container">
+    <!-- Featured -->
+    <div class="featured">
+      <div class="feature-box">
+        <h3>New Arrivals</h3>
+        <p>Trending hoodies & sweatshirts</p>
+      </div>
+      <div class="feature-box">
+        <h3>Best Sellers</h3>
+        <p>Customer favorites</p>
+      </div>
+      <div class="feature-box">
+        <h3>Discounts</h3>
+        <p>Special offers</p>
+      </div>
+    </div>
+
     <!-- Products grid -->
     <section class="product-grid" id="product-grid">
       <!-- cards injected by script.js -->
@@ -37,10 +56,10 @@
     <div class="footer">
       <div>© DripNova</div>
       <div class="contact-row">
-        <a href="https://wa.me/923161232951" target="_blank">WhatsApp</a>
-        <a href="https://instagram.com/dripnovaofficial" target="_blank">Instagram</a>
-        <a href="mailto:dripnova.official@gmail.com">Email</a>
-        <a href="https://dripnovaofficial.com" target="_blank">Website</a>
+        <a id="wa-link" href="https://wa.me/923161232951" target="_blank">WhatsApp</a>
+        <a id="ig-link" href="https://instagram.com/dripnovaofficial" target="_blank">Instagram</a>
+        <a id="mail-link" href="mailto:dripnova.official@gmail.com">Email</a>
+        <a id="site-link" href="https://yourwebsite.com" target="_blank">Website</a>
       </div>
     </div>
   </div>
