@@ -1,34 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Cart - Drip Nova</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Cart</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site-header">
-  <a href="shop.html">← Shop</a>
-  <a href="index.html">Home</a>
-</header>
+  <nav>
+    <div class="nav-left"><div class="brand">DripNova</div></div>
+    <div class="nav-right"><a href="index.html">Home</a></div>
+  </nav>
 
-<main>
-  <h1>Your Cart</h1>
-  <div id="cart-items"></div>
-  <h2>Total: <span id="cart-total">PKR 0</span></h2>
-  <button id="checkout-btn" class="btn">Checkout (local)</button>
-</main>
+  <div class="container">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div style="margin-top:20px">
+      <button id="clear-cart" class="btn">Clear Cart</button>
+    </div>
+  </div>
 
-<script src="script.js"></script>
-<script>
-  loadCart();
-  document.getElementById("checkout-btn").onclick = function(){
-    if(!JSON.parse(localStorage.getItem("cart")||"[]").length){ alert("Cart is empty"); return; }
-    alert("Checkout complete (local). Cart cleared.");
-    localStorage.removeItem("cart");
-    loadCart();
-    window.location.href = "index.html";
-  };
-</script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+      updateCartCount();
+      document.getElementById('clear-cart').addEventListener('click', () => {
+        localStorage.removeItem('drip_cart');
+        renderCartPage();
+        updateCartCount();
+      });
+    });
+  </script>
 </body>
 </html>
