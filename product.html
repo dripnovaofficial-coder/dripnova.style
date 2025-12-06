@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DripNova — Product</title>
+  <title>DripNova — Products</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,16 +16,23 @@
   </nav>
 
   <div class="container">
+    <!-- All products grid -->
+    <div id="product-list">
+      <!-- Products injected here -->
+    </div>
+
+    <!-- Single product detail -->
     <div id="product-wrap" class="product-detail">
-      <!-- injected -->
+      <!-- Single product injected here when 'View' is clicked -->
     </div>
   </div>
 
   <script src="script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderProductPage();
-      updateCartCount();
+      loadAllProducts();        // Load all 13 products
+      renderProductPage();      // Existing single product detail (if URL has ?id=)
+      updateCartCount();        // Update cart badge
     });
   </script>
 </body>
