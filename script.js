@@ -29,8 +29,11 @@ async function renderHomeProducts() {
       <h3>${escapeHtml(p.PRODUCT_NAME)}</h3>
       <p>${escapeHtml(p.TYPE)}</p>
       <p class="price">PKR ${p.PRICE_PKR}</p>
-      <a class="btn" href="product.html?id
-
+      <a class="btn" href="product.html?id=${encodeURIComponent(p.PRODUCT_ID)}">View Product</a>
+    `;
+    grid.appendChild(card);
+  });
+}
 
 /* ---------------- Utility: pick front image ---------------- */
 function pickFrontImage(images) {
