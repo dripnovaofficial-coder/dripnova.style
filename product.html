@@ -1,84 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DripNova - Products</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRODUCT</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">
-        <img src="dripnova-logo.png" alt="DripNova Logo" height="50">
+    <style>
+      /* Keep your existing look – only fixing responsiveness */
+      #product-page {
+        padding: 8px;
+        margin-top: 10px;
+      }
+      #product-container {
+        margin: 0 auto;
+        max-width: 600px;
+      }
+      #product-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin: 10px 0;
+      }
+      .thumbnail {
+        width: 70px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 2px solid transparent;
+      }
+      .thumbnail:hover {
+        border-color: grey;
+      }
+      .size,
+      .colour {
+        margin: 4px;
+        padding: 5px 15px;
+        border-radius: 6px;
+        background: black;
+        border: 1px solid grey;
+        cursor: pointer;
+        color: white;
+        display: inline-block;
+      }
+      .size:hover,
+      .colour:hover {
+        background: white;
+        color: black;
+      }
+      #add-to-cart {
+        width: 100%;
+        background: rgb(58, 19, 19);
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+      #add-to-cart:hover {
+        background: rgba(58, 19, 19, 0.6);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="product-page">
+      <div id="product-container">
+        <h1 id="p-title"></h1>
+        <img id="product-image" src="" alt="Product Image" />
+
+        <div id="thumbnails"></div>
+        <p id="price"></p>
+
+        <h3>SELECT SIZE</h3>
+        <div id="sizes"></div>
+
+        <h3>SELECT COLOUR</h3>
+        <div id="colors"></div>
+
+        <button id="add-to-cart">ADD TO CART</button>
+      </div>
     </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="cart.html">Cart</a>
-    </nav>
-</header>
 
-<!-- PRODUCT GRID -->
-<section class="product-grid-section">
-    <h1>Our Products</h1>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="product1.png" alt="Product 1">
-            <h2>Product 1</h2>
-        </div>
-        <div class="product-card">
-            <img src="product2.png" alt="Product 2">
-            <h2>Product 2</h2>
-        </div>
-        <div class="product-card">
-            <img src="product3.png" alt="Product 3">
-            <h2>Product 3</h2>
-        </div>
-        <div class="product-card">
-            <img src="product4.png" alt="Product 4">
-            <h2>Product 4</h2>
-        </div>
-        <div class="product-card">
-            <img src="product5.png" alt="Product 5">
-            <h2>Product 5</h2>
-        </div>
-        <div class="product-card">
-            <img src="product6.png" alt="Product 6">
-            <h2>Product 6</h2>
-        </div>
-        <div class="product-card">
-            <img src="product7.png" alt="Product 7">
-            <h2>Product 7</h2>
-        </div>
-        <div class="product-card">
-            <img src="product8.png" alt="Product 8">
-            <h2>Product 8</h2>
-        </div>
-        <div class="product-card">
-            <img src="product9.png" alt="Product 9">
-            <h2>Product 9</h2>
-        </div>
-        <div class="product-card">
-            <img src="product10.png" alt="Product 10">
-            <h2>Product 10</h2>
-        </div>
-        <div class="product-card">
-            <img src="product11.png" alt="Product 11">
-            <h2>Product 11</h2>
-        </div>
-        <div class="product-card">
-            <img src="product12.png" alt="Product 12">
-            <h2>Product 12</h2>
-        </div>
-        <div class="product-card">
-            <img src="product13.png" alt="Product 13">
-            <h2>Product 13</h2>
-        </div>
-    </div>
-</section>
+    <script>
+      // FIXED: Works with your products.json and script.js
+      async function loadProduct() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id");
 
-<script src="script.js"></script>
-</body>
+        if (!productId) return;
+
+        try {
+          const response = await fetch("products.json");
+          const data = await response.json();
+          const product = data.products.find((p) => p.PRODUCT_ID === productId);
+
+          if (!product) return;
+
+          document.getElementById("p-title").textContent =
+            product.PRODUCT_NAME;
+
+          const mainImg = document.getElementById("product-image");
+          mainImg.src = product.images[0];
+
+          // Thumbnails
+          const thumbnailContainer = document.getElementById("thumbnails");
+          thumbnailContainer.innerHTML = "";
+          product.images.forEach((img) => {
+            const thumb = document.createElement("img");
+            thumb.src = img;
+            thumb.className = "thumbnail";
+            thumb.onclick = () => (mainImg.src = img);
+            thumbnailContainer.appendChild(thumb);
+          });
+
+          // Price
+          document.getElementById(
+            "price"
+          ).textContent = `PKR ${product.PRICE_PKR}`;
+
+          // Sizes
+          const sizeContainer = document.getElementById("sizes");
+          sizeContainer.innerHTML = "";
+          product.SIZE.split(",").forEach((size) => {
+            const s = document.createElement("div");
+            s.className = "size";
+            s.textContent = size.trim();
+            sizeContainer.appendChild(s);
+          });
+
+          // Colors
+          const colorContainer = document.getElementById("colors");
+          colorContainer.innerHTML = "";
+          product.COLOURS.split(",").forEach((c) => {
+            const col = document.createElement("div");
+            col.className = "colour";
+            col.textContent = c.trim();
+            colorContainer.appendChild(col);
+          });
+
+          // Add to Cart
+          document.getElementById("add-to-cart").onclick = function () {
+            addToCart(productId);
+          };
+        } catch (err) {
+          console.error("Product load failed", err);
+        }
+      }
+
+      loadProduct();
+    </script>
+  </body>
 </html>
