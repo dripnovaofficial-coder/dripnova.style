@@ -11,8 +11,6 @@
 
   <nav>
     <div class="nav-left">
-      <!-- Logo: put your file at assets/logo.png or change path -->
-      <img src="assets/logo.png" alt="DripNova" class="logo" onerror="this.style.display='none'">
       <div class="brand">DripNova</div>
     </div>
     <div class="nav-right">
@@ -21,14 +19,9 @@
     </div>
   </nav>
 
-  <!-- HERO - small -->
+  <!-- HERO (keeps within viewport, no dragging) -->
   <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <h1>We Style Your Fashion</h1>
-        <p>Luxury hoodies & sweatshirts — premium streetwear</p>
-      </div>
-    </div>
+    <img src="https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/hero/hero-sample.jpg" alt="DripNova hero">
   </section>
 
   <div class="container">
@@ -52,27 +45,20 @@
     <section class="product-grid" id="product-grid">
       <!-- cards injected by script.js -->
     </section>
-    
-<script src="script.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    renderHomeProducts();
-    updateCartCount();
-  });
-</script>
+
     <div class="footer">
       <div>© DripNova</div>
       <div class="contact-row">
-        <a id="wa-link" href="https://wa.me/923161232951" target="_blank">WhatsApp</a>
-        <a id="ig-link" href="https://instagram.com/dripnovaofficial" target="_blank">Instagram</a>
-        <a id="mail-link" href="mailto:dripnova.official@gmail.com">Email</a>
+        <a id="wa-link" href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
         <a id="site-link" href="https://yourwebsite.com" target="_blank">Website</a>
+        <a id="mail-link" href="mailto:youremail@example.com">Email</a>
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
   <script>
+    // index page specific
     document.addEventListener('DOMContentLoaded', () => {
       renderHomeProducts();
       updateCartCount();
