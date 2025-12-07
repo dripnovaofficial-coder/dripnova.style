@@ -1,32 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DripNova — Product</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DripNova - Product Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
-    <div class="nav-left"><div class="brand">DripNova</div></div>
-    <div class="nav-right">
-      <a href="index.html">Home</a>
-      <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
-    </div>
-  </nav>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="dripnova-logo.png" alt="DripNova Logo" height="50">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
 
-  <div class="container">
-    <div id="product-wrap" class="product-detail">
-      <!-- injected -->
-    </div>
-  </div>
+    <!-- PRODUCT CONTAINER -->
+    <div class="product-container">
+        <img src="moving-forward-hoodie.png" alt="Moving Forward Hoodie" class="product-image">
 
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      renderProductPage();
-      updateCartCount();
-    });
-  </script>
+        <div class="product-details">
+            <h1>Moving Forward Hoodie</h1>
+            <p>Premium quality hoodie with soft fabric and modern design. Available in all sizes. Experience comfort and style in one.</p>
+            
+            <form class="add-to-cart-form">
+                <input type="text" name="customer_name" placeholder="Your Name" required>
+                <input type="email" name="customer_email" placeholder="Your Email" required>
+                <input type="tel" name="customer_phone" placeholder="Phone Number" required>
+                <select name="size" required>
+                    <option value="">Select Size</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- RELATED PRODUCTS (Optional) -->
+    <section class="related-products">
+        <h2>Other Products</h2>
+        <div class="related-grid">
+            <img src="product1.png" alt="Product 1">
+            <img src="product2.png" alt="Product 2">
+            <img src="product3.png" alt="Product 3">
+            <img src="product4.png" alt="Product 4">
+            <img src="product5.png" alt="Product 5">
+            <img src="product6.png" alt="Product 6">
+            <img src="product7.png" alt="Product 7">
+            <img src="product8.png" alt="Product 8">
+            <img src="product9.png" alt="Product 9">
+            <img src="product10.png" alt="Product 10">
+            <img src="product11.png" alt="Product 11">
+            <img src="product12.png" alt="Product 12">
+            <img src="product13.png" alt="Product 13">
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
