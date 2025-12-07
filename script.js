@@ -21,9 +21,7 @@ async function renderHomeProducts(){
   if(!grid) return;
   grid.innerHTML = '';
 
-  // show first 12 products (or all)
   data.slice(0, 12).forEach(p => {
-    // pick best thumbnail (prefer front)
     const thumb = pickFrontImage(p.images) || p.images[0] || '';
     const card = document.createElement('div');
     card.className = 'product-card';
@@ -38,16 +36,13 @@ async function renderHomeProducts(){
   });
 }
 
-/* ---------------- Utility: try to pick front image ---------------- */
+/* ---------------- Utility: pick front image ---------------- */
 function pickFrontImage(images){
   if(!images || !images.length) return null;
-  // prefer filenames containing 'front' (case insensitive)
   let found = images.find(i=>/front/i.test(i));
   if(found) return found;
-  // fallback: any image containing 'FRONT' uppercase or 'front'
   found = images.find(i=>/FRONT/i.test(i));
   if(found) return found;
-  // else return first
   return images[0];
 }
 
@@ -56,7 +51,6 @@ async function renderProductPage(){
   const params = new URLSearchParams(location.search);
   const id = params.get('id') || params.get('product') || params.get('PRODUCT_ID');
   if(!id) {
-    // If no id, show first product list
     const w = document.getElementById('product-wrap');
     if(w) w.innerHTML = '<p>No product specified. <a href="index.html">Back to shop</a></p>';
     return;
@@ -70,7 +64,6 @@ async function renderProductPage(){
     return;
   }
 
-  // build UI
   const wrap = document.getElementById('product-wrap');
   wrap.innerHTML = `
     <div class="left">
@@ -94,21 +87,17 @@ async function renderProductPage(){
     </div>
   `;
 
-  // prepare images grouped by color
   const colorNames = product.COLOURS.split(',').map(c=>c.trim());
   const imagesByColor = {};
   colorNames.forEach(col => {
     imagesByColor[col] = filterImagesForColor(product.images, col);
   });
-
-  // if any color has no images, fallback to whole images
   colorNames.forEach(col=>{
     if(!imagesByColor[col] || imagesByColor[col].length === 0){
       imagesByColor[col] = product.images.slice();
     }
   });
 
-  // create color swatches
   const colorRow = document.getElementById('color-row');
   colorNames.forEach((c, idx) => {
     const dot = document.createElement('button');
@@ -124,7 +113,6 @@ async function renderProductPage(){
     });
   });
 
-  // thumbs
   const thumbsContainer = document.getElementById('thumbs');
   const mainImage = document.getElementById('main-image');
   let currentColor = colorNames[0] || Object.keys(imagesByColor)[0];
@@ -153,16 +141,13 @@ async function renderProductPage(){
     currentIndex = 0;
     mainImage.src = currentImages[0];
     renderThumbs();
-    // update selected border for dots
     document.querySelectorAll('.color-dot').forEach(d=>{
       d.style.outline = (d.dataset.color===color) ? `3px solid rgba(0,255,127,0.8)` : 'none';
     });
   }
 
-  // initial render
   selectColor(currentColor);
 
-  // arrows
   const prevBtn = document.getElementById('prev-image');
   const nextBtn = document.getElementById('next-image');
   if(prevBtn && nextBtn){
@@ -178,20 +163,15 @@ async function renderProductPage(){
     });
   }
 
-  // touch swipe for main image
   let touchStartX = 0;
   let touchEndX = 0;
   mainImage.addEventListener('touchstart', (e)=>{ touchStartX = e.changedTouches[0].screenX; });
   mainImage.addEventListener('touchend', (e)=>{
     touchEndX = e.changedTouches[0].screenX;
-    if(touchEndX + 40 < touchStartX){ // swipe left
-      if(nextBtn) nextBtn.click();
-    } else if(touchEndX > touchStartX + 40){ // swipe right
-      if(prevBtn) prevBtn.click();
-    }
+    if(touchEndX + 40 < touchStartX){ if(nextBtn) nextBtn.click(); }
+    else if(touchEndX > touchStartX + 40){ if(prevBtn) prevBtn.click(); }
   });
 
-  // add to cart
   const addBtn = document.getElementById('add-to-cart');
   if(addBtn){
     addBtn.addEventListener('click', ()=>{
@@ -213,7 +193,6 @@ async function renderProductPage(){
 }
 
 /* ---------------- Color detection helpers ---------------- */
-// filter images by whether their filenames include the color word
 function filterImagesForColor(images, color){
   if(!images || !images.length) return [];
   const c = color.replace(/\s+/g,'').toLowerCase();
@@ -223,7 +202,6 @@ function filterImagesForColor(images, color){
       return name.includes(c) || name.includes(color.toLowerCase().replace(/\s+/g,''));
     }catch(e){ return false; }
   });
-  // also try more relaxed matching: match color words partially (e.g., 'grey' vs 'gray')
   if(matches.length) return matches;
   const altMatches = images.filter(src => {
     const n = src.toLowerCase();
@@ -235,25 +213,12 @@ function filterImagesForColor(images, color){
   return altMatches;
 }
 
-// naive color name to css conversion for swatch; fallback to lightgray
 function colorToCss(name){
   const map = {
-    'black':'#0b0b0b',
-    'white':'#ffffff',
-    'grey':'#8b8b8b',
-    'gray':'#8b8b8b',
-    'maroon':'#800000',
-    'chocolate':'#7b3f00',
-    'brown':'#6b3e26',
-    'red':'#c62828',
-    'navy':'#0b3d91',
-    'sky blue':'#87ceeb',
-    'skyblue':'#87ceeb',
-    'green':'#2e7d32',
-    'olive':'#6b8e23',
-    'charcoal':'#3b3b3b',
-    'army':'#4b5320',
-    'off white':'#f3f1ea'
+    'black':'#0b0b0b','white':'#ffffff','grey':'#8b8b8b','gray':'#8b8b8b',
+    'maroon':'#800000','chocolate':'#7b3f00','brown':'#6b3e26','red':'#c62828',
+    'navy':'#0b3d91','sky blue':'#87ceeb','skyblue':'#87ceeb','green':'#2e7d32',
+    'olive':'#6b8e23','charcoal':'#3b3b3b','army':'#4b5320','off white':'#f3f1ea'
   };
   return map[name.toLowerCase()] || name || '#ddd';
 }
@@ -285,7 +250,7 @@ async function renderCartPage(){
           <div style="margin-top:8px;font-weight:700">PKR ${item.price}</div>
         </div>
         <div style="margin-left:auto">
-          <button class="btn" data-idx="${idx}">Remove</button>
+          <button class="btn remove-btn" data-idx="${idx}">Remove</button>
         </div>
       </div>
     `;
@@ -297,7 +262,7 @@ async function renderCartPage(){
   cartWrap.appendChild(totalDiv);
 
   // attach removal handlers
-  document.querySelectorAll('#cart-items .btn').forEach(btn=>{
+  document.querySelectorAll('#cart-items .remove-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const idx = Number(btn.dataset.idx);
       const cart = JSON.parse(localStorage.getItem('drip_cart')||'[]');
@@ -307,6 +272,57 @@ async function renderCartPage(){
       updateCartCount();
     });
   });
+}
+
+/* ---------------- Orders: create & store ---------------- */
+function createOrder({customer, method, items}){
+  const orders = JSON.parse(localStorage.getItem('drip_orders')||'{}');
+  const id = generateOrderId();
+  const order = {
+    id,
+    customer,
+    method,
+    items,
+    status: 'Placed',
+    created: Date.now()
+  };
+  orders[id] = order;
+  localStorage.setItem('drip_orders', JSON.stringify(orders));
+  return id;
+}
+
+function getOrder(id){
+  const orders = JSON.parse(localStorage.getItem('drip_orders')||'{}');
+  return orders[id] || null;
+}
+
+function generateOrderId(){
+  const t = Date.now().toString(36);
+  const r = Math.random().toString(36).slice(2,7);
+  return `DN-${t}-${r}`.toUpperCase();
+}
+
+/* ---------------- Checkout summary (payment page) ---------------- */
+async function renderCheckoutSummary(){
+  const wrap = document.getElementById('checkout-summary');
+  if(!wrap) return;
+  const cart = JSON.parse(localStorage.getItem('drip_cart')||'[]');
+  if(cart.length === 0){
+    wrap.innerHTML = '<p>Your cart is empty. <a href="index.html">Shop now</a></p>';
+    return;
+  }
+  let total = 0;
+  wrap.innerHTML = cart.map(i=>{
+    total += Number(i.price||0);
+    return `<div style="background:#111;padding:10px;border-radius:8px;margin-bottom:8px;display:flex;gap:12px;align-items:center">
+      <img src="${i.image}" style="width:64px;height:64px;object-fit:cover;border-radius:6px"/>
+      <div>
+        <div style="font-weight:700">${escapeHtml(i.name)}</div>
+        <div style="color:#bbb">Size: ${escapeHtml(i.size)} • Color: ${escapeHtml(i.color)}</div>
+        <div style="margin-top:6px">PKR ${i.price}</div>
+      </div>
+    </div>`;
+  }).join('') + `<div style="margin-top:8px"><strong>Total: PKR ${total}</strong></div>`;
 }
 
 /* ---------------- Utilities ---------------- */
