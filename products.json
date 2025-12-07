@@ -72,17 +72,14 @@
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20HANGER.jpg"
     ]
   },
-
-]
-
   {
-    "PRODUCT_ID":"#0005",
-    "PRODUCT_NAME":"DN / New Folder Product",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0005",
+    "PRODUCT_NAME": "DN / New Folder Product",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,WHITE",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/BLACK%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/BLACK%20BACK.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/WHITE%20FRONT.jpg",
@@ -90,13 +87,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0006",
-    "PRODUCT_NAME":"Sneaker / S",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BROWN,RED",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0006",
+    "PRODUCT_NAME": "Sneaker / S",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BROWN,RED",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/BROWN%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/BROWN%20BACK.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/RED%20FRONT.jpg",
@@ -104,25 +101,25 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0007",
-    "PRODUCT_NAME":"Awesome Brother",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0007",
+    "PRODUCT_NAME": "Awesome Brother",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/awesome-brother/awesome-brother-front.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/awesome-brother/awesome-brother-back.png"
     ]
   },
   {
-    "PRODUCT_ID":"#0008",
-    "PRODUCT_NAME":"Be Your Own Hero",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,MAROON,WHITE",
-    "PRICE_PKR":999,
-    "images":[
+    "PRODUCT_ID": "#0008",
+    "PRODUCT_NAME": "Be Your Own Hero",
+    "TYPE": "SWEATSHIRT",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,MAROON,WHITE",
+    "PRICE_PKR": 999,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/black%20front.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/black%20back.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/maroon%20front.png",
@@ -132,36 +129,36 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0009",
-    "PRODUCT_NAME":"King Wild",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"GREY",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0009",
+    "PRODUCT_NAME": "King Wild",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "GREY",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/king%20wild/GREY%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/king%20wild/GREY%20BACK.jpg"
     ]
   },
   {
-    "PRODUCT_ID":"#0010",
-    "PRODUCT_NAME":"Moving Forward",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0010",
+    "PRODUCT_NAME": "Moving Forward",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/moving-forward/moving-forward-hoodie.png"
     ]
   },
   {
-    "PRODUCT_ID":"#0011",
-    "PRODUCT_NAME":"Stay Focused Break Rules",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"CHARCOAL,OLIVE,OFF WHITE",
-    "PRICE_PKR":999,
-    "images":[
+    "PRODUCT_ID": "#0011",
+    "PRODUCT_NAME": "Stay Focused Break Rules",
+    "TYPE": "SWEATSHIRT",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "CHARCOAL,OLIVE,OFF WHITE",
+    "PRICE_PKR": 999,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20front.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20back.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20front%20charcol%20.png",
@@ -169,13 +166,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0012",
-    "PRODUCT_NAME":"Thumbs Up",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,GREEN,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0012",
+    "PRODUCT_NAME": "Thumbs Up",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,GREEN,WHITE",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/BLACK%20BACK.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/WHITE%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/green%20front.jpg",
@@ -183,13 +180,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0013",
-    "PRODUCT_NAME":"Limit Your Mind",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0013",
+    "PRODUCT_NAME": "Limit Your Mind",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/your-limit/your%20mind%20hoodie%20front.png",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/your-limit/your%20mind%20hoodie%20back.png"
     ]
