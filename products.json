@@ -1,12 +1,12 @@
 [
   {
-    "PRODUCT_ID":"#0001",
-    "PRODUCT_NAME":"Astronauts",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0001",
+    "PRODUCT_NAME": "Astronauts",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,WHITE",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-front.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-folded.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg",
@@ -16,13 +16,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0002",
-    "PRODUCT_NAME":"Climb Your Way To The Top",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,CHOCOLATE,MAROON,WHITE",
-    "PRICE_PKR":999,
-    "images":[
+    "PRODUCT_ID": "#0002",
+    "PRODUCT_NAME": "Climb Your Way To The Top",
+    "TYPE": "SWEATSHIRT",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,CHOCOLATE,MAROON,WHITE",
+    "PRICE_PKR": 999,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-front.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-back.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-chocolate-front.jpg",
@@ -34,13 +34,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0003",
-    "PRODUCT_NAME":"Footballer",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,NAVY,SKY BLUE,WHITE",
-    "PRICE_PKR":999,
-    "images":[
+    "PRODUCT_ID": "#0003",
+    "PRODUCT_NAME": "Footballer",
+    "TYPE": "SWEATSHIRT",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,NAVY,SKY BLUE,WHITE",
+    "PRICE_PKR": 999,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_black_front.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_black_back.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_navy_front.jpg",
@@ -52,13 +52,13 @@
     ]
   },
   {
-    "PRODUCT_ID":"#0004",
-    "PRODUCT_NAME":"Hello There",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"ARMY,BLACK,MAROON,OFF WHITE,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
+    "PRODUCT_ID": "#0004",
+    "PRODUCT_NAME": "Hello There",
+    "TYPE": "HOODIE",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "ARMY,BLACK,MAROON,OFF WHITE,WHITE",
+    "PRICE_PKR": 1299,
+    "images": [
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20BACK.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20HANGERED.jpg",
@@ -69,10 +69,12 @@
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/ARMY%20PAIR.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20FRONT.jpg",
       "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20HANGER.jpg",
-      
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20HANGER.jpg"
     ]
   },
+
+]
+
   {
     "PRODUCT_ID":"#0005",
     "PRODUCT_NAME":"DN / New Folder Product",
