@@ -1,297 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DripNova Products</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #000;
-      color: #fff;
-    }
-
-    header {
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      border-bottom: 1px solid #222;
-    }
-
-    .products-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .product-card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 15px;
-      transition: transform 0.2s;
-    }
-
-    .product-card:hover {
-      transform: scale(1.03);
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .product-info {
-      margin-top: 10px;
-    }
-
-    .product-info h2 {
-      margin: 5px 0;
-      font-size: 1.2rem;
-    }
-
-    .product-info p {
-      margin: 3px 0;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    .product-info .price {
-      color: #00ff7f;
-      font-weight: 600;
-      margin-top: 5px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DripNova — Product</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav>
+    <div class="nav-left"><div class="brand">DripNova</div></div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart <span id="cart-count" class="cart-badge">0</span></a>
+    </div>
+  </nav>
 
-  <header>DripNova Products</header>
-
-  <div class="products-container" id="products-container">
-    <!-- Products will be injected here -->
+  <div class="container">
+    <div id="product-wrap" class="product-detail">
+      <!-- injected -->
+    </div>
   </div>
 
+  <script src="script.js"></script>
   <script>
-    // Your JSON data
-    const products = [
-      {
-        "PRODUCT_ID":"#0001",
-        "PRODUCT_NAME":"Astronauts",
-        "TYPE":"HOODIE",
-        "SIZE":"S,M,L,XL,XXL",
-        "COLOURS":"BLACK,WHITE",
-        "PRICE_PKR":1299,
-        "images":[
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-folded.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-black-back.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-white-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-white-folded.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts-white-back.jpg"
-        ]
-      },
-      {
-        "PRODUCT_ID":"#0002",
-        "PRODUCT_NAME":"Climb Your Way To The Top",
-        "TYPE":"SWEATSHIRT",
-        "SIZE":"S,M,L,XL,XXL",
-        "COLOURS":"BLACK,CHOCOLATE,MAROON,WHITE",
-        "PRICE_PKR":999,
-        "images":[
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-back.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-chocolate-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-chocolate-back.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-maroon-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-maroon-back.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-white-front.jpg",
-          "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-white-back.jpg"
-        ]
-      }
-      {
-    "PRODUCT_ID":"#0003",
-    "PRODUCT_NAME":"Footballer",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,NAVY,SKY BLUE,WHITE",
-    "PRICE_PKR":999,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_black_front.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_black_back.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_navy_front.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_navy_back.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_skyblue_front.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_skyblue_back.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_white_front.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Footballer/footballer_white_back.jpg"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0004",
-    "PRODUCT_NAME":"Hello There",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"ARMY,BLACK,MAROON,OFF WHITE,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20HANGERED.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/BLACK%20PAIR.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/ARMY%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/ARMY%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/ARMY%20HANGERED.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/ARMY%20PAIR.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Hello%20there/MAROON%20HANGER.jpg",
-      
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0005",
-    "PRODUCT_NAME":"DN / New Folder Product",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/BLACK%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/BLACK%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/WHITE%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/New%20folder/WHITE%20BACK.jpg"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0006",
-    "PRODUCT_NAME":"Sneaker / S",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BROWN,RED",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/BROWN%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/BROWN%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/RED%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/S/RED%20BACK.jpg"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0007",
-    "PRODUCT_NAME":"Awesome Brother",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/awesome-brother/awesome-brother-front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/awesome-brother/awesome-brother-back.png"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0008",
-    "PRODUCT_NAME":"Be Your Own Hero",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,MAROON,WHITE",
-    "PRICE_PKR":999,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/black%20front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/black%20back.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/maroon%20front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/maroon%20back.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/white%20front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/be-your%20own%20hero/white%20back.png"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0009",
-    "PRODUCT_NAME":"King Wild",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"GREY",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/king%20wild/GREY%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/king%20wild/GREY%20BACK.jpg"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0010",
-    "PRODUCT_NAME":"Moving Forward",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/moving-forward/moving-forward-hoodie.png"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0011",
-    "PRODUCT_NAME":"Stay Focused Break Rules",
-    "TYPE":"SWEATSHIRT",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"CHARCOAL,OLIVE,OFF WHITE",
-    "PRICE_PKR":999,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20back.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20front%20charcol%20.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/stay-focused-break-rules/stay-focused-break-rules%20back%20olive%20.png"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0012",
-    "PRODUCT_NAME":"Thumbs Up",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK,GREEN,WHITE",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/BLACK%20BACK.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/WHITE%20FRONT.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/green%20front.jpg",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/thumbs%20Up/white%20back.jpg"
-    ]
-  },
-  {
-    "PRODUCT_ID":"#0013",
-    "PRODUCT_NAME":"Limit Your Mind",
-    "TYPE":"HOODIE",
-    "SIZE":"S,M,L,XL,XXL",
-    "COLOURS":"BLACK",
-    "PRICE_PKR":1299,
-    "images":[
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/your-limit/your%20mind%20hoodie%20front.png",
-      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/your-limit/your%20mind%20hoodie%20back.png"
-    ]
-  }
-]// Add the rest of your products here
-    ];
-
-    const container = document.getElementById('products-container');
-
-    products.forEach(product => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <img src="${product.images[0]}" alt="${product.PRODUCT_NAME}">
-        <div class="product-info">
-          <h2>${product.PRODUCT_NAME}</h2>
-          <p>Type: ${product.TYPE}</p>
-          <p>Sizes: ${product.SIZE}</p>
-          <p>Colours: ${product.COLOURS}</p>
-          <p class="price">PKR ${product.PRICE_PKR}</p>
-        </div>
-      `;
-      container.appendChild(card);
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProductPage();
+      updateCartCount();
     });
   </script>
-
 </body>
 </html>
