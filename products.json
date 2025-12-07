@@ -1,6 +1,6 @@
 [
   {
-    "PRODUCT_ID": "#0001",
+    "PRODUCT_ID": "0001",
     "PRODUCT_NAME": "Astronauts",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0002",
+    "PRODUCT_ID": "0002",
     "PRODUCT_NAME": "Climb Your Way To The Top",
     "TYPE": "SWEATSHIRT",
     "SIZE": "S,M,L,XL,XXL",
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0003",
+    "PRODUCT_ID": "0003",
     "PRODUCT_NAME": "Footballer",
     "TYPE": "SWEATSHIRT",
     "SIZE": "S,M,L,XL,XXL",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0004",
+    "PRODUCT_ID": "0004",
     "PRODUCT_NAME": "Hello There",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -73,7 +73,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0005",
+    "PRODUCT_ID": "0005",
     "PRODUCT_NAME": "DN / New Folder Product",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0006",
+    "PRODUCT_ID": "0006",
     "PRODUCT_NAME": "Sneaker / S",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0007",
+    "PRODUCT_ID": "0007",
     "PRODUCT_NAME": "Awesome Brother",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -113,7 +113,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0008",
+    "PRODUCT_ID": "0008",
     "PRODUCT_NAME": "Be Your Own Hero",
     "TYPE": "SWEATSHIRT",
     "SIZE": "S,M,L,XL,XXL",
@@ -129,7 +129,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0009",
+    "PRODUCT_ID": "0009",
     "PRODUCT_NAME": "King Wild",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -141,7 +141,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0010",
+    "PRODUCT_ID": "0010",
     "PRODUCT_NAME": "Moving Forward",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0011",
+    "PRODUCT_ID": "0011",
     "PRODUCT_NAME": "Stay Focused Break Rules",
     "TYPE": "SWEATSHIRT",
     "SIZE": "S,M,L,XL,XXL",
@@ -166,7 +166,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0012",
+    "PRODUCT_ID": "0012",
     "PRODUCT_NAME": "Thumbs Up",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
@@ -180,7 +180,7 @@
     ]
   },
   {
-    "PRODUCT_ID": "#0013",
+    "PRODUCT_ID": "0013",
     "PRODUCT_NAME": "Limit Your Mind",
     "TYPE": "HOODIE",
     "SIZE": "S,M,L,XL,XXL",
