@@ -107,6 +107,21 @@ nav{
   min-width:320px;
   max-width:560px;
 }
+/* PRODUCT PAGE IMAGE FIX */
+.product-image-container {
+    width: 100%;
+    max-width: 450px;     /* Controls max size */
+    margin: 0 auto;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
 .main-image{width:100%;height:520px;object-fit:contain;border-radius:8px;background:#0a0a0a;display:block}
 .thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 .thumb{width:64px;height:64px;object-fit:cover;border-radius:6px;border:2px solid #222;cursor:pointer}
