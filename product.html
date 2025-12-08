@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="product.js"></script>
 </head>
+
 <body>
-  <div id="product-page">
-    <div id="product-container">
-      <h1 id="p-title">Loading...</h1>
-      <script src="product.js" defer></script>
-      <div class="product-image-container">
-    <img id="productImage" src="" alt="Product Image">
-      <img id="product-image" src="" alt="Product Image" />
-      <div id="thumbnails"></div>
-      <p id="price"></p>
-      <h3>SELECT SIZE</h3>
-      <div id="sizes"></div>
-      <h3>SELECT COLOUR</h3>
-      <div id="colors"></div>
-        <img id="product-image" src="" alt="Product Image">
-<h1 id="p-title"></h1>
-<p id="price"></p>
-<div id="sizes"></div>
-<div id="colors"></div>
-<div id="thumbnails"></div>
-<button id="add-to-cart">ADD TO CART</button>
+
+  <nav>
+    <div class="nav-left">
+      <img src="dripnova-logo.png" class="logo">
+      <span class="brand">DRIPNOVA</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="product-detail">
+
+      <!-- LEFT SIDE: IMAGES -->
+      <div class="left">
+        <div class="product-image-container">
+          <img id="productImage" class="main-image" src="" alt="Product Image">
+        </div>
+
+        <div id="thumbnails" class="thumbs"></div>
+      </div>
+
+      <!-- RIGHT SIDE: DETAILS -->
+      <div class="right">
+        <h1 id="p-title">Loading...</h1>
+        <p id="price"></p>
+
+        <h3>SELECT SIZE</h3>
+        <div id="sizes" class="size-row"></div>
+
+        <h3>SELECT COLOR</h3>
+        <div id="colors" class="color-row"></div>
+
+        <button id="add-to-cart" class="btn">ADD TO CART</button>
+      </div>
+
     </div>
   </div>
+
 </body>
 </html>
