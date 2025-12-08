@@ -1,131 +1,90 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const container = document.querySelector("#product-container");
-    const productImage = document.getElementById("product-image");
+    const productImage = document.getElementById("productImage");
     const productName = document.getElementById("p-title");
     const productPrice = document.getElementById("price");
     const sizeContainer = document.getElementById("sizes");
     const colorContainer = document.getElementById("colors");
     const thumbnails = document.getElementById("thumbnails");
-    const addToCartBtn = document.getElementById("add-to-cart");
 
     const params = new URLSearchParams(window.location.search);
-    const productId = decodeURIComponent(params.get("id"));
+    const productId = params.get("id");
 
     if (!productId) return;
 
-    try {
-        const res = await fetch("products.json");
-        const data = await res.json();
+    const res = await fetch("products.json");
+    const data = await res.json();
 
-        // Find product by ID
-        const product = data.find(p => p.PRODUCT_ID === productId);
-        if (!product) {
-            container.innerHTML = "<h2>Product Not Found</h2>";
-            return;
-        }
+    const product = data.find(p => p.PRODUCT_ID === productId);
 
-        // Display name & price
-        productName.textContent = product.PRODUCT_NAME;
-        productPrice.textContent = `PKR ${product.PRICE_PKR}`;
-
-        // Initialize main image
-        let currentColor = product.COLOURS.split(",")[0].trim();
-        let imagesByColor = {};
-
-        // Map images by color
-        product.COLOURS.split(",").forEach(c => {
-            const colorKey = c.trim().toLowerCase().replace(/\s/g, "");
-            imagesByColor[colorKey] = product.images.filter(img => img.toLowerCase().includes(colorKey));
-            if (imagesByColor[colorKey].length === 0) {
-                imagesByColor[colorKey] = product.images.slice();
-            }
-        });
-
-        // Set initial image
-        const initialImages = imagesByColor[currentColor.toLowerCase().replace(/\s/g, "")];
-        let currentIndex = 0;
-        productImage.src = initialImages[0];
-
-        // Display thumbnails
-        function renderThumbnails() {
-            thumbnails.innerHTML = "";
-            initialImages.forEach((img, idx) => {
-                const t = document.createElement("img");
-                t.src = img;
-                t.className = "thumbnail";
-                if (idx === currentIndex) t.style.border = "2px solid #fff";
-                t.addEventListener("click", () => {
-                    currentIndex = idx;
-                    productImage.src = initialImages[currentIndex];
-                    renderThumbnails();
-                });
-                thumbnails.appendChild(t);
-            });
-        }
-        renderThumbnails();
-
-        // Display sizes
-        sizeContainer.innerHTML = "";
-        product.SIZE.split(",").forEach(s => {
-            const el = document.createElement("div");
-            el.className = "size";
-            el.textContent = s.trim();
-            el.addEventListener("click", () => {
-                document.querySelectorAll(".size").forEach(x => x.classList.remove("selected"));
-                el.classList.add("selected");
-            });
-            sizeContainer.appendChild(el);
-        });
-
-        // Display colors
-        colorContainer.innerHTML = "";
-        product.COLOURS.split(",").forEach(c => {
-            const el = document.createElement("div");
-            el.className = "colour";
-            el.textContent = c.trim();
-            el.addEventListener("click", () => {
-                document.querySelectorAll(".colour").forEach(x => x.classList.remove("selected"));
-                el.classList.add("selected");
-
-                // Update main image to first image of selected color
-                const colorKey = c.trim().toLowerCase().replace(/\s/g, "");
-                currentColor = colorKey;
-                currentIndex = 0;
-                productImage.src = imagesByColor[colorKey][0];
-                renderThumbnails();
-            });
-            colorContainer.appendChild(el);
-        });
-
-        // Add to cart
-        addToCartBtn.addEventListener("click", () => {
-            const selectedSize = document.querySelector(".size.selected")?.textContent || "";
-            const selectedColor = document.querySelector(".colour.selected")?.textContent || "";
-
-            if (!selectedSize || !selectedColor) {
-                alert("Please select size and color!");
-                return;
-            }
-
-            const cart = JSON.parse(localStorage.getItem("drip_cart") || "[]");
-            cart.push({
-                id: product.PRODUCT_ID,
-                name: product.PRODUCT_NAME,
-                price: product.PRICE_PKR,
-                size: selectedSize,
-                color: selectedColor,
-                image: productImage.src
-            });
-            localStorage.setItem("drip_cart", JSON.stringify(cart));
-            alert("Added to cart");
-        });
-
-        // Optional: Responsive image sizing
-        productImage.style.maxWidth = "100%";
-        productImage.style.height = "auto";
-
-    } catch (err) {
-        console.error("Failed to load product", err);
-        container.innerHTML = "<h2>Failed to load product</h2>";
+    if (!product) {
+        productName.textContent = "Product Not Found";
+        return;
     }
+
+    productName.textContent = product.PRODUCT_NAME;
+    productPrice.textContent = `PKR ${product.PRICE_PKR}`;
+
+    // Extract colors
+    const colors = product.COLOURS.split(",").map(c => c.trim().toLowerCase());
+
+    // Organize images by color
+    const imagesByColor = {};
+    colors.forEach(color => {
+        imagesByColor[color] = product.images.filter(img =>
+            img.toLowerCase().includes(color.replace(" ", ""))
+        );
+    });
+
+    let currentColor = colors[0];
+
+    // Show first image
+    productImage.src = imagesByColor[currentColor][0] || product.images[0];
+
+    // Generate color buttons
+    colorContainer.innerHTML = "";
+    colors.forEach(color => {
+        const dot = document.createElement("div");
+        dot.className = "color-dot";
+        dot.style.background = color;
+        dot.dataset.color = color;
+
+        dot.addEventListener("click", () => {
+            currentColor = color;
+            updateThumbnails();
+        });
+
+        colorContainer.appendChild(dot);
+    });
+
+    // Generate thumbnails
+    function updateThumbnails() {
+        thumbnails.innerHTML = "";
+        const imgs = imagesByColor[currentColor].length
+            ? imagesByColor[currentColor]
+            : product.images;
+
+        productImage.src = imgs[0];
+
+        imgs.forEach(img => {
+            const th = document.createElement("img");
+            th.src = img;
+            th.className = "thumb";
+            th.addEventListener("click", () => {
+                productImage.src = img;
+            });
+            thumbnails.appendChild(th);
+        });
+    }
+
+    updateThumbnails();
+
+    // Sizes
+    const sizes = product.SIZE.split(",");
+    sizeContainer.innerHTML = "";
+    sizes.forEach(size => {
+        const btn = document.createElement("button");
+        btn.className = "btn size";
+        btn.textContent = size;
+        sizeContainer.appendChild(btn);
+    });
 });
