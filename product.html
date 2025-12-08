@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Details - DripNova</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-left">
-    <img src="dripnova-logo.png" class="logo">
-    <span class="brand">DRIPNOVA</span>
-  </div>
-  <div class="nav-right">
-    <a href="index.html">Home</a>
-    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-  </div>
-</nav>
+  <!-- HEADER -->
+  <header class="header">
+    <img src="dripnova-logo.png" alt="DripNova Logo">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
 
-<div class="container">
-  <div class="product-detail">
-
-    <div class="left">
-      <img id="productImage" class="main-image" src="" alt="Product Image">
-      <div id="thumbnails" class="thumbs"></div>
+  <!-- PRODUCT PAGE -->
+  <section class="product-page">
+    
+    <!-- IMAGES -->
+    <div class="product-images">
+      <img id="productImage" src="" alt="Product Image">
+      <div id="thumbnails"></div>
     </div>
 
-    <div class="right">
-      <h1 id="p-title">Loading...</h1>
-      <p id="price"></p>
+    <!-- DETAILS -->
+    <div class="product-details">
+      <h1 id="productName">Product Name</h1>
+      <p id="price">₨0</p>
 
-      <h3>Select Size</h3>
-      <div id="sizes" class="size-row"></div>
+      <!-- SIZE -->
+      <div class="option-group">
+        <h4>Size</h4>
+        <div id="sizeOptions"></div>
+      </div>
 
-      <h3>Select Color</h3>
-      <div id="colors" class="color-row"></div>
+      <!-- COLOR -->
+      <div class="option-group">
+        <h4>Color</h4>
+        <div id="colorOptions"></div>
+      </div>
 
-      <button id="add-to-cart" class="btn">ADD TO CART</button>
+      <button id="add-to-cart">Add to Cart</button>
     </div>
 
-  </div>
-</div>
+  </section>
 
+  <script src="product.js"></script>
 </body>
 </html>
