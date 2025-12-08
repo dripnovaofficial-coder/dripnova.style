@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         cart.push(cartItem);
-        localStorage.setItem("cart", JSON.stringify(cart));
+       localStorage.setItem("drip_cart", JSON.stringify(cart));
 
         alert("Added to cart!");
     });
