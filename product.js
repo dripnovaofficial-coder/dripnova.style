@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const sizeContainer = document.getElementById("sizes");
     const colorContainer = document.getElementById("colors");
     const thumbnails = document.getElementById("thumbnails");
+    const addToCartBtn = document.getElementById("add-to-cart");
+
+    let selectedSize = null;
+    let selectedColor = null;
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
@@ -24,10 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     productName.textContent = product.PRODUCT_NAME;
     productPrice.textContent = `PKR ${product.PRICE_PKR}`;
 
-    // Extract colors
     const colors = product.COLOURS.split(",").map(c => c.trim().toLowerCase());
 
-    // Organize images by color
     const imagesByColor = {};
     colors.forEach(color => {
         imagesByColor[color] = product.images.filter(img =>
@@ -35,32 +37,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
     });
 
-    let currentColor = colors[0];
+    selectedColor = colors[0];
 
-    // Show first image
-    productImage.src = imagesByColor[currentColor][0] || product.images[0];
-
-    // Generate color buttons
-    colorContainer.innerHTML = "";
-    colors.forEach(color => {
-        const dot = document.createElement("div");
-        dot.className = "color-dot";
-        dot.style.background = color;
-        dot.dataset.color = color;
-
-        dot.addEventListener("click", () => {
-            currentColor = color;
-            updateThumbnails();
-        });
-
-        colorContainer.appendChild(dot);
-    });
-
-    // Generate thumbnails
     function updateThumbnails() {
         thumbnails.innerHTML = "";
-        const imgs = imagesByColor[currentColor].length
-            ? imagesByColor[currentColor]
+
+        const imgs = imagesByColor[selectedColor].length
+            ? imagesByColor[selectedColor]
             : product.images;
 
         productImage.src = imgs[0];
@@ -75,16 +58,69 @@ document.addEventListener("DOMContentLoaded", async () => {
             thumbnails.appendChild(th);
         });
     }
-
     updateThumbnails();
 
-    // Sizes
+    // ---------- SIZE SELECT ----------
     const sizes = product.SIZE.split(",");
-    sizeContainer.innerHTML = "";
     sizes.forEach(size => {
         const btn = document.createElement("button");
-        btn.className = "btn size";
+        btn.className = "size-btn";
         btn.textContent = size;
+        btn.dataset.size = size;
+
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            selectedSize = size;
+        });
+
         sizeContainer.appendChild(btn);
+    });
+
+    // ---------- COLOR SELECT ----------
+    colors.forEach(color => {
+        const dot = document.createElement("div");
+        dot.className = "color-dot";
+        dot.style.background = color;
+        dot.dataset.color = color;
+
+        dot.addEventListener("click", () => {
+            document.querySelectorAll(".color-dot").forEach(d => d.classList.remove("selected"));
+            dot.classList.add("selected");
+            selectedColor = color;
+            updateThumbnails();
+        });
+
+        colorContainer.appendChild(dot);
+    });
+
+    document.querySelector(`.color-dot[data-color="${selectedColor}"]`)
+        .classList.add("selected");
+
+    // ---------- ADD TO CART ----------
+    addToCartBtn.addEventListener("click", () => {
+        if (!selectedSize) {
+            alert("Please select a size.");
+            return;
+        }
+        if (!selectedColor) {
+            alert("Please select a color.");
+            return;
+        }
+
+        const cartItem = {
+            id: product.PRODUCT_ID,
+            name: product.PRODUCT_NAME,
+            price: product.PRICE_PKR,
+            size: selectedSize,
+            color: selectedColor,
+            image: productImage.src
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(cartItem);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert("Added to cart!");
     });
 });
