@@ -1,130 +1,121 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    const productImage = document.getElementById("productImage");
-    const productName = document.getElementById("p-title");
-    const productPrice = document.getElementById("price");
-    const sizeContainer = document.getElementById("sizes");
-    const colorContainer = document.getElementById("colors");
-    const thumbnails = document.getElementById("thumbnails");
-    const addToCartBtn = document.getElementById("add-to-cart");
+// PRODUCT DATA (example for 1 product, you can add all 13 products here)
+const products = [
+  {
+    id: "#0001",
+    name: "Astronauts Hoodie",
+    price: 1299,
+    sizes: ["S","M","L","XL","XXL"],
+    colors: ["BLACK","WHITE"],
+    images: {
+      BLACK: [
+        "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts_black_front.png",
+        "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts_black_back.png"
+      ],
+      WHITE: [
+        "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts_white_front.png",
+        "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Astronauts/astronauts_white_back.png"
+      ]        
+    },
+       {
+    "PRODUCT_ID": "0002",
+    "PRODUCT_NAME": "Climb Your Way To The Top",
+    "TYPE": "SWEATSHIRT",
+    "SIZE": "S,M,L,XL,XXL",
+    "COLOURS": "BLACK,CHOCOLATE,MAROON,WHITE",
+    "PRICE_PKR": 999,
+    "images": { 
+       BLACK: [
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-front.jpg",
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-black-back.jpg",
+    ],
+      CHOCOLATE: [       
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-chocolate-front.jpg",
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-chocolate-back.jpg"
+    ],
+      MAROON: [   
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-maroon-front.jpg",
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-maroon-back.jpg"
+    ],
+     WHITE: [    
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-white-front.jpg",
+      "https://raw.githubusercontent.com/dripnovaofficial-coder/dripnova.style/main/products/Climb%20your%20way%20to%20the%20top/climb-your-way-to-the-top-white-back.jpg"
+    ]
+  },
+  }
+];
 
-    let selectedSize = null;
-    let selectedColor = null;
+let selectedProduct = products[0];
+let selectedColor = selectedProduct.colors[0];
+let selectedSize = selectedProduct.sizes[0];
 
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("id");
+const productImage = document.getElementById("productImage");
+const thumbnails = document.getElementById("thumbnails");
+const productName = document.getElementById("productName");
+const price = document.getElementById("price");
+const sizeOptions = document.getElementById("sizeOptions");
+const colorOptions = document.getElementById("colorOptions");
+const addToCart = document.getElementById("add-to-cart");
 
-    if (!productId) return;
+// RENDER PRODUCT
+function renderProduct() {
+  productName.textContent = selectedProduct.name;
+  price.textContent = `₨${selectedProduct.price}`;
 
-    const res = await fetch("products.json");
-    const data = await res.json();
-
-    const product = data.find(p => p.PRODUCT_ID === productId);
-
-    if (!product) {
-        productName.textContent = "Product Not Found";
-        return;
-    }
-
-    productName.textContent = product.PRODUCT_NAME;
-    productPrice.textContent = `PKR ${product.PRICE_PKR}`;
-
-    const colors = product.COLOURS.split(",").map(c => c.trim().toLowerCase());
-
-    const imagesByColor = {};
-    colors.forEach(color => {
-        imagesByColor[color] = product.images.filter(img =>
-            img.toLowerCase().includes(color.replace(" ", ""))
-        );
+  // Render sizes
+  sizeOptions.innerHTML = "";
+  selectedProduct.sizes.forEach(size => {
+    const btn = document.createElement("button");
+    btn.textContent = size;
+    btn.classList.add("size-option");
+    if (size === selectedSize) btn.classList.add("selected");
+    btn.addEventListener("click", () => {
+      selectedSize = size;
+      renderProduct();
     });
+    sizeOptions.appendChild(btn);
+  });
 
-    selectedColor = colors[0];
-
-    function updateThumbnails() {
-        thumbnails.innerHTML = "";
-
-        const imgs = imagesByColor[selectedColor].length
-            ? imagesByColor[selectedColor]
-            : product.images;
-
-        productImage.src = imgs[0];
-
-        imgs.forEach(img => {
-            const th = document.createElement("img");
-            th.src = img;
-            th.className = "thumb";
-            th.addEventListener("click", () => {
-                productImage.src = img;
-            });
-            thumbnails.appendChild(th);
-        });
-    }
-    updateThumbnails();
-
-    // ---------- SIZE SELECT ----------
-    const sizes = product.SIZE.split(",");
-    sizes.forEach(size => {
-        const btn = document.createElement("button");
-        btn.className = "size-btn";
-        btn.textContent = size;
-        btn.dataset.size = size;
-
-        btn.addEventListener("click", () => {
-            document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("selected"));
-            btn.classList.add("selected");
-            selectedSize = size;
-        });
-
-        sizeContainer.appendChild(btn);
+  // Render colors
+  colorOptions.innerHTML = "";
+  selectedProduct.colors.forEach(color => {
+    const btn = document.createElement("button");
+    btn.textContent = color;
+    btn.classList.add("color-option");
+    if (color === selectedColor) btn.classList.add("selected");
+    btn.addEventListener("click", () => {
+      selectedColor = color;
+      renderProduct();
     });
+    colorOptions.appendChild(btn);
+  });
 
-    // ---------- COLOR SELECT ----------
-    colors.forEach(color => {
-        const dot = document.createElement("div");
-        dot.className = "color-dot";
-        dot.style.background = color;
-        dot.dataset.color = color;
-
-        dot.addEventListener("click", () => {
-            document.querySelectorAll(".color-dot").forEach(d => d.classList.remove("selected"));
-            dot.classList.add("selected");
-            selectedColor = color;
-            updateThumbnails();
-        });
-
-        colorContainer.appendChild(dot);
+  // Render images
+  thumbnails.innerHTML = "";
+  selectedProduct.images[selectedColor].forEach((imgSrc, index) => {
+    const thumb = document.createElement("img");
+    thumb.src = imgSrc;
+    thumb.addEventListener("click", () => {
+      productImage.src = imgSrc;
     });
+    thumbnails.appendChild(thumb);
+    if (index === 0) productImage.src = imgSrc;
+  });
+}
 
-    document.querySelector(`.color-dot[data-color="${selectedColor}"]`)
-        .classList.add("selected");
-
-  // ---------- ADD TO CART ----------
-addToCartBtn.addEventListener("click", () => {
-    if (!selectedSize) {
-        alert("Please select a size.");
-        return;
-    }
-    if (!selectedColor) {
-        alert("Please select a color.");
-        return;
-    }
-
-    const cartItem = {
-        id: product.PRODUCT_ID,
-        name: product.PRODUCT_NAME,
-        price: product.PRICE_PKR,
-        size: selectedSize,
-        color: selectedColor,
-        image: productImage.src
-    };
-
-    // FIXED: Load cart from correct key
-    let cart = JSON.parse(localStorage.getItem("drip_cart")) || [];
-
-    // Add item
-    cart.push(cartItem);
-
-    // FIXED: Save to the same key
-    localStorage.setItem("drip_cart", JSON.stringify(cart));
-
-    alert("Added to cart!");
+// ADD TO CART
+addToCart.addEventListener("click", () => {
+  const cart = JSON.parse(localStorage.getItem("drip_cart") || "[]");
+  cart.push({
+    id: selectedProduct.id,
+    name: selectedProduct.name,
+    price: selectedProduct.price,
+    size: selectedSize,
+    color: selectedColor,
+    image: selectedProduct.images[selectedColor][0],
+    qty: 1
+  });
+  localStorage.setItem("drip_cart", JSON.stringify(cart));
+  alert("Product added to cart!");
 });
+
+renderProduct();
