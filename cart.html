@@ -1,73 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart - DRIPNOVA</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart - DRIPNOVA</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <nav>
-    <div class="nav-left">
-      <img src="dripnova-logo.png" class="logo">
-      <span class="brand">DRIPNOVA</span>
-    </div>
-  </nav>
-
-  <div class="container">
-    <h1>Your Cart</h1>
-
-    <!-- REQUIRED FOR JS -->
-    <div id="cart-items"></div>
-
-    <div class="cart-actions">
-      <button id="clear-cart" class="btn">Clear Cart</button>
-      <button id="go-checkout" class="btn">Go to Checkout</button>
-    </div>
+<nav>
+  <div class="nav-left">
+    <img src="dripnova-logo.png" class="logo">
+    <span class="brand">DRIPNOVA</span>
   </div>
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </div>
+</nav>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    renderCartPage();
+<div class="container">
+  <h1>Your Cart</h1>
+  <div id="cart-items"></div>
 
-    document.getElementById('clear-cart').addEventListener('click', () => {
-      localStorage.removeItem('drip_cart');
-      renderCartPage();
-    });
+  <div class="cart-actions">
+    <button id="clear-cart" class="btn">Clear Cart</button>
+    <button id="go-checkout" class="btn">Go to Checkout</button>
+  </div>
+</div>
 
-    document.getElementById('go-checkout').addEventListener('click', () => {
-      location.href = 'payment.html';
-    });
-  });
-
-  function renderCartPage() {
-    const container = document.getElementById('cart-items');
-    const cart = JSON.parse(localStorage.getItem('drip_cart') || '[]');
-
-    if (cart.length === 0) {
-      container.innerHTML = "<p>Your cart is empty.</p>";
-      return;
-    }
-
-    container.innerHTML = "";
-
-    cart.forEach(item => {
-      container.innerHTML += `
-        <div class="cart-item">
-          <img src="${item.image}" class="cart-img">
-          <div>
-            <h3>${item.name}</h3>
-            <p>Size: ${item.size}</p>
-            <p>Color: ${item.color}</p>
-            <p>PKR ${item.price}</p>
-          </div>
-        </div>
-      `;
-    });
-  }
-  </script>
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderCartPage();
+});
+</script>
 
 </body>
 </html>
