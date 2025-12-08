@@ -97,30 +97,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelector(`.color-dot[data-color="${selectedColor}"]`)
         .classList.add("selected");
 
-    // ---------- ADD TO CART ----------
-    addToCartBtn.addEventListener("click", () => {
-        if (!selectedSize) {
-            alert("Please select a size.");
-            return;
-        }
-        if (!selectedColor) {
-            alert("Please select a color.");
-            return;
-        }
+  // ---------- ADD TO CART ----------
+addToCartBtn.addEventListener("click", () => {
+    if (!selectedSize) {
+        alert("Please select a size.");
+        return;
+    }
+    if (!selectedColor) {
+        alert("Please select a color.");
+        return;
+    }
 
-        const cartItem = {
-            id: product.PRODUCT_ID,
-            name: product.PRODUCT_NAME,
-            price: product.PRICE_PKR,
-            size: selectedSize,
-            color: selectedColor,
-            image: productImage.src
-        };
+    const cartItem = {
+        id: product.PRODUCT_ID,
+        name: product.PRODUCT_NAME,
+        price: product.PRICE_PKR,
+        size: selectedSize,
+        color: selectedColor,
+        image: productImage.src
+    };
 
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cart.push(cartItem);
-       localStorage.setItem("drip_cart", JSON.stringify(cart));
+    // FIXED: Load cart from correct key
+    let cart = JSON.parse(localStorage.getItem("drip_cart")) || [];
 
-        alert("Added to cart!");
-    });
+    // Add item
+    cart.push(cartItem);
+
+    // FIXED: Save to the same key
+    localStorage.setItem("drip_cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
 });
