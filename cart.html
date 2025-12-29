@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2 style="padding:20px">Your Cart</h2>
+<div id="cart"></div>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("drip_cart") || "[]");
+const box = document.getElementById("cart");
+
+if (cart.length === 0) {
+  box.innerHTML = "<p style='padding:20px'>Cart is empty</p>";
+}
+
+cart.forEach(item => {
+  box.innerHTML += `
+    <div style="padding:20px">
+      <img src="${item.image}" width="80">
+      <p>${item.name}</p>
+      <p>${item.color} | ${item.size}</p>
+      <p>PKR ${item.price}</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
