@@ -1,61 +1,41 @@
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Poppins, sans-serif;
-  background: #000;
-  color: #fff;
-}
-
-a { text-decoration: none; color: inherit; }
-
-header {
-  padding: 15px 30px;
-  border-bottom: 1px solid #222;
-  display: flex;
-  justify-content: space-between;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 30px;
-}
-
-.product-card {
-  background: #111;
-  border-radius: 14px;
-  padding: 15px;
-  text-align: center;
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 12px;
-}
-
 .product-page {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
   padding: 40px;
 }
 
+.product-page > div {
+  flex: 1 1 400px; /* min width 400px, grow if space available */
+}
+
 .main-img {
   width: 100%;
+  max-width: 500px;
   border-radius: 15px;
+  object-fit: cover;
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .thumbnails img {
-  width: 60px;
-  margin: 10px 10px 0 0;
+  width: 80px;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 10px;
+}
+
+.options {
+  margin-top: 20px;
 }
 
 .options button {
-  margin: 6px;
+  margin: 6px 6px 6px 0;
   padding: 8px 16px;
   border-radius: 20px;
   border: none;
@@ -73,8 +53,11 @@ header {
   margin-top: 20px;
   padding: 14px;
   width: 100%;
+  max-width: 300px;
   border-radius: 30px;
   border: none;
   font-size: 16px;
   cursor: pointer;
+  background: #fff;
+  color: #000;
 }
