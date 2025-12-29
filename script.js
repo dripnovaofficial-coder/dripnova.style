@@ -1,37 +1,24 @@
-let products = [];
-let cart = JSON.parse(localStorage.getItem("drip_cart")) || [];
+let selectedColor = "";
+let selectedSize = "";
 
 /* LOAD PRODUCTS */
-async function loadProducts() {
+async function getProducts() {
   const res = await fetch("products.json");
-  products = await res.json();
+  return await res.json();
 }
 
-/* CART COUNT */
-function updateCartCount() {
-  const el = document.getElementById("cart-count");
-  if (el) el.textContent = cart.length;
-}
-
-/* SAVE CART */
-function saveCart() {
-  localStorage.setItem("drip_cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-/* ================= HOME & PRODUCTS PAGE ================= */
-async function renderProducts(gridId) {
-  await loadProducts();
-  const grid = document.getElementById(gridId);
-  if (!grid) return;
-
+/* HOME / PRODUCTS PAGE */
+async function renderProducts(containerId) {
+  const products = await getProducts();
+  const grid = document.getElementById(containerId);
   grid.innerHTML = "";
+
   products.forEach(p => {
     const firstColor = Object.keys(p.colors)[0];
     const img = p.colors[firstColor][0];
 
     grid.innerHTML += `
-      <div class="product-item">
+      <div class="product-card">
         <a href="product.html?id=${p.id}">
           <img src="${img}">
           <h3>${p.name}</h3>
@@ -42,117 +29,89 @@ async function renderProducts(gridId) {
   });
 }
 
-/* ================= PRODUCT PAGE ================= */
-async function renderProductPage() {
-  await loadProducts();
-  const id = new URLSearchParams(location.search).get("id");
-  const p = products.find(x => x.id === id);
-  if (!p) return alert("Product not found");
+/* PRODUCT PAGE */
+async function loadProductPage() {
+  const id = new URLSearchParams(window.location.search).get("id");
+  const products = await getProducts();
+  const product = products.find(p => p.id === id);
 
-  document.getElementById("p-title").textContent = p.name;
-  document.getElementById("price").textContent = `PKR ${p.price}`;
-
-  let selectedColor = Object.keys(p.colors)[0];
-  let selectedSize = p.sizes[0];
-
-  const mainImg = document.getElementById("productImage");
-  const thumbs = document.getElementById("thumbnails");
-  const colorsEl = document.getElementById("colors");
-  const sizesEl = document.getElementById("sizes");
-
-  function renderImages() {
-    mainImg.src = p.colors[selectedColor][0];
-    thumbs.innerHTML = "";
-    p.colors[selectedColor].forEach(img => {
-      const t = document.createElement("img");
-      t.src = img;
-      t.onclick = () => mainImg.src = img;
-      thumbs.appendChild(t);
-    });
-  }
-
-  colorsEl.innerHTML = "";
-  Object.keys(p.colors).forEach(c => {
-    const b = document.createElement("button");
-    b.textContent = c;
-    b.onclick = () => {
-      selectedColor = c;
-      document.querySelectorAll(".color-option").forEach(x=>x.classList.remove("selected"));
-      b.classList.add("selected");
-      renderImages();
-    };
-    b.className = "color-option";
-    colorsEl.appendChild(b);
-  });
-
-  sizesEl.innerHTML = "";
-  p.sizes.forEach(s => {
-    const b = document.createElement("button");
-    b.textContent = s;
-    b.onclick = () => {
-      selectedSize = s;
-      document.querySelectorAll(".size-option").forEach(x=>x.classList.remove("selected"));
-      b.classList.add("selected");
-    };
-    b.className = "size-option";
-    sizesEl.appendChild(b);
-  });
-
-  document.getElementById("add-to-cart").onclick = () => {
-    cart.push({
-      id: p.id,
-      name: p.name,
-      price: p.price,
-      size: selectedSize,
-      color: selectedColor,
-      image: p.colors[selectedColor][0]
-    });
-    saveCart();
-    alert("Added to cart");
-  };
-
-  colorsEl.firstChild.classList.add("selected");
-  sizesEl.firstChild.classList.add("selected");
-  renderImages();
-}
-
-/* ================= CART PAGE ================= */
-function renderCartPage() {
-  const box = document.getElementById("cart-items");
-  if (!box) return;
-
-  box.innerHTML = "";
-  if (!cart.length) {
-    box.innerHTML = "<p>Your cart is empty</p>";
+  if (!product) {
+    alert("Product not found");
     return;
   }
 
-  cart.forEach((i, idx) => {
-    box.innerHTML += `
-      <div class="cart-item">
-        <img src="${i.image}">
-        <div>
-          <h4>${i.name}</h4>
-          <p>${i.size} | ${i.color}</p>
-          <p>PKR ${i.price}</p>
-          <button onclick="removeItem(${idx})">Remove</button>
-        </div>
-      </div>
-    `;
+  selectedColor = Object.keys(product.colors)[0];
+  selectedSize = product.sizes[0];
+
+  document.getElementById("pname").textContent = product.name;
+  document.getElementById("pprice").textContent = `PKR ${product.price}`;
+
+  updateImages(product);
+  renderOptions(product);
+
+  document.getElementById("addCart").onclick = () => addToCart(product);
+}
+
+function updateImages(product) {
+  const imgs = product.colors[selectedColor];
+  document.getElementById("mainImg").src = imgs[0];
+
+  const thumbs = document.getElementById("thumbs");
+  thumbs.innerHTML = "";
+
+  imgs.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.onclick = () => document.getElementById("mainImg").src = src;
+    thumbs.appendChild(img);
   });
 }
 
-function removeItem(i) {
-  cart.splice(i,1);
-  saveCart();
-  renderCartPage();
+function renderOptions(product) {
+  const sizes = document.getElementById("sizes");
+  const colors = document.getElementById("colors");
+
+  sizes.innerHTML = "";
+  colors.innerHTML = "";
+
+  product.sizes.forEach(size => {
+    const btn = document.createElement("button");
+    btn.textContent = size;
+    if (size === selectedSize) btn.classList.add("active");
+    btn.onclick = () => {
+      selectedSize = size;
+      renderOptions(product);
+    };
+    sizes.appendChild(btn);
+  });
+
+  Object.keys(product.colors).forEach(color => {
+    const btn = document.createElement("button");
+    btn.textContent = color;
+    if (color === selectedColor) btn.classList.add("active");
+    btn.onclick = () => {
+      selectedColor = color;
+      updateImages(product);
+      renderOptions(product);
+    };
+    colors.appendChild(btn);
+  });
 }
 
-/* AUTO */
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
-  if (document.getElementById("product-grid")) renderProducts("product-grid");
-  if (document.getElementById("productGrid")) renderProducts("productGrid");
-  if (document.getElementById("p-title")) renderProductPage();
-  if (document.getElementById("cart-items")) renderCartPage();
-});
+/* CART */
+function addToCart(product) {
+  const cart = JSON.parse(localStorage.getItem("drip_cart") || "[]");
+
+  cart.push({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    size: selectedSize,
+    color: selectedColor,
+    image: product.colors[selectedColor][0],
+    qty: 1
+  });
+
+  localStorage.setItem("drip_cart", JSON.stringify(cart));
+  alert("Added to cart");
+}
