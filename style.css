@@ -1,178 +1,78 @@
 body{
-
 margin:0;
-font-family:Arial;
+font-family:Poppins;
 background:black;
 color:white;
-
 }
 
 
-/* HEADER */
+/* NAVBAR */
 
-header{
-
+.navbar{
 display:flex;
 justify-content:space-between;
-padding:20px;
-border-bottom:1px solid #222;
-
+align-items:center;
+padding:20px 50px;
+border-bottom:1px solid #111;
+background:black;
+position:fixed;
+width:100%;
+z-index:100;
 }
-
-
-header a{
-
-color:white;
-text-decoration:none;
-margin-left:20px;
-
-}
-
 
 .logo{
+font-size:22px;
+font-weight:700;
+letter-spacing:2px;
+}
 
-height:40px;
+.nav-links a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+font-weight:400;
+}
 
+.nav-links a:hover{
+color:#aaa;
 }
 
 
 
-/* HERO */
+/* HERO SECTION */
 
 .hero{
-
-height:80vh;
+height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-
+text-align:center;
+background:black;
 }
 
-
-.hero h1{
-
-font-size:50px;
+.hero-content h1{
+font-size:70px;
 margin:0;
-
+letter-spacing:4px;
 }
 
-
-.shopBtn{
-
-background:white;
-color:black;
-padding:15px 40px;
-text-decoration:none;
-margin-top:20px;
-
+.hero-content p{
+margin-top:15px;
+color:#aaa;
+font-size:18px;
 }
 
-
-
-/* SHOP */
-
-.title{
-
-text-align:center;
-margin-top:20px;
-
-}
-
-
-#productsContainer{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-padding:40px;
-
-}
-
-
-.productCard{
-
-background:#111;
-padding:20px;
-text-align:center;
-border:1px solid #222;
-
-}
-
-
-.productCard img{
-
-width:100%;
-
-}
-
-
-
-.productCard a{
-
+.hero-btn{
 display:inline-block;
-margin-top:10px;
-padding:10px 20px;
+margin-top:30px;
+padding:15px 50px;
 background:white;
 color:black;
 text-decoration:none;
-
+font-weight:600;
+transition:0.3s;
 }
 
-
-
-/* PRODUCT PAGE */
-
-.productPage{
-
-display:flex;
-gap:50px;
-padding:50px;
-
-}
-
-
-.productPage img{
-
-width:450px;
-
-}
-
-
-.productInfo button{
-
-margin:5px;
-padding:10px 15px;
-
-}
-
-
-.cartButton{
-
-margin-top:20px;
-padding:15px 40px;
-background:white;
-color:black;
-border:none;
-
-}
-
-
-
-/* CART */
-
-.cartItem{
-
-display:flex;
-gap:20px;
-padding:20px;
-border-bottom:1px solid #222;
-
-}
-
-
-.cartItem img{
-
-width:120px;
-
+.hero-btn:hover{
+background:#ccc;
 }
