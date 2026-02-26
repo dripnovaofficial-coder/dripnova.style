@@ -1,10 +1,10 @@
-let products=[];
+let products = [];
 
 fetch("product.json")
-.then(res=>res.json())
-.then(data=>{
+.then(res => res.json())
+.then(data => {
 
-products=data;
+products = data;
 
 loadProducts();
 
@@ -16,17 +16,19 @@ loadCart();
 
 
 
+/* PRODUCTS PAGE */
 
 function loadProducts(){
 
-let container=document.getElementById("productsContainer");
+let container = document.getElementById("productsContainer");
 
 if(!container) return;
 
+container.innerHTML="";
 
 products.forEach(p=>{
 
-container.innerHTML+=`
+container.innerHTML += `
 
 <div class="productCard">
 
@@ -36,7 +38,7 @@ container.innerHTML+=`
 
 <p>Rs ${p.PRICE_PKR}</p>
 
-<a href="product.html?id=${p.PRODUCT_ID}">
+<a class="viewBtn" href="product.html?id=${p.PRODUCT_ID}">
 
 View Product
 
@@ -53,10 +55,11 @@ View Product
 
 
 
+/* PRODUCT PAGE */
+
+let currentProduct=null;
 let selectedSize="";
 let selectedColor="";
-let currentProduct=null;
-
 
 
 function loadProductPage(){
@@ -73,12 +76,11 @@ currentProduct=products.find(p=>p.PRODUCT_ID==id);
 
 if(!currentProduct){
 
-document.body.innerHTML="Product Not Found";
+document.body.innerHTML="<h1>Product Not Found</h1>";
 
 return;
 
 }
-
 
 
 document.getElementById("productName").innerText=currentProduct.PRODUCT_NAME;
@@ -89,33 +91,21 @@ document.getElementById("productImage").src=currentProduct.images[0];
 
 
 
-let sizes=currentProduct.SIZE.split(",");
+/* SIZES */
 
-sizes.forEach(s=>{
+let sizeBox=document.getElementById("sizes");
 
-document.getElementById("sizes").innerHTML+=`
+if(sizeBox){
 
-<button onclick="selectSize('${s}')">
+sizeBox.innerHTML="";
 
-${s}
+currentProduct.SIZE.forEach(size=>{
 
-</button>
+sizeBox.innerHTML+=`
 
-`;
+<button onclick="selectSize('${size}')">
 
-});
-
-
-
-let colors=currentProduct.COLOURS.split(",");
-
-colors.forEach(c=>{
-
-document.getElementById("colors").innerHTML+=`
-
-<button onclick="selectColor('${c}')">
-
-${c}
+${size}
 
 </button>
 
@@ -123,52 +113,83 @@ ${c}
 
 });
 
+}
+
+
+
+/* COLORS */
+
+let colorBox=document.getElementById("colors");
+
+if(colorBox){
+
+colorBox.innerHTML="";
+
+currentProduct.COLOURS.forEach(color=>{
+
+colorBox.innerHTML+=`
+
+<button onclick="selectColor('${color}')">
+
+${color}
+
+</button>
+
+`;
+
+});
 
 }
 
 
 
-function selectSize(s){
+}
 
-selectedSize=s;
+
+
+/* SELECT */
+
+function selectSize(size){
+
+selectedSize=size;
 
 }
 
 
 
-function selectColor(c){
+function selectColor(color){
 
-selectedColor=c;
+selectedColor=color;
 
 }
 
 
+
+/* CART */
 
 function addToCart(){
 
 let cart=JSON.parse(localStorage.getItem("cart")||"[]");
 
-
 cart.push({
 
 name:currentProduct.PRODUCT_NAME,
-
 price:currentProduct.PRICE_PKR,
-
-image:currentProduct.images[0]
+image:currentProduct.images[0],
+size:selectedSize,
+color:selectedColor
 
 });
 
-
 localStorage.setItem("cart",JSON.stringify(cart));
 
-
-alert("Added to Cart");
+alert("Added To Cart");
 
 }
 
 
 
+/* CART PAGE */
 
 function loadCart(){
 
@@ -176,6 +197,7 @@ let container=document.getElementById("cartContainer");
 
 if(!container) return;
 
+container.innerHTML="";
 
 let cart=JSON.parse(localStorage.getItem("cart")||"[]");
 
@@ -193,6 +215,8 @@ container.innerHTML+=`
 <h3>${item.name}</h3>
 
 <p>Rs ${item.price}</p>
+
+<p>${item.size} | ${item.color}</p>
 
 </div>
 
