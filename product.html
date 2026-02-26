@@ -1,67 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Product</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Product - DRIPNOVA</title>
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
+<div class="sidebar">
+<h1>DRIPNOVA</h1>
 
-<header class="navbar">
-
-<div class="logo">
-
-DRIPNOVA
-
-</div>
-
-<div class="nav-links">
-
+<a href="index.html">Home</a>
 <a href="products.html">Shop</a>
-
 <a href="cart.html">Cart 🛒</a>
 
 </div>
 
-</header>
+<div class="main">
 
+<div class="productPage">
 
+<img id="image">
 
-<section class="productPage">
+<div>
 
-<div class="productLeft">
+<h2 id="name"></h2>
 
-<img id="productImage">
+<h3 id="price"></h3>
 
-</div>
+<select id="size">
 
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
 
+</select>
 
-<div class="productRight">
+<br><br>
 
-<h1 id="productName"></h1>
-
-<h2 id="productPrice"></h2>
-
-
-<h3>Size</h3>
-
-<div id="sizes"></div>
-
-
-<h3>Color</h3>
-
-<div id="colors"></div>
-
-
-<button onclick="addToCart()" class="addCartBtn">
+<button onclick="addToCart()">
 
 Add To Cart
 
@@ -69,9 +49,9 @@ Add To Cart
 
 </div>
 
+</div>
 
-</section>
-
+</div>
 
 <script src="script.js"></script>
 
