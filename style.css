@@ -3,76 +3,177 @@ margin:0;
 font-family:Poppins;
 background:black;
 color:white;
+overflow-x:hidden;
 }
+
 
 
 /* NAVBAR */
 
 .navbar{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 50px;
+
+padding:20px 40px;
+
 border-bottom:1px solid #111;
+
 background:black;
+
 position:fixed;
-width:100%;
+
+top:0;
+
+left:0;
+
+right:0;
+
 z-index:100;
+
+box-sizing:border-box;
+
 }
 
+
+
 .logo{
+
 font-size:22px;
 font-weight:700;
 letter-spacing:2px;
+
 }
+
+
+
+/* NAV LINKS */
+
+.nav-links{
+
+display:flex;
+gap:30px;
+
+}
+
+
 
 .nav-links a{
+
 color:white;
 text-decoration:none;
-margin-left:30px;
-font-weight:400;
+font-size:16px;
+
 }
+
+
 
 .nav-links a:hover{
+
 color:#aaa;
+
 }
 
 
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
+
 height:100vh;
+
 display:flex;
+flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
+
 text-align:center;
-background:black;
+
+padding-top:60px;
+
 }
 
-.hero-content h1{
+
+
+.hero h1{
+
 font-size:70px;
 margin:0;
 letter-spacing:4px;
+
 }
 
-.hero-content p{
+
+
+.hero p{
+
 margin-top:15px;
+
 color:#aaa;
+
 font-size:18px;
+
 }
+
+
 
 .hero-btn{
-display:inline-block;
+
 margin-top:30px;
+
 padding:15px 50px;
+
 background:white;
+
 color:black;
+
 text-decoration:none;
+
 font-weight:600;
-transition:0.3s;
+
+transition:.3s;
+
 }
 
+
+
 .hero-btn:hover{
-background:#ccc;
+
+background:#ddd;
+
+}
+
+
+
+/* CONTACT */
+
+.contact{
+
+padding:80px 20px;
+
+text-align:center;
+
+border-top:1px solid #111;
+
+}
+
+
+
+.contact h2{
+
+margin-bottom:20px;
+
+}
+
+
+
+.contact p{
+
+color:#aaa;
+
+margin:5px 0;
+
 }
