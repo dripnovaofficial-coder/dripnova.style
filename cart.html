@@ -1,44 +1,35 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <title>Cart</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
+<div class="sidebar">
 
-<header class="navbar">
+<h1>DRIPNOVA</h1>
 
-<div class="logo">
-
-DRIPNOVA
-
-</div>
-
-<div class="nav-links">
-
+<a href="index.html">Home</a>
 <a href="products.html">Shop</a>
+<a href="cart.html">Cart 🛒</a>
 
 </div>
 
-</header>
+<div class="main">
 
+<h2>Your Cart</h2>
 
-<section class="cartPage">
+<div id="cartItems"></div>
 
-<h1>Your Cart</h1>
+<button onclick="clearCart()">
+Clear Cart
+</button>
 
-<div id="cartContainer"></div>
-
-</section>
-
+</div>
 
 <script src="script.js"></script>
 
