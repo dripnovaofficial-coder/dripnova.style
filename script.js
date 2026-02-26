@@ -1,229 +1,125 @@
-let products = [];
 
-fetch("product.json")
-.then(res => res.json())
-.then(data => {
+const products = [
 
-products = data;
+{
+id:1,
+name:"Astronaut Hoodie",
+price:1299,
+image:"products/astronaut.jpg"
+},
 
-loadProducts();
+{
+id:2,
+name:"Black Hoodie",
+price:1199,
+image:"products/black.jpg"
+},
 
-loadProductPage();
+{
+id:3,
+name:"Street Shirt",
+price:999,
+image:"products/shirt.jpg"
+}
 
-loadCart();
-
-});
+]
 
 
 
-/* PRODUCTS PAGE */
+if(document.getElementById("productContainer")){
 
-function loadProducts(){
-
-let container = document.getElementById("productsContainer");
-
-if(!container) return;
-
-container.innerHTML="";
+let html=""
 
 products.forEach(p=>{
 
-container.innerHTML += `
+html+=`
 
-<div class="productCard">
+<div class="product">
 
-<img src="${p.images[0]}">
+<img src="${p.image}">
 
-<h3>${p.PRODUCT_NAME}</h3>
+<h3>${p.name}</h3>
 
-<p>Rs ${p.PRICE_PKR}</p>
+<p>Rs ${p.price}</p>
 
-<a class="viewBtn" href="product.html?id=${p.PRODUCT_ID}">
-
+<a href="product.html?id=${p.id}">
 View Product
-
 </a>
 
 </div>
 
-`;
+`
 
-});
+})
 
-}
-
-
-
-
-/* PRODUCT PAGE */
-
-let currentProduct=null;
-let selectedSize="";
-let selectedColor="";
-
-
-function loadProductPage(){
-
-let params=new URLSearchParams(location.search);
-
-let id=params.get("id");
-
-if(!id) return;
-
-
-currentProduct=products.find(p=>p.PRODUCT_ID==id);
-
-
-if(!currentProduct){
-
-document.body.innerHTML="<h1>Product Not Found</h1>";
-
-return;
-
-}
-
-
-document.getElementById("productName").innerText=currentProduct.PRODUCT_NAME;
-
-document.getElementById("productPrice").innerText="Rs "+currentProduct.PRICE_PKR;
-
-document.getElementById("productImage").src=currentProduct.images[0];
-
-
-
-/* SIZES */
-
-let sizeBox=document.getElementById("sizes");
-
-if(sizeBox){
-
-sizeBox.innerHTML="";
-
-currentProduct.SIZE.forEach(size=>{
-
-sizeBox.innerHTML+=`
-
-<button onclick="selectSize('${size}')">
-
-${size}
-
-</button>
-
-`;
-
-});
+document.getElementById("productContainer").innerHTML=html
 
 }
 
 
 
-/* COLORS */
+if(document.getElementById("image")){
 
-let colorBox=document.getElementById("colors");
+let id=new URLSearchParams(location.search).get("id")
 
-if(colorBox){
+let product=products.find(p=>p.id==id)
 
-colorBox.innerHTML="";
-
-currentProduct.COLOURS.forEach(color=>{
-
-colorBox.innerHTML+=`
-
-<button onclick="selectColor('${color}')">
-
-${color}
-
-</button>
-
-`;
-
-});
+document.getElementById("image").src=product.image
+document.getElementById("name").innerText=product.name
+document.getElementById("price").innerText="Rs "+product.price
 
 }
 
 
-
-}
-
-
-
-/* SELECT */
-
-function selectSize(size){
-
-selectedSize=size;
-
-}
-
-
-
-function selectColor(color){
-
-selectedColor=color;
-
-}
-
-
-
-/* CART */
 
 function addToCart(){
 
-let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+let id=new URLSearchParams(location.search).get("id")
 
-cart.push({
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
 
-name:currentProduct.PRODUCT_NAME,
-price:currentProduct.PRICE_PKR,
-image:currentProduct.images[0],
-size:selectedSize,
-color:selectedColor
+cart.push(id)
 
-});
+localStorage.setItem("cart",JSON.stringify(cart))
 
-localStorage.setItem("cart",JSON.stringify(cart));
-
-alert("Added To Cart");
+alert("Added to Cart")
 
 }
 
 
 
-/* CART PAGE */
+if(document.getElementById("cartItems")){
 
-function loadCart(){
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
 
-let container=document.getElementById("cartContainer");
+let html=""
 
-if(!container) return;
+cart.forEach(id=>{
 
-container.innerHTML="";
+let p=products.find(x=>x.id==id)
 
-let cart=JSON.parse(localStorage.getItem("cart")||"[]");
-
-
-cart.forEach(item=>{
-
-container.innerHTML+=`
+html+=`
 
 <div class="cartItem">
 
-<img src="${item.image}">
-
-<div>
-
-<h3>${item.name}</h3>
-
-<p>Rs ${item.price}</p>
-
-<p>${item.size} | ${item.color}</p>
+${p.name} - Rs ${p.price}
 
 </div>
 
-</div>
+`
 
-`;
+})
 
-});
+document.getElementById("cartItems").innerHTML=html
+
+}
+
+
+
+function clearCart(){
+
+localStorage.removeItem("cart")
+
+location.reload()
 
 }
