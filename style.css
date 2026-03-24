@@ -1,6 +1,6 @@
 /* =========================
    BODY & GLOBAL
-   ========================= */
+========================= */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +10,7 @@ body {
 
 /* =========================
    HEADER
-   ========================= */
+========================= */
 .header {
     display: flex;
     justify-content: space-between;
@@ -33,47 +33,45 @@ body {
 
 /* =========================
    PRODUCTS PAGE
-   ========================= */
+========================= */
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;  /* Center products horizontally */
+    justify-content: center;
     gap: 20px;
     padding: 20px;
 }
 
-/* Individual product card */
 .product {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: center;          /* Center headings and price */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 220px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
-
-    display: flex;               /* Flex container */
-    flex-direction: column;      /* Stack image + text vertically */
-    align-items: center;         /* Center everything horizontally */
 }
 
 .product:hover {
     transform: translateY(-5px);
 }
 
-/* Product image */
 .product img {
-    width: 100%;       /* Fit card width */
-    max-width: 200px;  /* Keep uniform image size */
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 100%;
+    max-width: 200px;
     height: auto;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
 /* =========================
    PRODUCT DETAIL PAGE
-   ========================= */
+========================= */
 .product-detail-container {
     max-width: 600px;
     margin: 20px auto;
@@ -82,14 +80,11 @@ body {
 
 .product-detail-container img {
     width: 90%;
-    max-width: 400px;  /* Prevent huge images on desktop */
+    max-width: 400px;
     height: auto;
     margin-bottom: 15px;
 }
 
-/* =========================
-   COLOR BUTTONS
-   ========================= */
 .color-buttons {
     margin-top: 15px;
 }
@@ -110,8 +105,26 @@ body {
 }
 
 /* =========================
+   CART PAGE
+========================= */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 10px auto;
+}
+
+.cart-item img {
+    border-radius: 5px;
+}
+
+/* =========================
    RESPONSIVE
-   ========================= */
+========================= */
 @media screen and (max-width: 768px) {
     .products {
         flex-direction: column;
@@ -124,5 +137,11 @@ body {
 
     .product-detail-container img {
         width: 90%;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }
