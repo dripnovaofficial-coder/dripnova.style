@@ -1,4 +1,6 @@
-/* Body */
+/* =========================
+   BODY & GLOBAL
+   ========================= */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +8,9 @@ body {
     text-align: center;
 }
 
-/* Header */
+/* =========================
+   HEADER
+   ========================= */
 .header {
     display: flex;
     justify-content: space-between;
@@ -27,11 +31,13 @@ body {
     color: #333;
 }
 
-/* Products container */
+/* =========================
+   PRODUCTS PAGE
+   ========================= */
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center;  /* Center products horizontally */
     gap: 20px;
     padding: 20px;
 }
@@ -40,12 +46,16 @@ body {
 .product {
     border: 1px solid #ccc;
     padding: 15px;
-    text-align: center;
+    text-align: center;          /* Center headings and price */
     width: 220px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s;
+
+    display: flex;               /* Flex container */
+    flex-direction: column;      /* Stack image + text vertically */
+    align-items: center;         /* Center everything horizontally */
 }
 
 .product:hover {
@@ -54,18 +64,32 @@ body {
 
 /* Product image */
 .product img {
-    width: 100%;
+    width: 100%;       /* Fit card width */
+    max-width: 200px;  /* Keep uniform image size */
     height: auto;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-/* Product detail page */
+/* =========================
+   PRODUCT DETAIL PAGE
+   ========================= */
 .product-detail-container {
     max-width: 600px;
     margin: 20px auto;
     text-align: center;
 }
 
+.product-detail-container img {
+    width: 90%;
+    max-width: 400px;  /* Prevent huge images on desktop */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   COLOR BUTTONS
+   ========================= */
 .color-buttons {
     margin-top: 15px;
 }
@@ -85,7 +109,9 @@ body {
     color: #fff;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media screen and (max-width: 768px) {
     .products {
         flex-direction: column;
