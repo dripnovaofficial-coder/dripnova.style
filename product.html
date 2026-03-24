@@ -1,201 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Product - DRIPNOVA</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <title>Product - DRIPNOVA</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-
-<!-- HEADER -->
-
 <div class="header">
-
-<div class="logo">
-
-DRIPNOVA
-
+    <div class="logo">DRIPNOVA</div>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+    </div>
 </div>
 
-<div class="nav">
+<h2 id="product-name" style="padding:30px"></h2>
+<img id="product-image" width="300" style="display:block; margin-bottom:20px;">
+<p id="product-price" style="font-size:20px; font-weight:bold;"></p>
 
-<a href="index.html">Home</a>
-<a href="products.html">Shop</a>
-<a href="cart.html">Cart</a>
+<div id="colors" style="margin-top:20px;"></div>
 
-</div>
-
-</div>
-
-
-
-<!-- PRODUCT -->
-
-<div class="productPage">
-
-
-<div class="left">
-
-<img id="productImage">
-
-</div>
-
-
-
-<div class="right">
-
-<h2 id="productName"></h2>
-
-<p id="productPrice"></p>
-
-
-<h3>Colors</h3>
-
-<div id="colorOptions">
-
-</div>
-
-
-<br>
-
-
-<button id="addCart">
-
-Add To Cart
-
-</button>
-
-
-</div>
-
-
-
-</div>
-
-
-
-<script>
-
-
-
-const urlParams = new URLSearchParams(window.location.search);
-
-const id = urlParams.get("id");
-
-
-
-fetch("./products.json")
-
-.then(res=>res.json())
-
-.then(products=>{
-
-
-let product=products.find(p=>p.id===id);
-
-
-if(!product){
-
-document.body.innerHTML="Product Not Found";
-
-return;
-
-}
-
-
-
-document.getElementById("productName").innerText=product.name;
-
-document.getElementById("productPrice").innerText="Rs "+product.price;
-
-
-
-let colors=product.colors;
-
-let firstColor=Object.keys(colors)[0];
-
-let firstImage=colors[firstColor][0];
-
-
-let productImage=document.getElementById("productImage");
-
-productImage.src=firstImage;
-
-
-
-let colorHTML="";
-
-
-Object.keys(colors).forEach(color=>{
-
-
-colorHTML+=`
-
-<button onclick="changeColor('${color}')">
-
-${color}
-
-</button>
-
-`;
-
-
-});
-
-
-document.getElementById("colorOptions").innerHTML=colorHTML;
-
-
-
-window.changeColor=function(color){
-
-productImage.src=colors[color][0];
-
-};
-
-
-
-document.getElementById("addCart").onclick=function(){
-
-
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-
-cart.push({
-
-name:product.name,
-
-price:product.price,
-
-image:productImage.src
-
-});
-
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-
-alert("Added To Cart");
-
-
-};
-
-
-
-});
-
-</script>
-
-
-
+<script src="script.js"></script>
 </body>
-
 </html>
