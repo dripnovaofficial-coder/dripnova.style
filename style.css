@@ -1,80 +1,103 @@
-
 body{
-
 margin:0;
 font-family:Arial;
 background:black;
 color:white;
-
 }
 
 
-.sidebar{
 
-width:200px;
-height:100vh;
-background:#111;
-position:fixed;
-padding:20px;
+/* HEADER */
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 40px;
+
+border-bottom:1px solid #222;
 
 }
 
-.sidebar h1{
+.logo{
 
-margin-bottom:30px;
+font-size:24px;
+font-weight:bold;
+letter-spacing:3px;
 
 }
 
-.sidebar a{
+.nav a{
 
-display:block;
 color:white;
 text-decoration:none;
-margin:10px 0;
+margin-left:25px;
 
 }
 
 
-.main{
 
-margin-left:220px;
-padding:30px;
+/* HERO */
 
-}
+.hero{
 
+height:90vh;
 
-.quote{
+display:flex;
+flex-direction:column;
 
-font-size:28px;
-margin-bottom:40px;
+justify-content:center;
 
-}
+align-items:center;
 
-
-.categories{
-
-display:grid;
-grid-template-columns:repeat(2,200px);
-gap:20px;
-
-}
-
-
-.card{
-
-background:#111;
-padding:40px;
 text-align:center;
-border-radius:10px;
 
 }
 
+
+.hero h1{
+
+font-size:70px;
+margin:0;
+
+}
+
+
+.hero p{
+
+color:#aaa;
+
+}
+
+
+.shopBtn{
+
+margin-top:20px;
+
+padding:15px 50px;
+
+background:white;
+color:black;
+
+text-decoration:none;
+
+}
+
+
+
+/* PRODUCTS */
 
 .products{
 
 display:grid;
-grid-template-columns:repeat(3,250px);
-gap:30px;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:40px;
+
+padding:40px;
 
 }
 
@@ -82,8 +105,11 @@ gap:30px;
 .product{
 
 background:#111;
+
 padding:20px;
+
 border-radius:10px;
+
 text-align:center;
 
 }
@@ -91,31 +117,77 @@ text-align:center;
 
 .product img{
 
-width:200px;
+width:100%;
+
+border-radius:10px;
 
 }
-
 
 .productPage{
 
 display:flex;
-gap:40px;
+
+gap:50px;
+
+padding:50px;
 
 }
 
 
-button{
+.left{
 
-background:white;
-border:none;
+width:50%;
+
+}
+
+
+.left img{
+
+width:100%;
+
+border-radius:10px;
+
+}
+
+
+.right{
+
+width:50%;
+
+}
+
+
+#colorOptions button{
+
+margin:5px;
+
 padding:10px 20px;
+
+background:#222;
+
+color:white;
+
+border:none;
+
 cursor:pointer;
 
 }
 
 
-.cartItem{
+#addCart{
 
-margin:10px 0;
+margin-top:20px;
+
+padding:15px 40px;
+
+background:white;
+
+color:black;
+
+border:none;
+
+font-size:18px;
+
+cursor:pointer;
 
 }
