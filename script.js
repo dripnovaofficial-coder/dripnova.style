@@ -33,9 +33,8 @@ window.location.href = `product.html?id=${id}`;
 }
 
 // PRODUCT PAGE
-let urlParams = new URLSearchParams(window.location.search);
-let productId = urlParams.get("id");
-let currentProduct = null;
+let selectedColor = null;
+let selectedSize = null;
 
 if(productId){
 fetch('products.json')
@@ -51,7 +50,9 @@ document.getElementById("product-price").innerText = "Rs " + product.price;
 let colorsDiv = document.getElementById("colors");
 
 let firstColor = Object.keys(product.colors)[0];
-document.getElementById("product-image").src = product.colors[firstColor][0];
+selectedColor = firstColor;
+
+document.getElementById("main-image").src = product.colors[firstColor][0];
 
 Object.keys(product.colors).forEach(color=>{
 let btn = document.createElement("button");
@@ -59,13 +60,48 @@ btn.innerText = color;
 btn.classList.add("color-btn");
 
 btn.onclick = ()=>{
-document.getElementById("product-image").src = product.colors[color][0];
+selectedColor = color;
+document.getElementById("main-image").src = product.colors[color][0];
+
+// active effect
+document.querySelectorAll(".color-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
 };
 
 colorsDiv.appendChild(btn);
 });
 
+// SIZE SELECTION
+document.querySelectorAll(".size-btn").forEach(btn=>{
+btn.onclick = ()=>{
+selectedSize = btn.innerText;
+
+document.querySelectorAll(".size-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+};
 });
+
+});
+}
+
+// ADD TO CART WITH SELECTION
+function addToCart(){
+
+if(!selectedSize){
+alert("Please select size");
+return;
+}
+
+let item = {
+...currentProduct,
+selectedColor,
+selectedSize
+};
+
+cart.push(item);
+localStorage.setItem("cart", JSON.stringify(cart));
+
+alert("Added to cart");
 }
 
 // ADD TO CART
