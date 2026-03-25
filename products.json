@@ -4,12 +4,14 @@
 "name":"Astronauts Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/Astronauts/astronauts-black-front.jpg"
-],
-"White":[
-"products/Astronauts/astronauts-white-front.jpg"
-]
+"Black":{
+"front":"products/Astronauts/astronauts-black-front.jpg",
+"back":"products/Astronauts/astronauts-black-back.jpg"
+},
+"White":{
+"front":"products/Astronauts/astronauts-white-front.jpg",
+"back":"products/Astronauts/astronauts-white-back.jpg"
+}
 }
 },
 
@@ -18,12 +20,22 @@
 "name":"Climb Your Way To The Top",
 "price":999,
 "colors":{
-"Black":[
-"products/Climb your way to the top/climb-your-way-to-the-top-black-front.jpg"
-],
-"White":[
-"products/Climb your way to the top/climb-your-way-to-the-top-white-front.jpg"
-]
+"Black":{
+"front":"products/Climb your way to the top/climb-your-way-to-the-top-black-front.jpg",
+"back":"products/Climb your way to the top/climb-your-way-to-the-top-black-back.jpg"
+},
+"White":{
+"front":"products/Climb your way to the top/climb-your-way-to-the-top-white-front.jpg",
+"back":"products/Climb your way to the top/climb-your-way-to-the-top-white-back.jpg"
+},
+"Maroon":{
+"front":"products/Climb your way to the top/climb-your-way-to-the-top-maroon-front.jpg",
+"back":"products/Climb your way to the top/climb-your-way-to-the-top-maroon-back.jpg"
+},
+"Chocolate":{
+"front":"products/Climb your way to the top/climb-your-way-to-the-top-chocolate-front.jpg",
+"back":"products/Climb your way to the top/climb-your-way-to-the-top-chocolate-back.jpg"
+}
 }
 },
 
@@ -32,12 +44,22 @@
 "name":"Footballer Sweatshirt",
 "price":999,
 "colors":{
-"Black":[
-"products/Footballer/footballer_black_front.jpg"
-],
-"White":[
-"products/Footballer/footballer_white_front.jpg"
-]
+"Black":{
+"front":"products/Footballer/footballer_black_front.jpg",
+"back":"products/Footballer/footballer_black_back.jpg"
+},
+"White":{
+"front":"products/Footballer/footballer_white_front.jpg",
+"back":"products/Footballer/footballer_white_back.jpg"
+},
+"Navy":{
+"front":"products/Footballer/footballer_navy_front.jpg",
+"back":"products/Footballer/footballer_navy_back.jpg"
+},
+"Sky Blue":{
+"front":"products/Footballer/footballer_skyblue_front.jpg",
+"back":"products/Footballer/footballer_skyblue_back.jpg"
+}
 }
 },
 
@@ -46,12 +68,22 @@
 "name":"Hello There Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/Hello there/BLACK FRONT.jpg"
-],
-"Maroon":[
-"products/Hello there/MAROON FRONT.jpg"
-]
+"Black":{
+"front":"products/Hello there/BLACK FRONT.jpg",
+"back":"products/Hello there/BLACK BACK.jpg"
+},
+"White":{
+"front":"products/Hello there/WHITE FRONT.jpg",
+"back":"products/Hello there/WHITE BACK.jpg"
+},
+"Maroon":{
+"front":"products/Hello there/MAROON FRONT.jpg",
+"back":"products/Hello there/MAROON BACK.jpg"
+},
+"Army":{
+"front":"products/Hello there/ARMY FRONT.jpg",
+"back":"products/Hello there/ARMY BACK.jpg"
+}
 }
 },
 
@@ -60,12 +92,14 @@
 "name":"DN Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/New folder/BLACK FRONT.jpg"
-],
-"White":[
-"products/New folder/WHITE FRONT.jpg"
-]
+"Black":{
+"front":"products/New folder/BLACK FRONT.jpg",
+"back":"products/New folder/BLACK BACK.jpg"
+},
+"White":{
+"front":"products/New folder/WHITE FRONT.jpg",
+"back":"products/New folder/WHITE BACK.jpg"
+}
 }
 },
 
@@ -74,23 +108,26 @@
 "name":"Sneaker S Hoodie",
 "price":1299,
 "colors":{
-"Brown":[
-"products/S/BROWN FRONT.jpg"
-],
-"Red":[
-"products/S/RED FRONT.jpg"
-]
+"Brown":{
+"front":"products/S/BROWN FRONT.jpg",
+"back":"products/S/BROWN BACK.jpg"
+},
+"Red":{
+"front":"products/S/RED FRONT.jpg",
+"back":"products/S/RED BACK.jpg"
+}
 }
 },
 
 {
 "id":"0007",
-"name":"Awesome Brother Hoodie",
+"name":"Awesome Brother",
 "price":1299,
 "colors":{
-"Black":[
-"products/awesome-brother/awesome-brother-front.png"
-]
+"Black":{
+"front":"products/awesome-brother/awesome-brother-front.png",
+"back":"products/awesome-brother/awesome-brother-back.png"
+}
 }
 },
 
@@ -99,9 +136,18 @@
 "name":"Be Your Own Hero",
 "price":999,
 "colors":{
-"Black":[
-"products/be-your own hero/black front.png"
-]
+"Black":{
+"front":"products/be-your own hero/black front.png",
+"back":"products/be-your own hero/black back.png"
+},
+"White":{
+"front":"products/be-your own hero/white front.png",
+"back":"products/be-your own hero/white back.png"
+},
+"Maroon":{
+"front":"products/be-your own hero/maroon front.png",
+"back":"products/be-your own hero/maroon back.png"
+}
 }
 },
 
@@ -110,9 +156,10 @@
 "name":"King Wild Hoodie",
 "price":1299,
 "colors":{
-"Grey":[
-"products/king wild/GREY FRONT.jpg"
-]
+"Grey":{
+"front":"products/king wild/GREY FRONT.jpg",
+"back":"products/king wild/GREY BACK.jpg"
+}
 }
 },
 
@@ -121,9 +168,10 @@
 "name":"Moving Forward Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/moving-forward/moving-forward-hoodie.png"
-]
+"Default":{
+"front":"products/moving-forward/moving-forward-hoodie.png",
+"back":"products/moving-forward/moving-forward-hoodie.png"
+}
 }
 },
 
@@ -132,9 +180,10 @@
 "name":"Stay Focused Break Rules",
 "price":999,
 "colors":{
-"Default":[
-"products/stay-focused-break-rules/stay-focused-break-rules front.png"
-]
+"Default":{
+"front":"products/stay-focused-break-rules/stay-focused-break-rules front.png",
+"back":"products/stay-focused-break-rules/stay-focused-break-rules back.png"
+}
 }
 },
 
@@ -143,12 +192,18 @@
 "name":"Thumbs Up Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/thumbs Up/black front.jpg"
-],
-"White":[
-"products/thumbs Up/WHITE FRONT.jpg"
-]
+"Black":{
+"front":"products/thumbs Up/black front.jpg",
+"back":"products/thumbs Up/BLACK BACK.jpg"
+},
+"White":{
+"front":"products/thumbs Up/WHITE FRONT.jpg",
+"back":"products/thumbs Up/white back.jpg"
+},
+"Green":{
+"front":"products/thumbs Up/green front.jpg",
+"back":"products/thumbs Up/green back .jpg"
+}
 }
 },
 
@@ -157,9 +212,10 @@
 "name":"Limit Your Mind Hoodie",
 "price":1299,
 "colors":{
-"Black":[
-"products/your-limit/your mind hoodie front.png"
-]
+"Black":{
+"front":"products/your-limit/your mind hoodie front.png",
+"back":"products/your-limit/your mind hoodie back.png"
+}
 }
 }
 ]
