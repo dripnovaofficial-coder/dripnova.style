@@ -1,85 +1,99 @@
-// ========================
-// Products Page Logic
-// ========================
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// PRODUCTS PAGE
 let container = document.getElementById("products");
 
 if (container) {
-  fetch('products.json')
-    .then(res => res.json())
-    .then(data => {
+fetch('products.json')
+.then(res => res.json())
+.then(data => {
 
-      let html = "";
+let html = "";
 
-      data.forEach(product => {
+data.forEach(product => {
+let firstColor = Object.keys(product.colors)[0];
+let image = product.colors[firstColor][0];
 
-        let firstColor = Object.keys(product.colors)[0];
-        let image = product.colors[firstColor][0];
+html += `
+<div class="product" onclick="openProduct('${product.id}')">
+<img src="${image}">
+<h3>${product.name}</h3>
+<p>Rs ${product.price}</p>
+</div>
+`;
+});
 
-        html += `
-          <div class="product" onclick="openProduct('${product.id}')">
-            <img src="${image}" alt="${product.name}" width="200">
-            <h3>${product.name}</h3>
-            <p>Rs ${product.price}</p>
-          </div>
-        `;
-      });
+container.innerHTML = html;
 
-      container.innerHTML = html;
-
-    })
-    .catch(err => {
-      console.error(err);
-      container.innerHTML = "Error loading products";
-    });
+});
 }
 
-// Function to open product page
-function openProduct(id) {
-  window.location.href = `product.html?id=${id}`;
+function openProduct(id){
+window.location.href = `product.html?id=${id}`;
 }
 
-// ========================
-// Product Detail Page Logic
-// ========================
+// PRODUCT PAGE
 let urlParams = new URLSearchParams(window.location.search);
 let productId = urlParams.get("id");
+let currentProduct = null;
 
-if (productId) {
+if(productId){
+fetch('products.json')
+.then(res=>res.json())
+.then(data=>{
 
-  fetch('products.json')
-    .then(res => res.json())
-    .then(data => {
+let product = data.find(p=>p.id===productId);
+currentProduct = product;
 
-      let product = data.find(p => p.id === productId);
+document.getElementById("product-name").innerText = product.name;
+document.getElementById("product-price").innerText = "Rs " + product.price;
 
-      if (product) {
+let colorsDiv = document.getElementById("colors");
 
-        document.getElementById("product-name").innerText = product.name;
-        document.getElementById("product-price").innerText = "Rs " + product.price;
+let firstColor = Object.keys(product.colors)[0];
+document.getElementById("product-image").src = product.colors[firstColor][0];
 
-        let colorsDiv = document.getElementById("colors");
+Object.keys(product.colors).forEach(color=>{
+let btn = document.createElement("button");
+btn.innerText = color;
+btn.classList.add("color-btn");
 
-        // Set first color image initially
-        let firstColor = Object.keys(product.colors)[0];
-        document.getElementById("product-image").src = product.colors[firstColor][0];
+btn.onclick = ()=>{
+document.getElementById("product-image").src = product.colors[color][0];
+};
 
-        // Create color buttons dynamically
-        Object.keys(product.colors).forEach(color => {
+colorsDiv.appendChild(btn);
+});
 
-          let btn = document.createElement("button");
-          btn.innerText = color;
-          btn.style.marginRight = "10px";
-          btn.onclick = () => {
-            document.getElementById("product-image").src = product.colors[color][0];
-          };
+});
+}
 
-          colorsDiv.appendChild(btn);
-        });
+// ADD TO CART
+function addToCart(){
+cart.push(currentProduct);
+localStorage.setItem("cart", JSON.stringify(cart));
+alert("Added to cart");
+}
 
-      }
+// CART PAGE
+let cartContainer = document.getElementById("cart-items");
 
-    })
-    .catch(err => {
-      console.error(err);
-    });
+if(cartContainer){
+let total = 0;
+
+cart.forEach(item=>{
+let firstColor = Object.keys(item.colors)[0];
+let image = item.colors[firstColor][0];
+
+total += item.price;
+
+cartContainer.innerHTML += `
+<div class="cart-item">
+<img src="${image}" width="80">
+<p>${item.name} - Rs ${item.price}</p>
+</div>
+`;
+});
+
+document.getElementById("total-price").innerText = "Total: Rs " + total;
 }
