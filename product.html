@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Product - DRIPNOVA</title>
-    <link rel="stylesheet" href="style.css">
+<title>Product</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="header">
-    <div class="logo">DRIPNOVA</div>
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="products.html">Shop</a>
-        <a href="cart.html">Cart</a>
-    </div>
+<div class="logo">DRIPNOVA</div>
+<div class="nav">
+<a href="index.html">Home</a>
+<a href="products.html">Shop</a>
+<a href="cart.html">Cart</a>
+</div>
 </div>
 
-<h2 id="product-name" style="padding:30px"></h2>
-<img id="product-image" width="300" style="display:block; margin-bottom:20px;">
-<p id="product-price" style="font-size:20px; font-weight:bold;"></p>
+<div class="product-detail-container">
+<h2 id="product-name"></h2>
 
-<div id="colors" style="margin-top:20px;"></div>
+<img id="product-image">
+
+<p id="product-price"></p>
+
+<div id="colors" class="color-buttons"></div>
+
+<button onclick="addToCart()" class="buy-btn">Add to Cart</button>
+</div>
 
 <script src="script.js"></script>
 </body>
