@@ -1,221 +1,268 @@
 [
-{
-"id":"0001",
-"name":"Astronauts Hoodie",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/Astronauts/astronauts-black-front.jpg",
-"back":"products/Astronauts/astronauts-black-back.jpg"
-},
-"White":{
-"front":"products/Astronauts/astronauts-white-front.jpg",
-"back":"products/Astronauts/astronauts-white-back.jpg"
-}
-}
-},
-
-{
-"id":"0002",
-"name":"Climb Your Way To The Top",
-"price":999,
-"colors":{
-"Black":{
-"front":"products/Climb your way to the top/climb-your-way-to-the-top-black-front.jpg",
-"back":"products/Climb your way to the top/climb-your-way-to-the-top-black-back.jpg"
-},
-"White":{
-"front":"products/Climb your way to the top/climb-your-way-to-the-top-white-front.jpg",
-"back":"products/Climb your way to the top/climb-your-way-to-the-top-white-back.jpg"
-},
-"Maroon":{
-"front":"products/Climb your way to the top/climb-your-way-to-the-top-maroon-front.jpg",
-"back":"products/Climb your way to the top/climb-your-way-to-the-top-maroon-back.jpg"
-},
-"Chocolate":{
-"front":"products/Climb your way to the top/climb-your-way-to-the-top-chocolate-front.jpg",
-"back":"products/Climb your way to the top/climb-your-way-to-the-top-chocolate-back.jpg"
-}
-}
-},
-
-{
-"id":"0003",
-"name":"Footballer Sweatshirt",
-"price":999,
-"colors":{
-"Black":{
-"front":"products/Footballer/footballer_black_front.jpg",
-"back":"products/Footballer/footballer_black_back.jpg"
-},
-"White":{
-"front":"products/Footballer/footballer_white_front.jpg",
-"back":"products/Footballer/footballer_white_back.jpg"
-},
-"Navy":{
-"front":"products/Footballer/footballer_navy_front.jpg",
-"back":"products/Footballer/footballer_navy_back.jpg"
-},
-"Sky Blue":{
-"front":"products/Footballer/footballer_skyblue_front.jpg",
-"back":"products/Footballer/footballer_skyblue_back.jpg"
-}
-}
-},
-
-{
-"id":"0004",
-"name":"Hello There Hoodie",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/Hello there/BLACK FRONT.jpg",
-"back":"products/Hello there/BLACK BACK.jpg"
-},
-"White":{
-"front":"products/Hello there/WHITE FRONT.jpg",
-"back":"products/Hello there/WHITE BACK.jpg"
-},
-"Maroon":{
-"front":"products/Hello there/MAROON FRONT.jpg",
-"back":"products/Hello there/MAROON BACK.jpg"
-},
-"Army":{
-"front":"products/Hello there/ARMY FRONT.jpg",
-"back":"products/Hello there/ARMY BACK.jpg"
-}
-}
-},
-
-{
-"id":"0005",
-"name":"DN Hoodie",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/New folder/BLACK FRONT.jpg",
-"back":"products/New folder/BLACK BACK.jpg"
-},
-"White":{
-"front":"products/New folder/WHITE FRONT.jpg",
-"back":"products/New folder/WHITE BACK.jpg"
-}
-}
-},
-
-{
-"id":"0006",
-"name":"Sneaker S Hoodie",
-"price":1299,
-"colors":{
-"Brown":{
-"front":"products/S/BROWN FRONT.jpg",
-"back":"products/S/BROWN BACK.jpg"
-},
-"Red":{
-"front":"products/S/RED FRONT.jpg",
-"back":"products/S/RED BACK.jpg"
-}
-}
-},
-
-{
-"id":"0007",
-"name":"Awesome Brother",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/awesome-brother/awesome-brother-front.png",
-"back":"products/awesome-brother/awesome-brother-back.png"
-}
-}
-},
-
-{
-"id":"0008",
-"name":"Be Your Own Hero",
-"price":999,
-"colors":{
-"Black":{
-"front":"products/be-your own hero/black front.png",
-"back":"products/be-your own hero/black back.png"
-},
-"White":{
-"front":"products/be-your own hero/white front.png",
-"back":"products/be-your own hero/white back.png"
-},
-"Maroon":{
-"front":"products/be-your own hero/maroon front.png",
-"back":"products/be-your own hero/maroon back.png"
-}
-}
-},
-
-{
-"id":"0009",
-"name":"King Wild Hoodie",
-"price":1299,
-"colors":{
-"Grey":{
-"front":"products/king wild/GREY FRONT.jpg",
-"back":"products/king wild/GREY BACK.jpg"
-}
-}
-},
-
-{
-"id":"0010",
-"name":"Moving Forward Hoodie",
-"price":1299,
-"colors":{
-"Default":{
-"front":"products/moving-forward/moving-forward-hoodie.png",
-"back":"products/moving-forward/moving-forward-hoodie.png"
-}
-}
-},
-
-{
-"id":"0011",
-"name":"Stay Focused Break Rules",
-"price":999,
-"colors":{
-"Default":{
-"front":"products/stay-focused-break-rules/stay-focused-break-rules front.png",
-"back":"products/stay-focused-break-rules/stay-focused-break-rules back.png"
-}
-}
-},
-
-{
-"id":"0012",
-"name":"Thumbs Up Hoodie",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/thumbs Up/black front.jpg",
-"back":"products/thumbs Up/BLACK BACK.jpg"
-},
-"White":{
-"front":"products/thumbs Up/WHITE FRONT.jpg",
-"back":"products/thumbs Up/white back.jpg"
-},
-"Green":{
-"front":"products/thumbs Up/green front.jpg",
-"back":"products/thumbs Up/green back .jpg"
-}
-}
-},
-
-{
-"id":"0013",
-"name":"Limit Your Mind Hoodie",
-"price":1299,
-"colors":{
-"Black":{
-"front":"products/your-limit/your mind hoodie front.png",
-"back":"products/your-limit/your mind hoodie back.png"
-}
-}
-}
+  {
+    "id":"0001",
+    "name":"Astronauts Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/Astronauts/astronauts-black-front.jpg",
+          "products/Astronauts/astronauts-black-back.jpg",
+          "products/Astronauts/astronauts-black-folded.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/Astronauts/astronauts-white-front.jpg",
+          "products/Astronauts/astronauts-white-back.jpg",
+          "products/Astronauts/astronauts-white-folded.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0002",
+    "name":"Climb Your Way To The Top",
+    "price":999,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/Climb your way to the top/climb-your-way-to-the-top-black-front.jpg",
+          "products/Climb your way to the top/climb-your-way-to-the-top-black-back.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/Climb your way to the top/climb-your-way-to-the-top-white-front.jpg",
+          "products/Climb your way to the top/climb-your-way-to-the-top-white-back.jpg"
+        ]
+      },
+      "Maroon":{
+        "images":[
+          "products/Climb your way to the top/climb-your-way-to-the-top-maroon-front.jpg",
+          "products/Climb your way to the top/climb-your-way-to-the-top-maroon-back.jpg"
+        ]
+      },
+      "Chocolate":{
+        "images":[
+          "products/Climb your way to the top/climb-your-way-to-the-top-chocolate-front.jpg",
+          "products/Climb your way to the top/climb-your-way-to-the-top-chocolate-back.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0003",
+    "name":"Footballer Sweatshirt",
+    "price":999,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/Footballer/footballer_black_front.jpg",
+          "products/Footballer/footballer_black_back.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/Footballer/footballer_white_front.jpg",
+          "products/Footballer/footballer_white_back.jpg"
+        ]
+      },
+      "Navy":{
+        "images":[
+          "products/Footballer/footballer_navy_front.jpg",
+          "products/Footballer/footballer_navy_back.jpg"
+        ]
+      },
+      "Sky Blue":{
+        "images":[
+          "products/Footballer/footballer_skyblue_front.jpg",
+          "products/Footballer/footballer_skyblue_back.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0004",
+    "name":"Hello There Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/Hello there/BLACK FRONT.jpg",
+          "products/Hello there/BLACK BACK.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/Hello there/WHITE FRONT.jpg",
+          "products/Hello there/WHITE BACK.jpg"
+        ]
+      },
+      "Maroon":{
+        "images":[
+          "products/Hello there/MAROON FRONT.jpg",
+          "products/Hello there/MAROON BACK.jpg"
+        ]
+      },
+      "Army":{
+        "images":[
+          "products/Hello there/ARMY FRONT.jpg",
+          "products/Hello there/ARMY BACK.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0005",
+    "name":"DN Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/New folder/BLACK FRONT.jpg",
+          "products/New folder/BLACK BACK.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/New folder/WHITE FRONT.jpg",
+          "products/New folder/WHITE BACK.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0006",
+    "name":"Sneaker S Hoodie",
+    "price":1299,
+    "colors":{
+      "Brown":{
+        "images":[
+          "products/S/BROWN FRONT.jpg",
+          "products/S/BROWN BACK.jpg"
+        ]
+      },
+      "Red":{
+        "images":[
+          "products/S/RED FRONT.jpg",
+          "products/S/RED BACK.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0007",
+    "name":"Awesome Brother Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/awesome-brother/awesome-brother-front.png",
+          "products/awesome-brother/awesome-brother-back.png"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0008",
+    "name":"Be Your Own Hero",
+    "price":999,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/be-your own hero/black front.png",
+          "products/be-your own hero/black back.png"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/be-your own hero/white front.png",
+          "products/be-your own hero/white back.png"
+        ]
+      },
+      "Maroon":{
+        "images":[
+          "products/be-your own hero/maroon front.png",
+          "products/be-your own hero/maroon back.png"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0009",
+    "name":"King Wild Hoodie",
+    "price":1299,
+    "colors":{
+      "Grey":{
+        "images":[
+          "products/king wild/GREY FRONT.jpg",
+          "products/king wild/GREY BACK.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0010",
+    "name":"Moving Forward Hoodie",
+    "price":1299,
+    "colors":{
+      "Default":{
+        "images":[
+          "products/moving-forward/moving-forward-hoodie.png"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0011",
+    "name":"Stay Focused Break Rules",
+    "price":999,
+    "colors":{
+      "Default":{
+        "images":[
+          "products/stay-focused-break-rules/stay-focused-break-rules front.png",
+          "products/stay-focused-break-rules/stay-focused-break-rules back.png"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0012",
+    "name":"Thumbs Up Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/thumbs Up/black front.jpg",
+          "products/thumbs Up/BLACK BACK.jpg"
+        ]
+      },
+      "White":{
+        "images":[
+          "products/thumbs Up/WHITE FRONT.jpg",
+          "products/thumbs Up/white back.jpg"
+        ]
+      },
+      "Green":{
+        "images":[
+          "products/thumbs Up/green front.jpg",
+          "products/thumbs Up/green back.jpg"
+        ]
+      }
+    }
+  },
+  {
+    "id":"0013",
+    "name":"Limit Your Mind Hoodie",
+    "price":1299,
+    "colors":{
+      "Black":{
+        "images":[
+          "products/your-limit/your mind hoodie front.png",
+          "products/your-limit/your mind hoodie back.png"
+        ]
+      }
+    }
+  }
 ]
