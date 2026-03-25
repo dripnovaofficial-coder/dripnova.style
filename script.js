@@ -12,7 +12,7 @@ let html = "";
 
 data.forEach(product => {
 let firstColor = Object.keys(product.colors)[0];
-let image = product.colors[firstColor].front;
+let image = product.colors[firstColor].images[0];
 
 html += `
 <div class="product" onclick="openProduct('${product.id}')">
@@ -37,7 +37,6 @@ let productId = urlParams.get("id");
 
 let currentProduct = null;
 let selectedColor = null;
-let selectedView = "front";
 let selectedSize = null;
 
 if(productId){
@@ -52,12 +51,12 @@ document.getElementById("product-name").innerText = product.name;
 document.getElementById("product-price").innerText = "Rs " + product.price;
 
 let colorsDiv = document.getElementById("colors");
+let thumbnailsDiv = document.getElementById("thumbnails");
 
 let firstColor = Object.keys(product.colors)[0];
 selectedColor = firstColor;
 
-document.getElementById("main-image").src =
-product.colors[firstColor][selectedView];
+loadImages(product.colors[firstColor].images);
 
 // COLORS
 Object.keys(product.colors).forEach(color=>{
@@ -67,7 +66,7 @@ btn.classList.add("color-btn");
 
 btn.onclick = ()=>{
 selectedColor = color;
-updateImage();
+loadImages(product.colors[color].images);
 
 document.querySelectorAll(".color-btn").forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
@@ -76,27 +75,23 @@ btn.classList.add("active");
 colorsDiv.appendChild(btn);
 });
 
-// FRONT/BACK
-document.getElementById("frontBtn").onclick = ()=>{
-selectedView = "front";
-updateImage();
-setActive("frontBtn");
+// LOAD IMAGES
+function loadImages(images){
+document.getElementById("main-image").src = images[0];
+
+thumbnailsDiv.innerHTML = "";
+
+images.forEach(img=>{
+let thumb = document.createElement("img");
+thumb.src = img;
+thumb.classList.add("thumb");
+
+thumb.onclick = ()=>{
+document.getElementById("main-image").src = img;
 };
 
-document.getElementById("backBtn").onclick = ()=>{
-selectedView = "back";
-updateImage();
-setActive("backBtn");
-};
-
-function updateImage(){
-document.getElementById("main-image").src =
-product.colors[selectedColor][selectedView];
-}
-
-function setActive(id){
-document.querySelectorAll(".view-btn").forEach(b=>b.classList.remove("active"));
-document.getElementById(id).classList.add("active");
+thumbnailsDiv.appendChild(thumb);
+});
 }
 
 // SIZE
@@ -129,4 +124,26 @@ cart.push(item);
 localStorage.setItem("cart", JSON.stringify(cart));
 
 alert("Added to cart");
+}
+
+// CART PAGE
+let cartContainer = document.getElementById("cart-items");
+
+if(cartContainer){
+let total = 0;
+
+cart.forEach(item=>{
+let img = item.colors[item.selectedColor].images[0];
+
+total += item.price;
+
+cartContainer.innerHTML += `
+<div class="cart-item">
+<img src="${img}" width="80">
+<p>${item.name} (${item.selectedColor} / ${item.selectedSize}) - Rs ${item.price}</p>
+</div>
+`;
+});
+
+document.getElementById("total-price").innerText = "Total: Rs " + total;
 }
