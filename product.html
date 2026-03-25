@@ -15,16 +15,33 @@
 </div>
 </div>
 
-<div class="product-detail-container">
-<h2 id="product-name"></h2>
+<div class="product-page">
 
-<img id="product-image">
+    <!-- LEFT SIDE (IMAGE) -->
+    <div class="product-images">
+        <img id="main-image">
+    </div>
 
-<p id="product-price"></p>
+    <!-- RIGHT SIDE (DETAILS) -->
+    <div class="product-info">
+        <h1 id="product-name"></h1>
+        <p id="product-price"></p>
 
-<div id="colors" class="color-buttons"></div>
+        <h4>Select Color</h4>
+        <div id="colors" class="color-buttons"></div>
 
-<button onclick="addToCart()" class="buy-btn">Add to Cart</button>
+        <h4>Select Size</h4>
+        <div class="sizes">
+            <button class="size-btn">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+        </div>
+
+        <button onclick="addToCart()" class="buy-btn">Add to Cart</button>
+
+    </div>
+
 </div>
 
 <script src="script.js"></script>
